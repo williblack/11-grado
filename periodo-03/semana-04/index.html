@@ -28,8 +28,8 @@
         }
         .flip-card-back { transform: rotateY(180deg); }
         .glow-hover:hover { box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); }
-        .correct { background-color: rgba(16, 185, 129, 0.2) !important; border-color: #10b981 !important; }
-        .incorrect { background-color: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; }
+        .correct { background-color: rgba(16, 185, 129, 0.2) !important; border-color: #10b981 !important; color: #34d399 !important; }
+        .incorrect { background-color: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; opacity: 0.7; }
         .shake { animation: shake 0.5s; }
         @keyframes shake {
             0% { transform: translateX(0); }
@@ -170,8 +170,8 @@
                 <p class="text-slate-300 mb-6 text-sm">Prueba cómo funciona un filtro antes de hacerlo en el Excel real. Haz clic en los botones para filtrar la tabla interactiva.</p>
                 
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <button onclick="filtrarTabla('Todos')" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm transition-all filter-btn focus:ring-2 focus:ring-blue-400 active">Mostrar Todos</button>
-                    <button onclick="filtrarTabla('16+')" class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm transition-all filter-btn focus:ring-2 focus:ring-blue-400">Mayores de 16 (Numérico)</button>
+                    <button onclick="filtrarTabla('Todos')" class="bg-slate-700 hover:bg-slate-500 px-4 py-2 rounded-lg text-sm transition-all filter-btn focus:ring-2 focus:ring-blue-400 active">Mostrar Todos</button>
+                    <button onclick="filtrarTabla('16+')" class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm transition-all filter-btn focus:ring-2 focus:ring-blue-400">16 o más (Numérico)</button>
                     <button onclick="filtrarTabla('Fútbol')" class="bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded-lg text-sm transition-all filter-btn focus:ring-2 focus:ring-blue-400">Fútbol (Texto)</button>
                 </div>
 
@@ -186,19 +186,19 @@
                         </thead>
                         <tbody id="sim-table" class="bg-slate-900/50">
                             <tr class="border-b border-slate-800/50 hover:bg-slate-800 transition-colors" data-edad="15" data-deporte="Voleibol">
-                                <td class="p-3">Ana Gómez</td><td class="p-3">15</td><td class="p-3">Voleibol</td>
+                                <td class="p-3">Ana Gómez</td><td class="p-3 text-cyan-300">15</td><td class="p-3">Voleibol</td>
                             </tr>
                             <tr class="border-b border-slate-800/50 hover:bg-slate-800 transition-colors" data-edad="17" data-deporte="Fútbol">
-                                <td class="p-3">Carlos Ruiz</td><td class="p-3">17</td><td class="p-3">Fútbol</td>
+                                <td class="p-3">Carlos Ruiz</td><td class="p-3 text-cyan-300">17</td><td class="p-3">Fútbol</td>
                             </tr>
                             <tr class="border-b border-slate-800/50 hover:bg-slate-800 transition-colors" data-edad="16" data-deporte="Baloncesto">
-                                <td class="p-3">María Díaz</td><td class="p-3">16</td><td class="p-3">Baloncesto</td>
+                                <td class="p-3">María Díaz</td><td class="p-3 text-cyan-300">16</td><td class="p-3">Baloncesto</td>
                             </tr>
                             <tr class="border-b border-slate-800/50 hover:bg-slate-800 transition-colors" data-edad="17" data-deporte="Fútbol">
-                                <td class="p-3">Luis Pérez</td><td class="p-3">17</td><td class="p-3">Fútbol</td>
+                                <td class="p-3">Luis Pérez</td><td class="p-3 text-cyan-300">17</td><td class="p-3">Fútbol</td>
                             </tr>
                             <tr class="border-b border-slate-800/50 hover:bg-slate-800 transition-colors" data-edad="15" data-deporte="Natación">
-                                <td class="p-3">Sofia Castro</td><td class="p-3">15</td><td class="p-3">Natación</td>
+                                <td class="p-3">Sofia Castro</td><td class="p-3 text-cyan-300">15</td><td class="p-3">Natación</td>
                             </tr>
                         </tbody>
                     </table>
@@ -214,29 +214,35 @@
             </div>
         </section>
 
-        <section class="glass-card p-8 md:p-12 rounded-3xl border-t-4 border-t-yellow-500">
+        <section class="glass-card p-8 md:p-12 rounded-3xl border-t-4 border-t-yellow-500 relative">
             <h2 class="text-3xl font-bold mb-8 text-center text-yellow-400">⚡ Reto de Conocimiento</h2>
             
-            <div class="max-w-3xl mx-auto space-y-6">
+            <div class="max-w-3xl mx-auto space-y-6" id="quiz-container">
                 <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 shadow-md">
                     <p class="text-lg font-semibold mb-4">1. ¿En qué pestaña de Excel se encuentra el botón de Filtro?</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all">A) Inicio</button>
-                        <button onclick="checkAnswer(this, true)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all">B) Datos</button>
-                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all">C) Insertar</button>
-                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all">D) Vista</button>
+                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all font-medium">A) Inicio</button>
+                        <button onclick="checkAnswer(this, true)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all font-medium">B) Datos</button>
+                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all font-medium">C) Insertar</button>
+                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all font-medium">D) Vista</button>
                     </div>
                 </div>
 
                 <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 shadow-md">
                     <p class="text-lg font-semibold mb-4">2. ¿Qué icono representa a la herramienta de Filtro en Excel?</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all">A) Una lupa 🔍</button>
-                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all">B) Una varita mágica 🪄</button>
-                        <button onclick="checkAnswer(this, true)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all">C) Un embudo 🔽</button>
-                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all">D) Una tabla 📊</button>
+                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all font-medium">A) Una lupa 🔍</button>
+                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all font-medium">B) Una varita mágica 🪄</button>
+                        <button onclick="checkAnswer(this, true)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all font-medium">C) Un embudo 🔽</button>
+                        <button onclick="checkAnswer(this, false)" class="quiz-btn text-left p-3 rounded-xl border border-slate-600 hover:bg-slate-700 transition-all font-medium">D) Una tabla 📊</button>
                     </div>
                 </div>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <button onclick="resetQuiz()" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2 border border-slate-500">
+                    <span>🔄</span> Reiniciar Reto
+                </button>
             </div>
         </section>
 
@@ -256,7 +262,6 @@
                 const t = document.getElementById('toastCopiado');
                 if(t){
                     t.classList.remove('hidden');
-                    // Add subtle animation
                     t.classList.add('animate-pulse');
                     setTimeout(()=> {
                         t.classList.add('hidden');
@@ -304,6 +309,8 @@
         // Simulador de Filtros
         function filtrarTabla(criterio) {
             const filas = document.querySelectorAll('#sim-table tr');
+            
+            // Reiniciar conteo para actualizar la gráfica
             let dataCount = { 'Voleibol': 0, 'Fútbol': 0, 'Baloncesto': 0, 'Natación': 0 };
 
             filas.forEach(fila => {
@@ -311,21 +318,30 @@
                 const deporte = fila.getAttribute('data-deporte');
                 let mostrar = false;
 
-                if (criterio === 'Todos') mostrar = true;
-                else if (criterio === '16+' && edad > 16) mostrar = true;
-                else if (criterio === 'Fútbol' && deporte === 'Fútbol') mostrar = true;
+                // LÓGICA DE FILTRADO CORREGIDA
+                if (criterio === 'Todos') {
+                    mostrar = true;
+                } else if (criterio === '16+' && edad >= 16) { 
+                    // Tomamos >= 16 para incluir a todos los de 16 o más años
+                    mostrar = true;
+                } else if (criterio === 'Fútbol' && deporte === 'Fútbol') {
+                    mostrar = true;
+                }
 
                 if (mostrar) {
                     fila.style.display = '';
-                    fila.classList.add('animate-pulse'); // micro-animación
+                    fila.classList.add('animate-pulse'); 
                     setTimeout(()=> fila.classList.remove('animate-pulse'), 500);
-                    if(dataCount[deporte] !== undefined) dataCount[deporte]++;
+                    
+                    if(dataCount[deporte] !== undefined) {
+                        dataCount[deporte]++;
+                    }
                 } else {
                     fila.style.display = 'none';
                 }
             });
 
-            // Actualizar Gráfico
+            // Actualizar Gráfico dinámicamente
             myChart.data.datasets[0].data = [
                 dataCount['Voleibol'], 
                 dataCount['Fútbol'], 
@@ -337,11 +353,11 @@
 
         // Lógica Micro-Quiz
         function checkAnswer(btn, isCorrect) {
-            // Resetear hermanos
+            // Resetear hermanos en la misma pregunta
             const hermanos = btn.parentElement.children;
             for(let b of hermanos) {
                 b.classList.remove('correct', 'incorrect');
-                b.disabled = true; // Deshabilitar tras responder
+                b.disabled = true; // Deshabilitar temporalmente
             }
 
             if (isCorrect) {
@@ -351,7 +367,7 @@
                 btn.parentElement.classList.add('shake');
                 setTimeout(() => btn.parentElement.classList.remove('shake'), 500);
                 
-                // Mostrar la correcta
+                // Mostrar la correcta automáticamente para guiar al alumno
                 for(let b of hermanos) {
                     if(b.getAttribute('onclick').includes('true')) {
                         b.classList.add('correct');
@@ -359,6 +375,17 @@
                 }
             }
         }
+
+        // NUEVA FUNCIÓN: Reiniciar Quiz
+        function resetQuiz() {
+            const todosLosBotones = document.querySelectorAll('.quiz-btn');
+            todosLosBotones.forEach(btn => {
+                btn.classList.remove('correct', 'incorrect');
+                btn.disabled = false; // Volver a habilitar todos
+            });
+        }
     </script>
+</body>
+</html>
 </body>
 </html>
