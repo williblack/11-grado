@@ -1,1 +1,307 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento de Datos | Tecnología</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Motor de Estilos Avanzados - Glassmorphism & Animaciones */
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #312e81 100%);
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .flip-card {
+            perspective: 1000px;
+            height: 200px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 1rem;
+        }
+        .flip-card-front {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .flip-card-back {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            transform: rotateY(180deg);
+        }
+        .btn-interactive {
+            transition: all 0.3s ease;
+        }
+        .btn-interactive:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <header class="glass-panel p-8 mb-10 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-emerald-400"></div>
+        <h2 class="text-xl text-blue-300 font-semibold mb-2">Colegio Santa Mariana de Jesús</h2>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+            Profundización en Ordenamiento de Datos
+        </h1>
+        <p class="text-lg text-gray-300 mb-6">Prof. William Fdo Bernal | Grado 11</p>
+        
+        <div class="max-w-2xl mx-auto glass-panel p-4 bg-blue-900/30 border-blue-500/30">
+            <h3 class="font-bold text-blue-400 mb-2 flex items-center justify-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Objetivo de Aprendizaje
+            </h3>
+            <p class="text-sm md:text-base">Dominar la organización de información usando múltiples criterios (apellidos, edades y promedios) para facilitar la toma de decisiones tecnológicas.</p>
+        </div>
+    </header>
+
+    <section class="mb-12">
+        <h3 class="text-2xl font-bold mb-6 border-b border-gray-600 pb-2">1. Criterios de Ordenamiento</h3>
+        <p class="mb-6 text-gray-300">Pasa el ratón sobre las tarjetas para descubrir cómo se comporta cada tipo de dato.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flip-card">
+                <div class="flip-card-inner glass-panel">
+                    <div class="flip-card-front">
+                        <span class="text-4xl mb-2">🔤</span>
+                        <h4 class="text-xl font-bold">Datos de Texto</h4>
+                        <p class="text-sm text-gray-300 mt-2">(Apellidos, Nombres)</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4 class="text-lg font-bold text-emerald-300 mb-2">Orden Alfabético</h4>
+                        <p class="text-sm">Se organizan de la <b>A a la Z</b> (Ascendente) o de la <b>Z a la A</b> (Descendente).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner glass-panel">
+                    <div class="flip-card-front">
+                        <span class="text-4xl mb-2">🔢</span>
+                        <h4 class="text-xl font-bold">Datos Numéricos</h4>
+                        <p class="text-sm text-gray-300 mt-2">(Edades, Cantidades)</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4 class="text-lg font-bold text-emerald-300 mb-2">Por Tamaño</h4>
+                        <p class="text-sm">Se organizan de <b>Menor a Mayor</b> o de <b>Mayor a Menor</b>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner glass-panel">
+                    <div class="flip-card-front">
+                        <span class="text-4xl mb-2">📊</span>
+                        <h4 class="text-xl font-bold">El "Truco" de los Niveles</h4>
+                        <p class="text-sm text-gray-300 mt-2">¿Qué pasa si hay empate?</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4 class="text-lg font-bold text-emerald-300 mb-2">Niveles de Orden</h4>
+                        <p class="text-sm">Si dos apellidos son iguales (Nivel 1), el programa desempata mirando el Nombre (Nivel 2).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="glass-panel p-6 md:p-8 mb-12">
+        <h3 class="text-2xl font-bold mb-4">2. Laboratorio de Datos: Promedios de Grado 11</h3>
+        <p class="text-gray-300 mb-6">Usa los botones para ordenar la gráfica en tiempo real y observa cómo cambia la visualización de la información.</p>
+        
+        <div class="flex flex-wrap gap-4 mb-6 justify-center">
+            <button onclick="sortData('original')" class="btn-interactive bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded-lg font-semibold">Desordenado (Original)</button>
+            <button onclick="sortData('nombre')" class="btn-interactive bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg font-semibold">Ordenar por Nombre (A-Z)</button>
+            <button onclick="sortData('promedioDesc')" class="btn-interactive bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded-lg font-semibold">Mejores Promedios (Mayor a Menor)</button>
+        </div>
+
+        <div class="w-full max-w-4xl mx-auto bg-gray-900/50 p-4 rounded-xl">
+            <canvas id="studentsChart" height="100"></canvas>
+        </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        
+        <div class="glass-panel p-6">
+            <h3 class="text-2xl font-bold mb-4 text-purple-300">⚡ Reto Relámpago (Quiz)</h3>
+            <div id="quiz-container">
+                <p class="mb-4">Si ordenamos una tabla por "Promedio" de Mayor a Menor, ¿quién aparecerá en la primera fila?</p>
+                <div class="flex flex-col gap-3">
+                    <button onclick="checkAnswer(false, this)" class="bg-gray-700 hover:bg-gray-600 p-3 rounded text-left transition-colors">A) El estudiante más joven.</button>
+                    <button onclick="checkAnswer(true, this)" class="bg-gray-700 hover:bg-gray-600 p-3 rounded text-left transition-colors">B) El estudiante con la nota más alta.</button>
+                    <button onclick="checkAnswer(false, this)" class="bg-gray-700 hover:bg-gray-600 p-3 rounded text-left transition-colors">C) El estudiante cuyo apellido empieza con A.</button>
+                </div>
+                <div id="quiz-feedback" class="mt-4 font-bold hidden"></div>
+            </div>
+        </div>
+
+        <div class="glass-panel p-6 border-l-4 border-yellow-400 bg-yellow-900/20">
+            <h3 class="text-2xl font-bold mb-4 text-yellow-300">📝 Asignación Práctica</h3>
+            <div class="bg-black/30 p-4 rounded-lg">
+                <h4 class="font-bold text-red-400 mb-2">⚠️ IMPORTANTE: Tarea para la próxima clase</h4>
+                <p class="mb-4 text-gray-200">Debe entregarse en una <b>hoja suelta</b> que contenga en el encabezado:</p>
+                <ul class="list-disc list-inside mb-4 text-gray-300 font-mono bg-gray-800/50 p-2 rounded">
+                    <li>Nombre completo</li>
+                    <li>Grado</li>
+                    <li>Fecha</li>
+                </ul>
+                <p class="text-sm"><b>Instrucción:</b> Crea una tabla con 5 compañeros (Apellido, Nombre, Edad y Promedio inventado). Escribe cómo quedaría la tabla ordenada por Nivel 1 (Apellido A-Z) y Nivel 2 (Nombre A-Z), y luego haz otra tabla mostrándola ordenada por Promedio de mayor a menor.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black/50 p-6 text-center rounded-xl border border-gray-800">
+        <p class="text-gray-400 font-mono text-sm">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <script>
+        // Datos para el MOD-B (Data Lab)
+        const rawData = [
+            { nombre: 'Zapata, Luis', edad: 17, promedio: 3.5 },
+            { nombre: 'Bernal, Ana', edad: 16, promedio: 4.8 },
+            { nombre: 'Ramírez, Carlos', edad: 17, promedio: 4.2 },
+            { nombre: 'Bernal, Pedro', edad: 16, promedio: 3.9 },
+            { castaño: 'Castaño, Mateo', edad: 18, promedio: 3.1 },
+            { nombre: 'Díaz, Valentina', edad: 16, promedio: 4.9 },
+            { nombre: 'García, Juan', edad: 17, promedio: 3.5 },
+            { nombre: 'López, Daniela', edad: 17, promedio: 4.6 }
+        ];
+
+        let currentData = [...rawData];
+        let myChart = null;
+
+        // Inicializar Gráfico Chart.js
+        function initChart() {
+            const ctx = document.getElementById('studentsChart').getContext('2d');
+            
+            Chart.defaults.color = '#e2e8f0';
+            Chart.defaults.font.family = "'Segoe UI', sans-serif";
+
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: getChartData(currentData),
+                options: {
+                    responsive: true,
+                    animation: {
+                        duration: 1000,
+                        easing: 'easeOutQuart'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 14 },
+                            callbacks: {
+                                label: function(context) {
+                                    return `Promedio: ${context.raw}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5,
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Formatear datos para Chart.js
+        function getChartData(dataArray) {
+            return {
+                labels: dataArray.map(d => d.nombre),
+                datasets: [{
+                    label: 'Promedio',
+                    data: dataArray.map(d => d.promedio),
+                    backgroundColor: dataArray.map(d => 
+                        d.promedio >= 4.0 ? 'rgba(16, 185, 129, 0.7)' : 'rgba(59, 130, 246, 0.7)'
+                    ),
+                    borderColor: dataArray.map(d => 
+                        d.promedio >= 4.0 ? 'rgb(16, 185, 129)' : 'rgb(59, 130, 246)'
+                    ),
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            };
+        }
+
+        // Lógica de Ordenamiento
+        function sortData(criteria) {
+            if (criteria === 'original') {
+                currentData = [...rawData];
+            } else if (criteria === 'nombre') {
+                currentData.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            } else if (criteria === 'promedioDesc') {
+                currentData.sort((a, b) => b.promedio - a.promedio);
+            }
+            
+            myChart.data = getChartData(currentData);
+            myChart.update();
+        }
+
+        // Lógica del Quiz
+        function checkAnswer(isCorrect, btnElement) {
+            const buttons = btnElement.parentElement.children;
+            for(let btn of buttons) {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+            
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.remove('hidden');
+            
+            if(isCorrect) {
+                btnElement.classList.remove('bg-gray-700', 'opacity-50');
+                btnElement.classList.add('bg-emerald-600');
+                feedback.innerText = "¡Correcto! Excelente deducción.";
+                feedback.classList.add('text-emerald-400');
+            } else {
+                btnElement.classList.remove('bg-gray-700', 'opacity-50');
+                btnElement.classList.add('bg-red-600');
+                feedback.innerText = "Incorrecto. Recuerda: Mayor a menor en Promedio significa que la nota más alta va primero.";
+                feedback.classList.add('text-red-400');
+            }
+        }
+
+        // Iniciar al cargar
+        window.onload = initChart;
+    </script>
+</body>
+</html>
