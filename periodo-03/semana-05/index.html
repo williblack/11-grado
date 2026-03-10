@@ -1,1 +1,239 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 5: Consultas y Filtros - Prof. William Fdo Bernal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body class="gradient-bg text-slate-100 min-h-screen pb-10">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 p-4 mt-2">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow-lg border border-white/10 hover:scale-105 transition-all duration-300 backdrop-blur">
+           ⬅ Inicio (Grado)
+        </a>
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
+           ⬅ Menú del Periodo
+        </a>
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
+           🔗 Copiar enlace
+        </button>
+    </div>
+
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500 text-white px-6 py-3 rounded-2xl shadow-2xl backdrop-blur-md z-50 animate-bounce">
+        Enlace copiado ✅
+    </div>
+
+    <header class="max-w-5xl mx-auto mt-6 p-8 text-center bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm shadow-2xl">
+        <h2 class="text-purple-400 font-semibold tracking-widest uppercase text-sm mb-2">Semana 5 • Gestión de Datos</h2>
+        <h1 class="text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-400">
+            Consultas e Información
+        </h1>
+        <p class="text-xl text-slate-300 mb-6">Colegio Santa Mariana de Jesús (Buga)</p>
+        <div class="flex justify-center items-center gap-4">
+            <span class="px-4 py-1 bg-white/10 rounded-full border border-white/20 text-xs">Prof. William Fdo Bernal</span>
+            <span class="px-4 py-1 bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30 text-xs font-bold">AÑO 2026</span>
+        </div>
+        
+        <div class="mt-10 glass p-6 rounded-2xl max-w-2xl mx-auto">
+            <h3 class="text-emerald-400 font-bold mb-2">🎯 Objetivo de Aprendizaje</h3>
+            <p class="text-slate-200">Aprender a filtrar bases de datos masivas utilizando criterios simples y combinados para encontrar información específica de forma instantánea.</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto mt-12 grid grid-cols-1 gap-8 px-4">
+
+        <section class="glass p-8 rounded-3xl border border-white/10 shadow-xl">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="p-3 bg-purple-500 rounded-2xl shadow-lg shadow-purple-500/50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold">Paso 1: Genera tu Base de Datos</h2>
+            </div>
+            <p class="text-slate-400 mb-6 italic">Si no tienes tu lista en Excel, copia el siguiente prompt y pégalo en una IA (como ChatGPT o Gemini) para crear una tabla instantánea de 30 estudiantes:</p>
+            
+            <div class="relative group bg-black/40 p-5 rounded-2xl border border-purple-500/30">
+                <code id="promptText" class="text-purple-300 text-sm block leading-relaxed">
+                    Actúa como experto en Data Analysis. Genera una tabla de 30 registros con 5 columnas: 
+                    [ID, Nombre Completo, Ciudad (Buga, Cali o Palmira), Grado (10 o 11), Promedio (1.0 a 5.0)]. 
+                    Asegúrate de que haya variedad y preséntalo en formato de tabla de Markdown para copiar a Excel.
+                </code>
+                <button onclick="copyPrompt()" class="absolute top-4 right-4 bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors">
+                    📋 Copiar
+                </button>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass p-8 rounded-3xl border border-white/10 flex flex-col justify-center">
+                <h2 class="text-2xl font-bold mb-4">¿Por qué filtramos?</h2>
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    Visualizar datos sin filtros es como mirar una ciudad desde un avión: ves todo, pero no encuentras a nadie. Los **Filtros Combinados** nos permiten encontrar, por ejemplo:
+                </p>
+                <div class="space-y-3 text-sm">
+                    <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10">
+                        <span class="text-emerald-400 font-bold">Y (AND):</span> Deben cumplirse ambas condiciones.
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10">
+                        <span class="text-blue-400 font-bold">O (OR):</span> Basta con que se cumpla una.
+                    </div>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-3xl border border-white/10 shadow-xl">
+                <h3 class="text-center text-sm font-semibold mb-4 text-slate-400 uppercase tracking-tighter">Distribución de Estudiantes por Ciudad</h3>
+                <canvas id="dataChart" width="400" height="300"></canvas>
+                <div class="mt-4 flex justify-center gap-2">
+                    <button onclick="updateData('buga')" class="px-3 py-1 bg-purple-600 rounded-lg text-xs hover:bg-purple-700 transition">Solo Buga</button>
+                    <button onclick="updateData('all')" class="px-3 py-1 bg-slate-700 rounded-lg text-xs hover:bg-slate-600 transition">Ver Todos</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-3xl border border-white/10 shadow-xl">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-3xl">🧪</span> Laboratorio: Detective de Datos
+            </h2>
+            <p class="text-slate-400 mb-8">Utiliza tu tabla de Excel (o la generada con el prompt) para responder estos retos de filtros combinados:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-emerald-500/50 transition-all group">
+                    <div class="text-emerald-400 font-bold mb-2">Reto #1: El Cuadro de Honor</div>
+                    <p class="text-xs text-slate-400 mb-4">Filtra: Grado = 11 <br><b>Y</b> Promedio >= 4.5</p>
+                    <input type="text" id="ans1" placeholder="¿Cuántos son?" class="w-full bg-black/40 border border-white/20 rounded-lg p-2 text-center text-white focus:outline-none focus:border-emerald-500">
+                </div>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all group">
+                    <div class="text-blue-400 font-bold mb-2">Reto #2: Viajeros</div>
+                    <p class="text-xs text-slate-400 mb-4">Filtra: Ciudad = Cali <br><b>O</b> Ciudad = Palmira</p>
+                    <input type="text" id="ans2" placeholder="¿Cuántos son?" class="w-full bg-black/40 border border-white/20 rounded-lg p-2 text-center text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all group">
+                    <div class="text-purple-400 font-bold mb-2">Reto #3: Análisis Crítico</div>
+                    <p class="text-xs text-slate-400 mb-4">Filtra: Promedio < 3.0 <br><b>Y</b> Grado = 10</p>
+                    <input type="text" id="ans3" placeholder="¿Cuántos son?" class="w-full bg-black/40 border border-white/20 rounded-lg p-2 text-center text-white focus:outline-none focus:border-purple-500">
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button onclick="checkDetective()" class="bg-gradient-to-r from-emerald-600 to-teal-600 px-10 py-3 rounded-2xl font-bold shadow-lg hover:scale-105 transition-all active:scale-95">
+                    Verificar Resultados
+                </button>
+            </div>
+        </section>
+
+        <section class="glass p-8 rounded-3xl border border-white/10 shadow-xl bg-gradient-to-br from-purple-900/20 to-transparent">
+            <h2 class="text-2xl font-bold mb-8 text-center">⚡ Quiz de Refuerzo Rápido</h2>
+            <div id="quiz-container" class="space-y-6">
+                <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                    <p class="font-semibold mb-4 text-slate-200">1. ¿Qué signo se usa comúnmente en filtros de Excel para decir "Mayor o igual"?</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="answer(this, false)" class="q-btn p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">>=</button>
+                        <button onclick="answer(this, true)" class="q-btn p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">>=</button>
+                        <button onclick="answer(this, false)" class="q-btn p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">=&gt;</button>
+                        <button onclick="answer(this, false)" class="q-btn p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-20 text-center p-10 bg-black/40 backdrop-blur-md">
+        <p class="text-slate-500 text-sm tracking-widest">
+            © 2026 | Prof. <span class="text-purple-400 font-bold">William Fdo Bernal</span> - Área de Tecnología e Informática
+        </p>
+        <p class="text-slate-600 text-xs mt-2 italic text-center">Colegio Santa Mariana de Jesús | Buga, Valle del Cauca</p>
+    </footer>
+
+    <script>
+        // Función de Copiado Obligatoria
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    setTimeout(()=> t.classList.add('hidden'), 3000);
+                }
+            }).catch(() => {
+                alert("Enlace copiado: " + url);
+            });
+        }
+
+        function copyPrompt() {
+            const code = document.getElementById('promptText').innerText;
+            navigator.clipboard.writeText(code);
+            alert("Prompt copiado. Pégalo en ChatGPT o Gemini.");
+        }
+
+        function checkDetective() {
+            const v1 = document.getElementById('ans1').value;
+            const v2 = document.getElementById('ans2').value;
+            const v3 = document.getElementById('ans3').value;
+            if(v1 && v2 && v3) {
+                alert("¡Excelente trabajo! Has aplicado los filtros correctamente en tu herramienta. Sigue analizando.");
+            } else {
+                alert("Completa todos los campos del reto con tus datos de Excel.");
+            }
+        }
+
+        function answer(btn, isCorrect) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('.q-btn');
+            buttons.forEach(b => b.classList.remove('bg-emerald-500', 'bg-red-500'));
+            
+            if(isCorrect) {
+                btn.classList.add('bg-emerald-500');
+                btn.classList.add('text-white');
+            } else {
+                btn.classList.add('bg-red-500');
+                btn.classList.add('text-white');
+            }
+        }
+
+        // Gráfico Interactivo con Chart.js
+        const ctx = document.getElementById('dataChart').getContext('2d');
+        let dataValues = [12, 10, 8];
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Buga', 'Cali', 'Palmira'],
+                datasets: [{
+                    label: '# de Estudiantes',
+                    data: dataValues,
+                    backgroundColor: ['#8b5cf6', '#3b82f6', '#10b981'],
+                    borderRadius: 10,
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        function updateData(mode) {
+            if(mode === 'buga') {
+                myChart.data.datasets[0].data = [12, 0, 0];
+            } else {
+                myChart.data.datasets[0].data = [12, 10, 8];
+            }
+            myChart.update();
+        }
+    </script>
+</body>
+</html>
