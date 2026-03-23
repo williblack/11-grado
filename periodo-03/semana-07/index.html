@@ -1,1 +1,407 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño Visual de Bases de Datos | Prof. William Fdo Bernal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Glassmorphism y utilidades personalizadas */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Efecto Flip-Card para Analogías */
+        .flip-card {
+            perspective: 1000px;
+            height: 250px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+        .flip-card-front {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .flip-card-back {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.8), rgba(59, 130, 246, 0.8));
+            transform: rotateY(180deg);
+        }
+
+        /* Ocultar scrollbar para un look más limpio */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 min-h-screen text-slate-100 font-sans selection:bg-blue-500 selection:text-white pb-10">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4 pt-4 px-4 relative z-50">
+      <a href="../../../index.html"
+         class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur">
+         ⬅ Inicio (Grado)
+      </a>
+
+      <a href="../../index.html"
+         class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+         ⬅ Menú del Periodo
+      </a>
+
+      <button type="button" onclick="copiarEnlace()"
+         class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+         🔗 Copiar enlace
+      </button>
+    </div>
+
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden z-50 bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur transition-all duration-300">
+      Enlace copiado ✅
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 space-y-8">
+
+        <header class="glass rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            
+            <h3 class="text-blue-300 font-semibold tracking-wider text-sm mb-2 uppercase">Colegio Santa Mariana de Jesús</h3>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                Diseño Visual de Bases de Datos 🎨📊
+            </h1>
+            <p class="text-slate-300 mb-6 font-medium">Prof. William Fdo Bernal - Grado 11°</p>
+
+            <div class="glass-dark rounded-xl p-5 inline-block text-left max-w-3xl mx-auto border-l-4 border-l-purple-500 shadow-lg hover:shadow-purple-500/20 transition-all duration-300">
+                <h4 class="text-purple-300 font-bold mb-2 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Objetivo de Aprendizaje
+                </h4>
+                <p class="text-sm text-slate-200">
+                    Comprender y aplicar principios de Arquitectura de la Información y Diseño UI/UX (Interfaz y Experiencia de Usuario) en hojas de cálculo y bases de datos, utilizando jerarquía visual, psicología del color y micro-interacciones para reducir la carga cognitiva del usuario.
+                </p>
+            </div>
+        </header>
+
+        <section class="glass rounded-2xl p-6 shadow-lg">
+            <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow">
+                📝 COPIAR AL CUADERNO
+            </span>
+            <div class="grid md:grid-cols-2 gap-6 items-center">
+                <div>
+                    <p class="text-sm text-blue-300 mb-1">Tema Anterior: Diseño y Formatos de Consulta</p>
+                    <h2 class="text-2xl font-bold mb-4">UX/UI en Bases de Datos</h2>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-400 mt-0.5">🔹</span>
+                            <p><strong>Carga Cognitiva:</strong> El cerebro humano procesa imágenes 60,000 veces más rápido que el texto. Un diseño limpio evita la fatiga visual al consultar datos.</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-400 mt-0.5">🔹</span>
+                            <p><strong>Jerarquía Visual:</strong> Uso estratégico del tamaño, color (contraste) y tipografía para guiar el ojo del usuario hacia la información crítica primero.</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-400 mt-0.5">🔹</span>
+                            <p><strong>Componentes de Interfaz:</strong> Las bases de datos modernas no son tablas infinitas. Usan <em>Autoformas</em> como botones de llamada a la acción (CTA) y <em>Cuadros Informativos</em> (Tooltips) para guiar al usuario.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glass-dark rounded-xl p-4 border border-slate-700">
+                    <h3 class="text-center font-bold text-slate-400 mb-3">Ejemplo de Flujo Visual</h3>
+                    <div class="space-y-2">
+                        <div class="bg-slate-700/50 h-8 rounded animate-pulse flex items-center px-3 text-xs text-slate-400">Título / Buscador (Mayor atención)</div>
+                        <div class="flex gap-2">
+                            <div class="bg-blue-600/50 w-1/3 h-16 rounded flex items-center justify-center text-xs">Botón Acción</div>
+                            <div class="bg-slate-700/50 w-2/3 h-16 rounded flex items-center justify-center text-xs">Instrucciones</div>
+                        </div>
+                        <div class="bg-slate-800/80 h-24 rounded border border-slate-600 flex items-center justify-center text-xs text-slate-500">Datos (Fondo neutro)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid md:grid-cols-3 gap-6">
+            <div class="flip-card cursor-pointer">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front shadow-xl shadow-blue-900/20">
+                        <span class="text-4xl mb-3">🎨</span>
+                        <h3 class="font-bold text-lg">Psicología del Color</h3>
+                        <p class="text-xs text-blue-200 mt-2">Pasa el ratón para ver la aplicación técnica</p>
+                    </div>
+                    <div class="flip-card-back shadow-xl shadow-purple-900/50 text-white">
+                        <h3 class="font-bold mb-2 border-b border-white/30 pb-1">Uso en Excel/Tablas</h3>
+                        <p class="text-sm">Encabezados: Tonos oscuros/saturados con texto claro (Contraste alto).<br>Datos: Fondos blancos o pasteles muy suaves. Regla del 60-30-10.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card cursor-pointer">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front shadow-xl shadow-blue-900/20">
+                        <span class="text-4xl mb-3">📐</span>
+                        <h3 class="font-bold text-lg">Estructura y Bordes</h3>
+                        <p class="text-xs text-blue-200 mt-2">Pasa el ratón para ver la aplicación técnica</p>
+                    </div>
+                    <div class="flip-card-back shadow-xl shadow-purple-900/50 text-white">
+                        <h3 class="font-bold mb-2 border-b border-white/30 pb-1">Uso en Excel/Tablas</h3>
+                        <p class="text-sm">Eliminar la cuadrícula por defecto (Vista > Líneas de cuadrícula). Usar bordes sutiles (gris claro) solo para separar filas, no cajas completas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card cursor-pointer">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front shadow-xl shadow-blue-900/20">
+                        <span class="text-4xl mb-3">🔘</span>
+                        <h3 class="font-bold text-lg">Componentes UI</h3>
+                        <p class="text-xs text-blue-200 mt-2">Pasa el ratón para ver la aplicación técnica</p>
+                    </div>
+                    <div class="flip-card-back shadow-xl shadow-purple-900/50 text-white">
+                        <h3 class="font-bold mb-2 border-b border-white/30 pb-1">Uso en Excel/Tablas</h3>
+                        <p class="text-sm">Autoformas con sombras suaves como botones en Dashboards. Cuadros de texto sin borde integrados al fondo para instrucciones sutiles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass rounded-2xl p-6 shadow-lg border-t-4 border-t-emerald-500">
+            <span class="inline-block bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow">
+                💻 INTERACTUAR EN EL PC
+            </span>
+            <h2 class="text-xl font-bold mb-2">Simulador de Refactorización Visual</h2>
+            <p class="text-sm text-slate-300 mb-6">Haz clic en los botones para aplicar principios de UI/UX a esta tabla de datos cruda y observa cómo mejora la legibilidad (reducción de carga cognitiva).</p>
+
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="w-full lg:w-1/3 space-y-3">
+                    <button onclick="toggleStyle('hierarchy')" class="w-full text-left bg-slate-800 hover:bg-slate-700 px-4 py-3 rounded-xl transition-all duration-300 border border-slate-600 flex justify-between items-center group">
+                        <span>1. Aplicar Jerarquía (Encabezados)</span>
+                        <span id="check-hierarchy" class="text-slate-600 group-hover:scale-110">⭕</span>
+                    </button>
+                    <button onclick="toggleStyle('colors')" class="w-full text-left bg-slate-800 hover:bg-slate-700 px-4 py-3 rounded-xl transition-all duration-300 border border-slate-600 flex justify-between items-center group">
+                        <span>2. Colores y Espaciado</span>
+                        <span id="check-colors" class="text-slate-600 group-hover:scale-110">⭕</span>
+                    </button>
+                    <button onclick="toggleStyle('ui')" class="w-full text-left bg-slate-800 hover:bg-slate-700 px-4 py-3 rounded-xl transition-all duration-300 border border-slate-600 flex justify-between items-center group">
+                        <span>3. Insertar Autoformas (UI)</span>
+                        <span id="check-ui" class="text-slate-600 group-hover:scale-110">⭕</span>
+                    </button>
+                    <button onclick="resetSimulator()" class="w-full text-center bg-red-900/50 hover:bg-red-800/80 text-red-200 px-4 py-2 rounded-xl transition-all mt-4 text-sm">
+                        🔄 Reiniciar Vista
+                    </button>
+                </div>
+
+                <div class="w-full lg:w-2/3 bg-white text-black p-4 rounded-xl shadow-inner relative overflow-hidden transition-all duration-500" id="table-canvas">
+                    
+                    <div id="ui-elements" class="opacity-0 transition-opacity duration-500 absolute top-4 right-4 flex gap-2">
+                        <div class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded shadow-md cursor-pointer hover:bg-blue-700 flex items-center gap-1">
+                            <span>🔍</span> Buscar
+                        </div>
+                        <div class="bg-emerald-500 text-white text-xs px-3 py-1.5 rounded shadow-md cursor-pointer hover:bg-emerald-600 flex items-center gap-1">
+                            <span>📥</span> Exportar
+                        </div>
+                    </div>
+                    <div id="ui-instructions" class="opacity-0 transition-opacity duration-500 mb-4 bg-yellow-50 border-l-4 border-yellow-400 p-2 text-xs text-slate-700">
+                        <strong>Info:</strong> Selecciona un registro para ver más detalles.
+                    </div>
+
+                    <h3 id="table-title" class="font-normal text-sm mb-2 transition-all duration-300">registro_estudiantes_11</h3>
+                    
+                    <table class="w-full text-sm border-collapse" id="sim-table">
+                        <thead>
+                            <tr id="sim-thead" class="border border-black">
+                                <th class="border border-black font-normal p-1 text-left">ID</th>
+                                <th class="border border-black font-normal p-1 text-left">NOMBRES</th>
+                                <th class="border border-black font-normal p-1 text-left">PROMEDIO</th>
+                                <th class="border border-black font-normal p-1 text-left">ESTADO</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sim-tbody">
+                            <tr>
+                                <td class="border border-black p-1">101</td>
+                                <td class="border border-black p-1">Ana Martínez</td>
+                                <td class="border border-black p-1">4.5</td>
+                                <td class="border border-black p-1">Aprobado</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-black p-1">102</td>
+                                <td class="border border-black p-1">Carlos Gómez</td>
+                                <td class="border border-black p-1">3.2</td>
+                                <td class="border border-black p-1">Revisión</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-black p-1">103</td>
+                                <td class="border border-black p-1">Laura Torres</td>
+                                <td class="border border-black p-1">4.8</td>
+                                <td class="border border-black p-1">Aprobado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass rounded-2xl p-6 shadow-lg border-l-4 border-l-fuchsia-500">
+            <span class="inline-block bg-fuchsia-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow">
+                🖥️ TRABAJO EN LA SALA
+            </span>
+            <h2 class="text-xl font-bold mb-4">Reto: Ingeniero de Datos Asistido por IA</h2>
+            
+            <div class="space-y-4 text-slate-200">
+                <p>En el mundo real, los desarrolladores y analistas usamos IA para generar estructuras de datos rápidamente y luego aplicamos diseño. ¡Ese es tu reto hoy!</p>
+                
+                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-inner">
+                    <h4 class="text-emerald-400 font-bold mb-2">Paso 1: Copia este Prompt (Instrucción para IA)</h4>
+                    <div class="bg-slate-900 p-3 rounded text-sm font-mono text-slate-300 relative group cursor-text">
+                        "Actúa como un generador de datos. Crea una tabla con 10 registros ficticios de un inventario tecnológico de colegio. Columnas necesarias: ID_Equipo, Tipo (Laptop/Tablet/Proyector), Marca, Estado (Activo/Reparación/Baja), Fecha_Ingreso. Entrégalo en formato de tabla para copiar y pegar en Excel."
+                    </div>
+                </div>
+
+                <ol class="list-decimal pl-5 space-y-2 text-sm">
+                    <li>Abre <a href="https://gemini.google.com" target="_blank" class="text-blue-400 hover:underline">Google Gemini</a>, ChatGPT o Claude.</li>
+                    <li>Pega el prompt anterior y genera la tabla.</li>
+                    <li>Copia la tabla generada y pégala en <strong>Microsoft Excel</strong> o Google Sheets.</li>
+                    <li><strong>¡Aplica el Diseño UX/UI!</strong> 
+                        <ul class="list-disc pl-5 mt-1 text-slate-400">
+                            <li>Quita las líneas de cuadrícula de la hoja completa.</li>
+                            <li>Cambia el tipo y tamaño de letra de los encabezados (aplica color oscuro de fondo y letra blanca).</li>
+                            <li>Ajusta el ancho de las columnas.</li>
+                            <li>Aplica colores de fondo alternados (filas bandeadas) en tonos pasteles muy suaves.</li>
+                            <li>Inserta una <strong>Autoforma</strong> arriba de la tabla con el título "Dashboard de Inventario".</li>
+                        </ul>
+                    </li>
+                    <li>Guarda el archivo para revisión del profesor.</li>
+                </ol>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <section class="glass-dark rounded-2xl p-6 border border-slate-700">
+                <span class="inline-block bg-amber-500 text-black text-xs font-bold px-3 py-1 rounded-full mb-4 shadow">
+                    🔍 INVESTIGACIÓN
+                </span>
+                <h3 class="font-bold mb-2 text-amber-300">Consulta de Ingeniería UX</h3>
+                <p class="text-sm text-slate-300 mb-4">Abre una nueva pestaña y busca en Google:</p>
+                <blockquote class="border-l-2 border-amber-500 pl-3 italic text-slate-400 text-sm">
+                    "¿Qué es la regla de proximidad en el diseño de interfaces (Leyes de Gestalt) y cómo se aplica al diseñar formularios o tablas de datos?"
+                </blockquote>
+                <p class="text-sm text-slate-300 mt-4">Prepara tu respuesta para debatirla en la próxima clase.</p>
+            </section>
+
+            <section class="glass rounded-2xl p-6 shadow-lg relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+                <span class="inline-block bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow relative z-10">
+                    📄 TAREA EN HOJA SUELTA
+                </span>
+                <h3 class="font-bold mb-2 relative z-10">Wireframe: Pantalla de Consulta</h3>
+                <p class="text-sm text-slate-200 mb-4 relative z-10">
+                    En una hoja tamaño carta blanca, diseña a mano (como un arquitecto de software) cómo se vería la pantalla perfecta para buscar las notas de los estudiantes. 
+                </p>
+                
+                <div class="bg-white/90 p-3 rounded border-2 border-dashed border-slate-400 rotate-1 transform relative z-10">
+                    <p class="text-xs text-slate-500 font-bold mb-1 border-b border-slate-300 pb-1">Ejemplo Visual de la Hoja</p>
+                    <div class="w-full h-4 bg-slate-300 rounded mb-2 w-1/2"></div> <div class="flex gap-2 mb-2">
+                        <div class="w-3/4 h-6 border border-slate-400 rounded-full flex items-center px-2"><span class="text-[10px] text-slate-400">🔍 Escribir código...</span></div>
+                        <div class="w-1/4 h-6 bg-blue-500 rounded-full"></div> </div>
+                    <div class="w-full h-20 bg-slate-200 rounded border border-slate-300 flex items-center justify-center">
+                        <span class="text-[10px] text-slate-400">[Área de Resultados]</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="glass rounded-2xl p-6 text-center border-t-4 border-t-blue-500">
+            <h2 class="text-2xl font-bold mb-2 text-blue-300">⚡ Checkpoint Cognitivo</h2>
+            <p class="text-sm text-slate-300 mb-6">Valida tus conocimientos antes de salir. Haz clic en la respuesta correcta.</p>
+
+            <div class="max-w-2xl mx-auto" id="quiz-container">
+                <div class="quiz-q bg-slate-800/80 p-5 rounded-xl shadow-lg mb-4 transition-all duration-300">
+                    <h3 class="font-semibold mb-4 text-slate-100">1. ¿Cuál es el principal objetivo de usar colores y autoformas en Excel?</h3>
+                    <div class="grid gap-2">
+                        <button onclick="checkAnswer(this, false)" class="text-left w-full p-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition text-sm">A) Hacer que el archivo pese más bytes.</button>
+                        <button onclick="checkAnswer(this, true)" class="text-left w-full p-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition text-sm">B) Reducir la carga cognitiva y mejorar la experiencia (UX).</button>
+                        <button onclick="checkAnswer(this, false)" class="text-left w-full p-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition text-sm">C) Evitar que los datos puedan ser borrados.</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="quiz-success" class="hidden mt-4 bg-emerald-900/50 border border-emerald-500 text-emerald-200 p-4 rounded-xl animate-pulse">
+                ¡Excelente trabajo, arquitecto de datos! 🚀 Has completado la sesión.
+            </div>
+        </section>
+
+        <footer class="mt-12 text-center text-slate-500 text-sm pb-8">
+            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-slate-600 to-transparent mx-auto mb-4"></div>
+            <p>© 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática</p>
+            <p class="text-xs mt-1">Colegio Santa Mariana de Jesús</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Función OBLIGATORIA Copiar Enlace
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    setTimeout(()=> t.classList.add('hidden'), 2000);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // Lógica del Simulador Visual
+        let state = { hierarchy: false, colors: false, ui: false };
+
+        function toggleStyle(type) {
+            state[type] = !state[type];
+            updateSimulatorView();
+            
+            // Actualizar botones del simulador
+            const btnIcon = document.getElementById(`check-${type}`);
+            if(state[type]) {
+                btnIcon.textContent = "✅";
+                btnIcon.classList.add("text-emerald-400");
+            } else {
+                btnIcon.textContent = "⭕";
+                btnIcon.classList.remove("text-emerald-400");
+            }
+        }
+
+        function resetSimulator() {
+            state = { hierarchy: false, colors: false, ui: false };
+            ['hierarchy', 'colors', 'ui'].forEach(type => {
+                const btnIcon = document.getElementById(`check-${type}`);
+                btnIcon.textContent = "⭕";
+                btnIcon.classList.remove("text-emerald-
