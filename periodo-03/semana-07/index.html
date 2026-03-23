@@ -3,369 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diseño Visual de Bases de Datos | Prof. William Fdo Bernal</title>
+    <title>Diseño Visual de Bases de Datos | Tecnología 11°</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Glassmorphism y utilidades personalizadas */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
+        /* Custom scrollbar and minor tweaks */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .glass-dark {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        /* Efecto Flip-Card para Analogías */
-        .flip-card {
-            perspective: 1000px;
-            height: 250px;
-        }
+        .flip-card { perspective: 1000px; }
         .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
             transition: transform 0.6s;
             transform-style: preserve-3d;
         }
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
             backface-visibility: hidden;
-            border-radius: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
         }
-        .flip-card-front {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .flip-card-back {
-            background: linear-gradient(135deg, rgba(147, 51, 234, 0.8), rgba(59, 130, 246, 0.8));
-            transform: rotateY(180deg);
-        }
-
-        /* Ocultar scrollbar para un look más limpio */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        .flip-card-back { transform: rotateY(180deg); }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 min-h-screen text-slate-100 font-sans selection:bg-blue-500 selection:text-white pb-10">
+<body class="bg-gradient-to-br from-slate-900 via-[#111827] to-indigo-950 text-slate-100 min-h-screen py-8 px-4 font-sans antialiased overflow-x-hidden">
 
-    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4 pt-4 px-4 relative z-50">
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4">
       <a href="../../../index.html"
-         class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur">
+         class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-slate-600">
          ⬅ Inicio (Grado)
       </a>
 
       <a href="../../index.html"
-         class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+         class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 border border-purple-400">
          ⬅ Menú del Periodo
       </a>
 
       <button type="button" onclick="copiarEnlace()"
-         class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
+         class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 border border-emerald-400">
          🔗 Copiar enlace
       </button>
     </div>
 
-    <div id="toastCopiado" class="fixed top-6 right-6 hidden z-50 bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur transition-all duration-300">
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-emerald-400 px-6 py-3 rounded-xl shadow-2xl backdrop-blur border border-emerald-500 z-50 transition-all">
       Enlace copiado ✅
     </div>
 
-    <div class="max-w-5xl mx-auto px-4 space-y-8">
+    <main class="max-w-5xl mx-auto space-y-10">
 
-        <header class="glass rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
-            <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        <header class="glass-card rounded-3xl p-8 relative overflow-hidden shadow-2xl shadow-indigo-500/20">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
             
-            <h3 class="text-blue-300 font-semibold tracking-wider text-sm mb-2 uppercase">Colegio Santa Mariana de Jesús</h3>
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-                Diseño Visual de Bases de Datos 🎨📊
-            </h1>
-            <p class="text-slate-300 mb-6 font-medium">Prof. William Fdo Bernal - Grado 11°</p>
+            <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <h2 class="text-indigo-400 font-bold tracking-widest text-sm mb-2 uppercase">Colegio Santa Mariana de Jesús | Grado 11°</h2>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-4 drop-shadow-lg">
+                        Diseño Visual de Bases de Datos 🎨📊
+                    </h1>
+                    <p class="text-slate-300 text-lg flex items-center gap-2">
+                        <span class="bg-slate-800 px-3 py-1 rounded-lg text-sm border border-slate-600 shadow">Prof. William Fdo Bernal</span>
+                    </p>
+                </div>
+            </div>
 
-            <div class="glass-dark rounded-xl p-5 inline-block text-left max-w-3xl mx-auto border-l-4 border-l-purple-500 shadow-lg hover:shadow-purple-500/20 transition-all duration-300">
-                <h4 class="text-purple-300 font-bold mb-2 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <div class="mt-8 bg-slate-800/50 border border-slate-600 rounded-2xl p-6 shadow-inner">
+                <h3 class="text-xl font-bold text-emerald-400 mb-2 flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     Objetivo de Aprendizaje
-                </h4>
-                <p class="text-sm text-slate-200">
-                    Comprender y aplicar principios de Arquitectura de la Información y Diseño UI/UX (Interfaz y Experiencia de Usuario) en hojas de cálculo y bases de datos, utilizando jerarquía visual, psicología del color y micro-interacciones para reducir la carga cognitiva del usuario.
+                </h3>
+                <p class="text-slate-300 leading-relaxed">
+                    Aplicar principios de Arquitectura de la Información y UX/UI (User Experience / User Interface) para transformar datos crudos en interfaces de consulta jerarquizadas, funcionales y estéticamente optimizadas para la toma de decisiones.
                 </p>
             </div>
         </header>
 
-        <section class="glass rounded-2xl p-6 shadow-lg">
-            <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow">
+        <section class="glass-card rounded-3xl p-8 border-l-4 border-l-cyan-400 shadow-xl transition-all hover:shadow-cyan-500/10">
+            <span class="inline-block bg-cyan-500/20 text-cyan-300 text-xs font-bold px-3 py-1 rounded-full border border-cyan-500/50 mb-4 shadow">
                 📝 COPIAR AL CUADERNO
             </span>
-            <div class="grid md:grid-cols-2 gap-6 items-center">
-                <div>
-                    <p class="text-sm text-blue-300 mb-1">Tema Anterior: Diseño y Formatos de Consulta</p>
-                    <h2 class="text-2xl font-bold mb-4">UX/UI en Bases de Datos</h2>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-400 mt-0.5">🔹</span>
-                            <p><strong>Carga Cognitiva:</strong> El cerebro humano procesa imágenes 60,000 veces más rápido que el texto. Un diseño limpio evita la fatiga visual al consultar datos.</p>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-400 mt-0.5">🔹</span>
-                            <p><strong>Jerarquía Visual:</strong> Uso estratégico del tamaño, color (contraste) y tipografía para guiar el ojo del usuario hacia la información crítica primero.</p>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-400 mt-0.5">🔹</span>
-                            <p><strong>Componentes de Interfaz:</strong> Las bases de datos modernas no son tablas infinitas. Usan <em>Autoformas</em> como botones de llamada a la acción (CTA) y <em>Cuadros Informativos</em> (Tooltips) para guiar al usuario.</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="glass-dark rounded-xl p-4 border border-slate-700">
-                    <h3 class="text-center font-bold text-slate-400 mb-3">Ejemplo de Flujo Visual</h3>
-                    <div class="space-y-2">
-                        <div class="bg-slate-700/50 h-8 rounded animate-pulse flex items-center px-3 text-xs text-slate-400">Título / Buscador (Mayor atención)</div>
-                        <div class="flex gap-2">
-                            <div class="bg-blue-600/50 w-1/3 h-16 rounded flex items-center justify-center text-xs">Botón Acción</div>
-                            <div class="bg-slate-700/50 w-2/3 h-16 rounded flex items-center justify-center text-xs">Instrucciones</div>
-                        </div>
-                        <div class="bg-slate-800/80 h-24 rounded border border-slate-600 flex items-center justify-center text-xs text-slate-500">Datos (Fondo neutro)</div>
-                    </div>
-                </div>
+            <h2 class="text-2xl font-bold mb-4 text-white">Fundamentos de UI en Bases de Datos</h2>
+            <div class="text-slate-300 space-y-4">
+                <p class="italic text-slate-400 border-b border-slate-700 pb-2">Conexión: Tras aprender sobre <strong>Diseño y Formatos de Consulta</strong>, ahora estructuraremos su presentación visual.</p>
+                <ul class="list-none space-y-3">
+                    <li class="flex items-start gap-3">
+                        <span class="text-cyan-400 font-bold">1.</span>
+                        <p><strong>Jerarquía Visual (Visual Hierarchy):</strong> Es el uso de tamaño, peso tipográfico (negrita) y posición para guiar el ojo del usuario hacia los datos más críticos (Ej: Totales, KPIs, Alertas).</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-cyan-400 font-bold">2.</span>
+                        <p><strong>Teoría del Color Funcional:</strong> Uso de fondos neutros (Low cognitive load) para los datos, reservando colores saturados solo para encabezados y estados (Rojo = Error, Verde = Aprobado).</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-cyan-400 font-bold">3.</span>
+                        <p><strong>Micro-componentes (Autoformas y Cuadros):</strong> Elementos flotantes que actúan como "Llamados a la Acción" (CTAs). Transforman una hoja de cálculo estática en una aplicación interactiva (Menús, Botones de Macro).</p>
+                    </li>
+                </ul>
             </div>
         </section>
 
-        <section class="grid md:grid-cols-3 gap-6">
-            <div class="flip-card cursor-pointer">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front shadow-xl shadow-blue-900/20">
-                        <span class="text-4xl mb-3">🎨</span>
-                        <h3 class="font-bold text-lg">Psicología del Color</h3>
-                        <p class="text-xs text-blue-200 mt-2">Pasa el ratón para ver la aplicación técnica</p>
-                    </div>
-                    <div class="flip-card-back shadow-xl shadow-purple-900/50 text-white">
-                        <h3 class="font-bold mb-2 border-b border-white/30 pb-1">Uso en Excel/Tablas</h3>
-                        <p class="text-sm">Encabezados: Tonos oscuros/saturados con texto claro (Contraste alto).<br>Datos: Fondos blancos o pasteles muy suaves. Regla del 60-30-10.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flip-card cursor-pointer">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front shadow-xl shadow-blue-900/20">
-                        <span class="text-4xl mb-3">📐</span>
-                        <h3 class="font-bold text-lg">Estructura y Bordes</h3>
-                        <p class="text-xs text-blue-200 mt-2">Pasa el ratón para ver la aplicación técnica</p>
-                    </div>
-                    <div class="flip-card-back shadow-xl shadow-purple-900/50 text-white">
-                        <h3 class="font-bold mb-2 border-b border-white/30 pb-1">Uso en Excel/Tablas</h3>
-                        <p class="text-sm">Eliminar la cuadrícula por defecto (Vista > Líneas de cuadrícula). Usar bordes sutiles (gris claro) solo para separar filas, no cajas completas.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flip-card cursor-pointer">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front shadow-xl shadow-blue-900/20">
-                        <span class="text-4xl mb-3">🔘</span>
-                        <h3 class="font-bold text-lg">Componentes UI</h3>
-                        <p class="text-xs text-blue-200 mt-2">Pasa el ratón para ver la aplicación técnica</p>
-                    </div>
-                    <div class="flip-card-back shadow-xl shadow-purple-900/50 text-white">
-                        <h3 class="font-bold mb-2 border-b border-white/30 pb-1">Uso en Excel/Tablas</h3>
-                        <p class="text-sm">Autoformas con sombras suaves como botones en Dashboards. Cuadros de texto sin borde integrados al fondo para instrucciones sutiles.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="glass rounded-2xl p-6 shadow-lg border-t-4 border-t-emerald-500">
-            <span class="inline-block bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow">
+        <section class="glass-card rounded-3xl p-8 shadow-xl relative">
+            <span class="inline-block bg-purple-500/20 text-purple-300 text-xs font-bold px-3 py-1 rounded-full border border-purple-500/50 mb-4 shadow">
                 💻 INTERACTUAR EN EL PC
             </span>
-            <h2 class="text-xl font-bold mb-2">Simulador de Refactorización Visual</h2>
-            <p class="text-sm text-slate-300 mb-6">Haz clic en los botones para aplicar principios de UI/UX a esta tabla de datos cruda y observa cómo mejora la legibilidad (reducción de carga cognitiva).</p>
+            <h2 class="text-2xl font-bold mb-2 text-white">Simulador UX: Optimizador de Tablas</h2>
+            <p class="text-slate-400 mb-6">Convierte una base de datos plana en una interfaz profesional activando las capas de diseño CSS.</p>
 
-            <div class="flex flex-col lg:flex-row gap-6">
-                <div class="w-full lg:w-1/3 space-y-3">
-                    <button onclick="toggleStyle('hierarchy')" class="w-full text-left bg-slate-800 hover:bg-slate-700 px-4 py-3 rounded-xl transition-all duration-300 border border-slate-600 flex justify-between items-center group">
-                        <span>1. Aplicar Jerarquía (Encabezados)</span>
-                        <span id="check-hierarchy" class="text-slate-600 group-hover:scale-110">⭕</span>
+            <div class="grid lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-1 space-y-4 bg-slate-800/40 p-5 rounded-2xl border border-slate-700">
+                    <h3 class="font-bold text-slate-200 border-b border-slate-600 pb-2">Panel de Control UI</h3>
+                    
+                    <button id="btn-jerarquia" class="w-full text-left px-4 py-3 rounded-xl bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600 transition-all flex justify-between items-center group">
+                        <span>1. Activar Jerarquía (Fuentes)</span>
+                        <span class="w-3 h-3 rounded-full bg-slate-500 group-hover:bg-cyan-400 transition-colors" id="dot-jerarquia"></span>
                     </button>
-                    <button onclick="toggleStyle('colors')" class="w-full text-left bg-slate-800 hover:bg-slate-700 px-4 py-3 rounded-xl transition-all duration-300 border border-slate-600 flex justify-between items-center group">
-                        <span>2. Colores y Espaciado</span>
-                        <span id="check-colors" class="text-slate-600 group-hover:scale-110">⭕</span>
+                    
+                    <button id="btn-color" class="w-full text-left px-4 py-3 rounded-xl bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600 transition-all flex justify-between items-center group" disabled>
+                        <span class="opacity-50" id="text-color">2. Aplicar Paleta de Color</span>
+                        <span class="w-3 h-3 rounded-full bg-slate-500" id="dot-color"></span>
                     </button>
-                    <button onclick="toggleStyle('ui')" class="w-full text-left bg-slate-800 hover:bg-slate-700 px-4 py-3 rounded-xl transition-all duration-300 border border-slate-600 flex justify-between items-center group">
-                        <span>3. Insertar Autoformas (UI)</span>
-                        <span id="check-ui" class="text-slate-600 group-hover:scale-110">⭕</span>
+                    
+                    <button id="btn-bordes" class="w-full text-left px-4 py-3 rounded-xl bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600 transition-all flex justify-between items-center group" disabled>
+                        <span class="opacity-50" id="text-bordes">3. Bordes y Sombras</span>
+                        <span class="w-3 h-3 rounded-full bg-slate-500" id="dot-bordes"></span>
                     </button>
-                    <button onclick="resetSimulator()" class="w-full text-center bg-red-900/50 hover:bg-red-800/80 text-red-200 px-4 py-2 rounded-xl transition-all mt-4 text-sm">
-                        🔄 Reiniciar Vista
+
+                    <button id="btn-reset" class="w-full text-center px-4 py-2 mt-4 rounded-xl bg-red-500/20 text-red-400 border border-red-500/50 hover:bg-red-500 hover:text-white transition-all">
+                        Reiniciar Simulación
                     </button>
                 </div>
 
-                <div class="w-full lg:w-2/3 bg-white text-black p-4 rounded-xl shadow-inner relative overflow-hidden transition-all duration-500" id="table-canvas">
-                    
-                    <div id="ui-elements" class="opacity-0 transition-opacity duration-500 absolute top-4 right-4 flex gap-2">
-                        <div class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded shadow-md cursor-pointer hover:bg-blue-700 flex items-center gap-1">
-                            <span>🔍</span> Buscar
-                        </div>
-                        <div class="bg-emerald-500 text-white text-xs px-3 py-1.5 rounded shadow-md cursor-pointer hover:bg-emerald-600 flex items-center gap-1">
-                            <span>📥</span> Exportar
-                        </div>
+                <div class="lg:col-span-2 bg-white text-black p-6 rounded-2xl overflow-hidden transition-all duration-500 flex flex-col justify-center items-center" id="tabla-preview">
+                    <div id="table-container" class="w-full transition-all duration-500">
+                        <table class="w-full text-left border-collapse" id="sim-table">
+                            <thead>
+                                <tr>
+                                    <th>ID_Estudiante</th>
+                                    <th>Nombre</th>
+                                    <th>Promedio</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1001</td>
+                                    <td>Ana Martínez</td>
+                                    <td>4.8</td>
+                                    <td>Excelente</td>
+                                </tr>
+                                <tr>
+                                    <td>1002</td>
+                                    <td>Carlos Gómez</td>
+                                    <td>3.2</td>
+                                    <td>Aprobado</td>
+                                </tr>
+                                <tr>
+                                    <td>1003</td>
+                                    <td>Luis Rojas</td>
+                                    <td>2.1</td>
+                                    <td>Reprobado</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div id="ui-instructions" class="opacity-0 transition-opacity duration-500 mb-4 bg-yellow-50 border-l-4 border-yellow-400 p-2 text-xs text-slate-700">
-                        <strong>Info:</strong> Selecciona un registro para ver más detalles.
-                    </div>
-
-                    <h3 id="table-title" class="font-normal text-sm mb-2 transition-all duration-300">registro_estudiantes_11</h3>
-                    
-                    <table class="w-full text-sm border-collapse" id="sim-table">
-                        <thead>
-                            <tr id="sim-thead" class="border border-black">
-                                <th class="border border-black font-normal p-1 text-left">ID</th>
-                                <th class="border border-black font-normal p-1 text-left">NOMBRES</th>
-                                <th class="border border-black font-normal p-1 text-left">PROMEDIO</th>
-                                <th class="border border-black font-normal p-1 text-left">ESTADO</th>
-                            </tr>
-                        </thead>
-                        <tbody id="sim-tbody">
-                            <tr>
-                                <td class="border border-black p-1">101</td>
-                                <td class="border border-black p-1">Ana Martínez</td>
-                                <td class="border border-black p-1">4.5</td>
-                                <td class="border border-black p-1">Aprobado</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-black p-1">102</td>
-                                <td class="border border-black p-1">Carlos Gómez</td>
-                                <td class="border border-black p-1">3.2</td>
-                                <td class="border border-black p-1">Revisión</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-black p-1">103</td>
-                                <td class="border border-black p-1">Laura Torres</td>
-                                <td class="border border-black p-1">4.8</td>
-                                <td class="border border-black p-1">Aprobado</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </section>
 
-        <section class="glass rounded-2xl p-6 shadow-lg border-l-4 border-l-fuchsia-500">
-            <span class="inline-block bg-fuchsia-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow">
+        <section class="glass-card rounded-3xl p-8 shadow-xl border-t-4 border-t-emerald-500">
+            <span class="inline-block bg-emerald-500/20 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/50 mb-4 shadow">
                 🖥️ TRABAJO EN LA SALA
             </span>
-            <h2 class="text-xl font-bold mb-4">Reto: Ingeniero de Datos Asistido por IA</h2>
+            <h2 class="text-2xl font-bold mb-4 text-white">Laboratorio Práctico: IA + Arquitectura de Datos en Excel</h2>
             
-            <div class="space-y-4 text-slate-200">
-                <p>En el mundo real, los desarrolladores y analistas usamos IA para generar estructuras de datos rápidamente y luego aplicamos diseño. ¡Ese es tu reto hoy!</p>
-                
-                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-inner">
-                    <h4 class="text-emerald-400 font-bold mb-2">Paso 1: Copia este Prompt (Instrucción para IA)</h4>
-                    <div class="bg-slate-900 p-3 rounded text-sm font-mono text-slate-300 relative group cursor-text">
-                        "Actúa como un generador de datos. Crea una tabla con 10 registros ficticios de un inventario tecnológico de colegio. Columnas necesarias: ID_Equipo, Tipo (Laptop/Tablet/Proyector), Marca, Estado (Activo/Reparación/Baja), Fecha_Ingreso. Entrégalo en formato de tabla para copiar y pegar en Excel."
+            <div class="space-y-6">
+                <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-600">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Paso 1: Generación de Datos con Inteligencia Artificial</h3>
+                    <p class="text-slate-300 mb-3">Copia el siguiente <strong class="text-white">Prompt</strong> y pégalo en una IA (ChatGPT, Gemini, Claude) para generar tu Base de Datos cruda.</p>
+                    
+                    <div class="relative bg-slate-900 p-4 rounded-xl font-mono text-sm text-cyan-300 border border-slate-700 shadow-inner group">
+                        <button onclick="copiarPrompt()" class="absolute top-2 right-2 bg-slate-700 hover:bg-slate-600 text-white p-2 rounded-lg transition-colors opacity-0 group-hover:opacity-100" title="Copiar Prompt">
+                            📋
+                        </button>
+                        <p id="prompt-ia">"Actúa como un analista de datos. Genera una tabla con 12 filas y 5 columnas sobre el 'Inventario de Equipos Tecnológicos del Colegio'. Las columnas deben ser: Código_Equipo, Tipo (Laptop/PC/Tablet), Marca, Año_Compra, Estado (Operativo/Mantenimiento/Baja). Entrega ÚNICAMENTE la tabla en formato markdown puro para que yo pueda copiarla y pegarla directamente en Excel."</p>
                     </div>
                 </div>
 
-                <ol class="list-decimal pl-5 space-y-2 text-sm">
-                    <li>Abre <a href="https://gemini.google.com" target="_blank" class="text-blue-400 hover:underline">Google Gemini</a>, ChatGPT o Claude.</li>
-                    <li>Pega el prompt anterior y genera la tabla.</li>
-                    <li>Copia la tabla generada y pégala en <strong>Microsoft Excel</strong> o Google Sheets.</li>
-                    <li><strong>¡Aplica el Diseño UX/UI!</strong> 
-                        <ul class="list-disc pl-5 mt-1 text-slate-400">
-                            <li>Quita las líneas de cuadrícula de la hoja completa.</li>
-                            <li>Cambia el tipo y tamaño de letra de los encabezados (aplica color oscuro de fondo y letra blanca).</li>
-                            <li>Ajusta el ancho de las columnas.</li>
-                            <li>Aplica colores de fondo alternados (filas bandeadas) en tonos pasteles muy suaves.</li>
-                            <li>Inserta una <strong>Autoforma</strong> arriba de la tabla con el título "Dashboard de Inventario".</li>
-                        </ul>
-                    </li>
-                    <li>Guarda el archivo para revisión del profesor.</li>
-                </ol>
+                <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-600">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Paso 2: Renderizado Visual en Excel</h3>
+                    <p class="text-slate-300 mb-3">Pega los datos en Excel y aplica el siguiente flujo de trabajo profesional (UX/UI):</p>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-300 ml-2">
+                        <li><strong>Ajuste Estructural:</strong> Ajusta el ancho de columnas automáticamente. Alinea textos al medio.</li>
+                        <li><strong>Jerarquía:</strong> Cambia la tipografía de los encabezados (Ej: 'Segoe UI' o 'Montserrat'), tamaño 12, Negrita. Letra color blanco.</li>
+                        <li><strong>Color Funcional:</strong> Fondo de encabezados Azul Oscuro o Gris Pizarra. Fondo de filas intercaladas (Zebra striping) en gris muy claro.</li>
+                        <li><strong>UI Components (Autoformas):</strong> Ve a <em>Insertar > Formas</em>. Dibuja un rectángulo con esquinas redondeadas en la parte superior. Escribe "Panel de Búsqueda" y dale un efecto de sombra sutil.</li>
+                    </ol>
+                </div>
             </div>
         </section>
 
-        <div class="grid md:grid-cols-2 gap-6">
-            <section class="glass-dark rounded-2xl p-6 border border-slate-700">
-                <span class="inline-block bg-amber-500 text-black text-xs font-bold px-3 py-1 rounded-full mb-4 shadow">
+        <div class="grid md:grid-cols-2 gap-8">
+            <section class="glass-card rounded-3xl p-8 shadow-xl">
+                <span class="inline-block bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/50 mb-4 shadow">
                     🔍 INVESTIGACIÓN
                 </span>
-                <h3 class="font-bold mb-2 text-amber-300">Consulta de Ingeniería UX</h3>
-                <p class="text-sm text-slate-300 mb-4">Abre una nueva pestaña y busca en Google:</p>
-                <blockquote class="border-l-2 border-amber-500 pl-3 italic text-slate-400 text-sm">
-                    "¿Qué es la regla de proximidad en el diseño de interfaces (Leyes de Gestalt) y cómo se aplica al diseñar formularios o tablas de datos?"
-                </blockquote>
-                <p class="text-sm text-slate-300 mt-4">Prepara tu respuesta para debatirla en la próxima clase.</p>
+                <h2 class="text-xl font-bold mb-3 text-white flex items-center gap-2">
+                    <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    Reto Cognitivo
+                </h2>
+                <p class="text-slate-300 mb-4">Investiga en Google el siguiente concepto fundamental de la ingeniería de software y el diseño:</p>
+                <div class="bg-amber-900/30 p-4 rounded-xl border border-amber-500/30 text-center">
+                    <p class="font-bold text-amber-200 text-lg">¿Qué es el "Material Design" creado por Google y cómo aplica en las tablas de datos?</p>
+                </div>
             </section>
 
-            <section class="glass rounded-2xl p-6 shadow-lg relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-                <span class="inline-block bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 shadow relative z-10">
+            <section class="glass-card rounded-3xl p-8 shadow-xl">
+                <span class="inline-block bg-rose-500/20 text-rose-300 text-xs font-bold px-3 py-1 rounded-full border border-rose-500/50 mb-4 shadow">
                     📄 TAREA EN HOJA SUELTA
                 </span>
-                <h3 class="font-bold mb-2 relative z-10">Wireframe: Pantalla de Consulta</h3>
-                <p class="text-sm text-slate-200 mb-4 relative z-10">
-                    En una hoja tamaño carta blanca, diseña a mano (como un arquitecto de software) cómo se vería la pantalla perfecta para buscar las notas de los estudiantes. 
-                </p>
+                <h2 class="text-xl font-bold mb-3 text-white flex items-center gap-2">
+                    <svg class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Wireframe Físico
+                </h2>
+                <p class="text-slate-300 mb-3 text-sm">Dibuja el <strong>Boceto (Wireframe)</strong> de una "Plantilla de Consulta" para una clínica médica. Entrega en formato físico.</p>
                 
-                <div class="bg-white/90 p-3 rounded border-2 border-dashed border-slate-400 rotate-1 transform relative z-10">
-                    <p class="text-xs text-slate-500 font-bold mb-1 border-b border-slate-300 pb-1">Ejemplo Visual de la Hoja</p>
-                    <div class="w-full h-4 bg-slate-300 rounded mb-2 w-1/2"></div> <div class="flex gap-2 mb-2">
-                        <div class="w-3/4 h-6 border border-slate-400 rounded-full flex items-center px-2"><span class="text-[10px] text-slate-400">🔍 Escribir código...</span></div>
-                        <div class="w-1/4 h-6 bg-blue-500 rounded-full"></div> </div>
-                    <div class="w-full h-20 bg-slate-200 rounded border border-slate-300 flex items-center justify-center">
-                        <span class="text-[10px] text-slate-400">[Área de Resultados]</span>
+                <div class="bg-slate-100 p-4 rounded-xl shadow-inner text-slate-800 flex flex-col items-center border-2 border-dashed border-slate-400 relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-500 text-white text-[10px] font-bold px-2 py-1 rounded">Ejemplo Visual (Hoja)</div>
+                    <div class="w-full h-8 border-b-2 border-slate-300 mb-2 flex items-center px-2 font-bold text-xs text-slate-400 uppercase tracking-widest">
+                        Header / Menú (Autoformas)
+                    </div>
+                    <div class="w-full flex gap-2">
+                        <div class="w-1/3 h-20 border-2 border-slate-300 rounded flex items-center justify-center text-xs text-slate-400 text-center p-1">Cuadro<br>Info</div>
+                        <div class="w-2/3 h-20 border-2 border-slate-300 rounded flex flex-col">
+                            <div class="h-4 border-b-2 border-slate-300 bg-slate-200"></div>
+                            <div class="h-4 border-b border-slate-300"></div>
+                            <div class="h-4 border-b border-slate-300"></div>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <section class="glass rounded-2xl p-6 text-center border-t-4 border-t-blue-500">
-            <h2 class="text-2xl font-bold mb-2 text-blue-300">⚡ Checkpoint Cognitivo</h2>
-            <p class="text-sm text-slate-300 mb-6">Valida tus conocimientos antes de salir. Haz clic en la respuesta correcta.</p>
-
-            <div class="max-w-2xl mx-auto" id="quiz-container">
-                <div class="quiz-q bg-slate-800/80 p-5 rounded-xl shadow-lg mb-4 transition-all duration-300">
-                    <h3 class="font-semibold mb-4 text-slate-100">1. ¿Cuál es el principal objetivo de usar colores y autoformas en Excel?</h3>
-                    <div class="grid gap-2">
-                        <button onclick="checkAnswer(this, false)" class="text-left w-full p-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition text-sm">A) Hacer que el archivo pese más bytes.</button>
-                        <button onclick="checkAnswer(this, true)" class="text-left w-full p-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition text-sm">B) Reducir la carga cognitiva y mejorar la experiencia (UX).</button>
-                        <button onclick="checkAnswer(this, false)" class="text-left w-full p-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition text-sm">C) Evitar que los datos puedan ser borrados.</button>
+        <section class="glass-card rounded-3xl p-8 shadow-xl text-center">
+            <h2 class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Micro-Quiz de Arquitectura Visual</h2>
+            
+            <div id="quiz-container" class="max-w-xl mx-auto space-y-4">
+                <div id="q1" class="bg-slate-800 p-6 rounded-2xl border border-slate-600 transition-all duration-300">
+                    <p class="text-lg text-slate-200 mb-4 font-bold">1. ¿Qué color deberías usar para el fondo de las celdas de datos para evitar fatiga visual?</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="checkAnswer(this, false, 'q1', 'q2')" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-slate-300 transition-all">Rojo Neón</button>
+                        <button onclick="checkAnswer(this, true, 'q1', 'q2')" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-slate-300 transition-all">Gris muy claro o Blanco</button>
                     </div>
                 </div>
-            </div>
-            
-            <div id="quiz-success" class="hidden mt-4 bg-emerald-900/50 border border-emerald-500 text-emerald-200 p-4 rounded-xl animate-pulse">
-                ¡Excelente trabajo, arquitecto de datos! 🚀 Has completado la sesión.
+
+                <div id="q2" class="bg-slate-800 p-6 rounded-2xl border border-slate-600 transition-all duration-300 hidden opacity-0">
+                    <p class="text-lg text-slate-200 mb-4 font-bold">2. En Excel, ¿qué herramienta usamos para crear botones flotantes o menús visuales?</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="checkAnswer(this, true, 'q2', 'q3')" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-slate-300 transition-all">Insertar Formas (Autoformas)</button>
+                        <button onclick="checkAnswer(this, false, 'q2', 'q3')" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-slate-300 transition-all">WordArt</button>
+                    </div>
+                </div>
+
+                <div id="q3" class="bg-slate-800 p-6 rounded-2xl border border-slate-600 transition-all duration-300 hidden opacity-0">
+                    <p class="text-lg text-slate-200 mb-4 font-bold">3. ¿Cuál es el propósito de la 'Jerarquía Visual'?</p>
+                    <div class="grid gap-3">
+                        <button onclick="checkAnswer(this, false, 'q3', 'end')" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-slate-300 transition-all">Hacer que el archivo pese menos MB</button>
+                        <button onclick="checkAnswer(this, true, 'q3', 'end')" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-slate-300 transition-all">Guiar el ojo hacia la información más importante primero</button>
+                    </div>
+                </div>
+
+                <div id="quiz-end" class="bg-emerald-900/40 border border-emerald-500 p-6 rounded-2xl hidden opacity-0 scale-95 transition-all duration-500">
+                    <h3 class="text-3xl mb-2">🏆</h3>
+                    <h3 class="text-xl font-bold text-emerald-400">¡Nivel Completado!</h3>
+                    <p class="text-slate-300 mt-2">Estás listo para diseñar interfaces de bases de datos de alto impacto.</p>
+                </div>
             </div>
         </section>
 
-        <footer class="mt-12 text-center text-slate-500 text-sm pb-8">
-            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-slate-600 to-transparent mx-auto mb-4"></div>
-            <p>© 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática</p>
-            <p class="text-xs mt-1">Colegio Santa Mariana de Jesús</p>
+        <footer class="text-center py-8 text-slate-500 border-t border-slate-800 mt-12">
+            <p class="text-sm font-semibold hover:text-slate-300 transition-colors">© 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática</p>
         </footer>
 
-    </div>
+    </main>
 
     <script>
-        // Función OBLIGATORIA Copiar Enlace
+        // F) FUNCIÓN JS OBLIGATORIA
         function copiarEnlace(){
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
@@ -381,27 +309,151 @@
             });
         }
 
-        // Lógica del Simulador Visual
-        let state = { hierarchy: false, colors: false, ui: false };
-
-        function toggleStyle(type) {
-            state[type] = !state[type];
-            updateSimulatorView();
-            
-            // Actualizar botones del simulador
-            const btnIcon = document.getElementById(`check-${type}`);
-            if(state[type]) {
-                btnIcon.textContent = "✅";
-                btnIcon.classList.add("text-emerald-400");
-            } else {
-                btnIcon.textContent = "⭕";
-                btnIcon.classList.remove("text-emerald-400");
-            }
+        function copiarPrompt() {
+            const promptText = document.getElementById('prompt-ia').innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.innerHTML = "Prompt copiado 🤖";
+                    t.classList.remove('hidden');
+                    setTimeout(()=> {
+                        t.classList.add('hidden');
+                        setTimeout(() => t.innerHTML = "Enlace copiado ✅", 300); // reset text
+                    }, 2000);
+                }
+            });
         }
 
-        function resetSimulator() {
-            state = { hierarchy: false, colors: false, ui: false };
-            ['hierarchy', 'colors', 'ui'].forEach(type => {
-                const btnIcon = document.getElementById(`check-${type}`);
-                btnIcon.textContent = "⭕";
-                btnIcon.classList.remove("text-emerald-
+        // SIMULADOR UX LOGIC
+        let uiState = 0;
+        const btnJ = document.getElementById('btn-jerarquia');
+        const btnC = document.getElementById('btn-color');
+        const btnB = document.getElementById('btn-bordes');
+        const btnReset = document.getElementById('btn-reset');
+        
+        const dotJ = document.getElementById('dot-jerarquia');
+        const dotC = document.getElementById('dot-color');
+        const dotB = document.getElementById('dot-bordes');
+
+        const table = document.getElementById('sim-table');
+        const tableContainer = document.getElementById('table-container');
+
+        btnJ.addEventListener('click', () => {
+            if(uiState !== 0) return;
+            // Apply Hierarchy: Font sizes, bold headers
+            table.classList.add('font-sans', 'text-sm');
+            table.querySelector('thead').classList.add('text-base', 'font-bold', 'tracking-wider');
+            
+            // UI Update
+            dotJ.classList.replace('bg-slate-500', 'bg-cyan-400');
+            btnJ.classList.add('border-cyan-500');
+            
+            // Enable Next
+            btnC.removeAttribute('disabled');
+            document.getElementById('text-color').classList.remove('opacity-50');
+            uiState = 1;
+        });
+
+        btnC.addEventListener('click', () => {
+            if(uiState !== 1) return;
+            // Apply Colors
+            table.querySelector('thead').classList.add('bg-indigo-900', 'text-white');
+            const rows = table.querySelectorAll('tbody tr');
+            rows.forEach((row, i) => {
+                if(i % 2 === 0) row.classList.add('bg-slate-100');
+                else row.classList.add('bg-white');
+            });
+            // Status colors
+            rows[0].querySelector('td:last-child').innerHTML = `<span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs font-bold">Excelente</span>`;
+            rows[1].querySelector('td:last-child').innerHTML = `<span class="bg-amber-100 text-amber-800 px-2 py-1 rounded-full text-xs font-bold">Aprobado</span>`;
+            rows[2].querySelector('td:last-child').innerHTML = `<span class="bg-rose-100 text-rose-800 px-2 py-1 rounded-full text-xs font-bold">Reprobado</span>`;
+
+            // UI Update
+            dotC.classList.replace('bg-slate-500', 'bg-purple-400');
+            btnC.classList.add('border-purple-500');
+            
+            // Enable Next
+            btnB.removeAttribute('disabled');
+            document.getElementById('text-bordes').classList.remove('opacity-50');
+            uiState = 2;
+        });
+
+        btnB.addEventListener('click', () => {
+            if(uiState !== 2) return;
+            // Apply Borders and Shadows
+            tableContainer.classList.add('shadow-2xl', 'rounded-xl', 'overflow-hidden', 'border', 'border-slate-300');
+            const ths = table.querySelectorAll('th');
+            const tds = table.querySelectorAll('td');
+            ths.forEach(th => th.classList.add('p-4'));
+            tds.forEach(td => td.classList.add('p-4', 'border-b', 'border-slate-200', 'text-slate-800'));
+            
+            // UI Update
+            dotB.classList.replace('bg-slate-500', 'bg-emerald-400');
+            btnB.classList.add('border-emerald-500');
+            uiState = 3;
+        });
+
+        btnReset.addEventListener('click', () => {
+            // Reset Table
+            table.className = "w-full text-left border-collapse";
+            tableContainer.className = "w-full transition-all duration-500";
+            table.querySelector('thead').className = "";
+            const rows = table.querySelectorAll('tbody tr');
+            rows.forEach((row) => { row.className = ""; });
+            
+            // Reset contents
+            rows[0].querySelector('td:last-child').innerHTML = "Excelente";
+            rows[1].querySelector('td:last-child').innerHTML = "Aprobado";
+            rows[2].querySelector('td:last-child').innerHTML = "Reprobado";
+
+            const cells = table.querySelectorAll('th, td');
+            cells.forEach(c => c.className = "");
+
+            // Reset UI
+            dotJ.className = "w-3 h-3 rounded-full bg-slate-500 transition-colors";
+            dotC.className = "w-3 h-3 rounded-full bg-slate-500";
+            dotB.className = "w-3 h-3 rounded-full bg-slate-500";
+            
+            btnJ.className = "w-full text-left px-4 py-3 rounded-xl bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600 transition-all flex justify-between items-center group";
+            btnC.className = "w-full text-left px-4 py-3 rounded-xl bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600 transition-all flex justify-between items-center group";
+            btnB.className = "w-full text-left px-4 py-3 rounded-xl bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600 transition-all flex justify-between items-center group";
+            
+            btnC.setAttribute('disabled', 'true');
+            btnB.setAttribute('disabled', 'true');
+            document.getElementById('text-color').classList.add('opacity-50');
+            document.getElementById('text-bordes').classList.add('opacity-50');
+
+            uiState = 0;
+        });
+
+        // QUIZ LOGIC
+        function checkAnswer(btn, isCorrect, currentId, nextId) {
+            const currentDiv = document.getElementById(currentId);
+            
+            if(isCorrect) {
+                btn.classList.replace('bg-slate-700', 'bg-emerald-600');
+                btn.classList.replace('text-slate-300', 'text-white');
+                setTimeout(() => {
+                    currentDiv.classList.add('hidden');
+                    const nextDiv = document.getElementById(nextId);
+                    nextDiv.classList.remove('hidden');
+                    setTimeout(() => {
+                        nextDiv.classList.remove('opacity-0');
+                        if(nextId === 'quiz-end') {
+                            nextDiv.classList.remove('scale-95');
+                            nextDiv.classList.add('scale-100');
+                        }
+                    }, 50);
+                }, 800);
+            } else {
+                btn.classList.replace('bg-slate-700', 'bg-red-600');
+                btn.classList.add('animate-pulse');
+                setTimeout(() => {
+                    btn.classList.replace('bg-red-600', 'bg-slate-700');
+                    btn.classList.remove('animate-pulse');
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
