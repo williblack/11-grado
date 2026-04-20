@@ -1,1 +1,482 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Avanzada en Excel - Grado 11</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        /* Tipografía de Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            border-color: rgba(167, 139, 250, 0.5); /* Purple accent */
+        }
+
+        /* Flip Card 3D */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+            height: 180px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+        .flip-card-front {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .flip-card-back {
+            background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+            transform: rotateY(180deg);
+            border: 1px solid rgba(167, 139, 250, 0.4);
+        }
+
+        /* Animaciones personalizadas */
+        @keyframes pulse-border {
+            0% { border-color: rgba(167, 139, 250, 0.2); }
+            50% { border-color: rgba(167, 139, 250, 0.8); }
+            100% { border-color: rgba(167, 139, 250, 0.2); }
+        }
+        .animate-border {
+            animation: pulse-border 2s infinite;
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #4c1d95; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+    </style>
+</head>
+<body class="antialiased pb-10 overflow-x-hidden">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4 pt-4 px-4 relative z-50">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-white/10 hover:border-white/30 text-sm md:text-base">
+           ⬅ Inicio (Grado)
+        </a>
+
+        <a href="../../index.html"
+           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 shadow-purple-500/30 text-sm md:text-base">
+           ⬅ Menú del Periodo
+        </a>
+
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 shadow-emerald-500/30 flex items-center gap-2 text-sm md:text-base">
+           🔗 Copiar enlace
+        </button>
+    </div>
+
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-emerald-400 font-semibold px-6 py-4 rounded-xl shadow-2xl backdrop-blur border border-emerald-500/30 z-[100] transition-opacity">
+        Enlace copiado ✅
+    </div>
+
+    <header class="max-w-5xl mx-auto px-4 mb-12">
+        <div class="glass-panel rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            
+            <div class="relative z-10">
+                <h3 class="text-emerald-400 font-bold tracking-widest uppercase text-sm mb-2">Colegio Santa Mariana de Jesús</h3>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-emerald-300">
+                    Consulta Avanzada en Excel
+                </h1>
+                <p class="text-xl text-slate-300 mb-6 font-light">Casuística Empresarial y Toma de Decisiones</p>
+                <div class="inline-block glass-panel px-6 py-2 rounded-full border-purple-500/30 text-sm">
+                    👨‍🏫 <span class="font-semibold text-purple-300">Prof. William Fdo Bernal</span> | Grado 11°
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 space-y-12">
+
+        <section class="glass-panel rounded-2xl p-6 md:p-8 animate-border">
+            <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">📝 COPIAR AL CUADERNO</span>
+            
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-blue-400">1.</span> De la Base de Datos a la Acción
+            </h2>
+            <div class="prose prose-invert max-w-none text-slate-300 space-y-4">
+                <p>En el <strong>3r Periodo</strong> aprendimos qué es una "Base de Datos" (almacenamiento estructurado). Ahora, en este 4to Periodo, damos el salto profesional: <strong>El Análisis</strong>.</p>
+                <p>En una empresa (como un almacén o multinacional), no basta con guardar datos; hay que saber hacerles preguntas para tomar decisiones. En Excel (configuración Colombia), usamos funciones avanzadas separando los argumentos con <strong>punto y coma (;)</strong>.</p>
+                
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 mt-4">
+                    <h3 class="font-bold text-emerald-400 mb-2">Funciones Clave a Dominar:</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm md:text-base">
+                        <li><code class="text-purple-300">=SUMA(rango)</code>: Suma todos los valores.</li>
+                        <li><code class="text-purple-300">=SUMAR.SI(rango_criterio; "condición"; rango_suma)</code>: Suma solo si cumple una regla (ej. "Solo Zona Norte").</li>
+                        <li><code class="text-purple-300">=PROMEDIO(rango)</code>: Halla el valor medio.</li>
+                        <li><code class="text-purple-300">=MAX(rango)</code> y <code class="text-purple-300">=MIN(rango)</code>: Encuentra el valor más alto o más bajo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-8">
+            <span class="inline-block bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-lg shadow-purple-500/30">💻 INTERACTUAR EN EL PC</span>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front shadow-lg">
+                            <span class="text-4xl mb-2">📊</span>
+                            <h3 class="font-bold text-xl">¿Total de ventas de un solo Vendedor?</h3>
+                            <p class="text-xs text-slate-400 mt-2">Pasa el ratón para ver la fórmula</p>
+                        </div>
+                        <div class="flip-card-back shadow-lg">
+                            <h4 class="font-bold text-lg mb-2 text-white">SUMAR.SI</h4>
+                            <code class="bg-black/30 px-3 py-2 rounded text-emerald-300 text-sm w-full font-mono break-all">
+                                =SUMAR.SI(A2:A10; "Juan"; C2:C10)
+                            </code>
+                            <p class="text-xs mt-3 opacity-80">Condición exacta en comillas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front shadow-lg">
+                            <span class="text-4xl mb-2">💰</span>
+                            <h3 class="font-bold text-xl">¿Cuál fue la venta más baja del mes?</h3>
+                            <p class="text-xs text-slate-400 mt-2">Pasa el ratón para ver la fórmula</p>
+                        </div>
+                        <div class="flip-card-back shadow-lg">
+                            <h4 class="font-bold text-lg mb-2 text-white">Función MIN</h4>
+                            <code class="bg-black/30 px-3 py-2 rounded text-emerald-300 text-sm w-full font-mono">
+                                =MIN(C2:C10)
+                            </code>
+                            <p class="text-xs mt-3 opacity-80">Ideal para buscar productos baratos o déficit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card cursor-pointer">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front shadow-lg">
+                            <span class="text-4xl mb-2">📈</span>
+                            <h3 class="font-bold text-xl">¿Rendimiento general de la tienda?</h3>
+                            <p class="text-xs text-slate-400 mt-2">Pasa el ratón para ver la fórmula</p>
+                        </div>
+                        <div class="flip-card-back shadow-lg">
+                            <h4 class="font-bold text-lg mb-2 text-white">PROMEDIO</h4>
+                            <code class="bg-black/30 px-3 py-2 rounded text-emerald-300 text-sm w-full font-mono">
+                                =PROMEDIO(C2:C10)
+                            </code>
+                            <p class="text-xs mt-3 opacity-80">Equilibra picos altos y bajos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Data Lab: Visualizador de Ventas</h3>
+                        <p class="text-sm text-slate-400">Simulación de la fórmula =SUMAR.SI() en tiempo real</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="updateChart('todos')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded transition-all text-sm">Todos</button>
+                        <button onclick="updateChart('norte')" class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded transition-all shadow-lg shadow-blue-500/30 text-sm">Solo Norte</button>
+                        <button onclick="updateChart('sur')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded transition-all shadow-lg shadow-emerald-500/30 text-sm">Solo Sur</button>
+                    </div>
+                </div>
+                <div class="w-full h-64">
+                    <canvas id="ventasChart"></canvas>
+                </div>
+                <div id="chartFeedback" class="mt-4 text-center text-emerald-400 font-mono text-sm h-6 transition-all">
+                    Fórmula activa: =SUMA(C2:C6)
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel rounded-2xl p-6 md:p-8 border-t-4 border-t-emerald-500">
+            <span class="inline-block bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">🖥️ TRABAJO EN LA SALA</span>
+            
+            <h2 class="text-2xl font-bold mb-4">Actividad de Aplicación Rápida</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <p class="text-slate-300 text-sm"><strong>Paso 1:</strong> Como arquitectos de datos, puedes usar IA (ChatGPT/Gemini) para generar tu entorno de pruebas rápidamente. Usa este "Prompt Maestro":</p>
+                    
+                    <div class="relative bg-slate-900 p-4 rounded-xl border border-slate-700 group">
+                        <code class="text-xs text-purple-300 block mb-2 font-mono">
+                            "Actúa como un profesor de Excel. Créame una tabla de 5 filas con datos ficticios. Las columnas deben ser: Vendedor, Zona (Norte/Sur) y Venta Mensual (en pesos colombianos). Formatea la salida como una tabla para poder copiarla y pegarla directamente en Excel."
+                        </code>
+                        <button onclick="copiarPrompt()" class="absolute top-2 right-2 bg-slate-800 text-white p-2 rounded hover:bg-slate-700 transition-all opacity-0 group-hover:opacity-100 text-xs">Copiar Prompt</button>
+                    </div>
+
+                    <p class="text-slate-300 text-sm mt-4"><strong>Paso 2:</strong> Escribe en tu cuaderno las fórmulas de Excel que resolverían los siguientes retos basándonos en tu tabla:</p>
+                    
+                    <ul class="space-y-3 mt-4">
+                        <li class="bg-white/5 p-3 rounded-lg border border-white/10 hover:border-emerald-500/50 transition-colors">
+                            <span class="font-bold text-emerald-400">Reto A:</span> Saber el total de ventas exclusivas de la <span class="text-white">"Zona Norte"</span>.
+                        </li>
+                        <li class="bg-white/5 p-3 rounded-lg border border-white/10 hover:border-emerald-500/50 transition-colors">
+                            <span class="font-bold text-emerald-400">Reto B:</span> Saber quién tuvo la venta más baja (usando <span class="text-white">MIN</span>).
+                        </li>
+                        <li class="bg-white/5 p-3 rounded-lg border border-white/10 hover:border-emerald-500/50 transition-colors">
+                            <span class="font-bold text-emerald-400">Reto C:</span> Saber el total general de todas las ventas de la tabla.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-xl border border-purple-500/30 flex flex-col justify-center">
+                    <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">
+                        <span>⚠️</span> Nota Técnica para el Estudiante:
+                    </h3>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-purple-600/20 p-2 rounded text-purple-400">;</div>
+                            <p>Recuerda que en nuestra configuración regional (Colombia), el separador de los argumentos en la fórmula siempre es el <strong>punto y coma (;)</strong>. No uses coma (,).</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-purple-600/20 p-2 rounded text-purple-400">""</div>
+                            <p>Si la condición es un texto (como "Norte"), siempre debe ir obligatoriamente entre <strong>comillas dobles ("")</strong>.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel p-6 rounded-xl text-center border-dashed border-2 border-slate-600 bg-slate-900/50">
+            <h3 class="text-slate-400 text-sm uppercase tracking-wider mb-2 font-bold">Avance Próxima Sesión:</h3>
+            <p class="text-xl font-semibold text-white">Taller Práctico: Análisis de Inventario "Tecno-Sistemas Buga"</p>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="glass-panel p-6 rounded-xl hover:scale-[1.02] transition-transform">
+                <span class="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">🔍 INVESTIGACIÓN</span>
+                <p class="text-slate-300 text-sm">Busca en Google y anota en tu cuaderno: <br><strong class="text-white mt-2 block">¿Cuál es la diferencia entre =CONTAR(), =CONTARA() y =CONTAR.SI() en Excel?</strong></p>
+            </section>
+
+            <section class="glass-panel p-6 rounded-xl hover:scale-[1.02] transition-transform">
+                <span class="inline-block bg-slate-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">📄 TAREA EN HOJA SUELTA</span>
+                <div class="flex items-center gap-3 mt-2">
+                    <span class="text-3xl">☕</span>
+                    <p class="text-slate-300 font-medium">No hay tarea de entrega para esta clase. ¡Asegúrate de repasar los apuntes!</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="glass-panel rounded-2xl p-6 md:p-8 mt-12 border-t-4 border-t-purple-500">
+            <h2 class="text-2xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                🎮 Reto Final: Comprueba tu lógica
+            </h2>
+            
+            <div id="quiz-container" class="max-w-2xl mx-auto space-y-6">
+                <div class="quiz-q bg-slate-800/50 p-5 rounded-xl border border-slate-700 transition-all duration-300" data-answer="b">
+                    <p class="font-semibold mb-4">1. En Colombia, ¿cuál es la sintaxis CORRECTA para sumar ventas de la zona Sur?</p>
+                    <div class="space-y-2">
+                        <button class="w-full text-left p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600 transition-colors" onclick="checkAnswer(this, 'a')">A) =SUMAR.SI(B2:B10, "Sur", C2:C10)</button>
+                        <button class="w-full text-left p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600 transition-colors" onclick="checkAnswer(this, 'b')">B) =SUMAR.SI(B2:B10; "Sur"; C2:C10)</button>
+                        <button class="w-full text-left p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600 transition-colors" onclick="checkAnswer(this, 'c')">C) =SUMAR(B2:B10; Sur; C2:C10)</button>
+                    </div>
+                </div>
+
+                <div class="quiz-q bg-slate-800/50 p-5 rounded-xl border border-slate-700 transition-all duration-300" data-answer="a">
+                    <p class="font-semibold mb-4">2. Si quieres saber cuál fue el gasto más pequeño del mes, usas:</p>
+                    <div class="space-y-2">
+                        <button class="w-full text-left p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600 transition-colors" onclick="checkAnswer(this, 'a')">A) =MIN()</button>
+                        <button class="w-full text-left p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600 transition-colors" onclick="checkAnswer(this, 'b')">B) =BAJO()</button>
+                        <button class="w-full text-left p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600 transition-colors" onclick="checkAnswer(this, 'c')">C) =MAX()</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 hidden" id="quiz-success">
+                <div class="inline-block bg-emerald-600/20 border border-emerald-500 text-emerald-400 px-6 py-3 rounded-xl font-bold animate-pulse">
+                    ¡Excelente trabajo! Dominas la lógica básica de las funciones. 🚀
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-16 py-8 bg-black/50 border-t border-white/5 text-center">
+        <p class="text-slate-400 text-sm tracking-wide">
+            &copy; 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <script>
+        // Función 1: Copiar Enlace Obligatoria
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    t.style.opacity = '0';
+                    setTimeout(() => t.style.opacity = '1', 10);
+                    setTimeout(()=> {
+                        t.style.opacity = '0';
+                        setTimeout(() => t.classList.add('hidden'), 300);
+                    }, 2500);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // Función 2: Copiar Prompt Maestro
+        function copiarPrompt() {
+            const texto = `"Actúa como un profesor de Excel. Créame una tabla de 5 filas con datos ficticios. Las columnas deben ser: Vendedor, Zona (Norte/Sur) y Venta Mensual (en pesos colombianos). Formatea la salida como una tabla para poder copiarla y pegarla directamente en Excel."`;
+            navigator.clipboard.writeText(texto).then(() => {
+                alert("Prompt copiado. ¡Pégalo en tu IA favorita!");
+            });
+        }
+
+        // Módulo Chart.js: Inicialización y Lógica
+        let myChart = null;
+        const ctx = document.getElementById('ventasChart').getContext('2d');
+        
+        // Datos Base Ficticios
+        const dataBase = [
+            { vendedor: 'Ana', zona: 'Norte', venta: 1500000 },
+            { vendedor: 'Luis', zona: 'Sur', venta: 1200000 },
+            { vendedor: 'Carlos', zona: 'Norte', venta: 1800000 },
+            { vendedor: 'Diana', zona: 'Sur', venta: 950000 },
+            { vendedor: 'Elena', zona: 'Norte', venta: 2100000 }
+        ];
+
+        function initChart() {
+            Chart.defaults.color = '#94a3b8';
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dataBase.map(d => d.vendedor),
+                    datasets: [{
+                        label: 'Venta Mensual ($)',
+                        data: dataBase.map(d => d.venta),
+                        backgroundColor: dataBase.map(d => d.zona === 'Norte' ? 'rgba(59, 130, 246, 0.7)' : 'rgba(16, 185, 129, 0.7)'),
+                        borderColor: dataBase.map(d => d.zona === 'Norte' ? 'rgb(59, 130, 246)' : 'rgb(16, 185, 129)'),
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        // Lógica de Filtro Chart.js
+        function updateChart(filtro) {
+            let filteredData = dataBase;
+            let textFeedback = "=SUMA(C2:C6)"; // Default
+
+            if (filtro === 'norte') {
+                filteredData = dataBase.map(d => d.zona === 'Norte' ? d : {vendedor: d.vendedor, zona: d.zona, venta: 0});
+                textFeedback = '=SUMAR.SI(B2:B6; "Norte"; C2:C6)';
+            } else if (filtro === 'sur') {
+                filteredData = dataBase.map(d => d.zona === 'Sur' ? d : {vendedor: d.vendedor, zona: d.zona, venta: 0});
+                textFeedback = '=SUMAR.SI(B2:B6; "Sur"; C2:C6)';
+            }
+
+            myChart.data.datasets[0].data = filteredData.map(d => d.venta);
+            myChart.update();
+            document.getElementById('chartFeedback').innerText = `Fórmula activa: ${textFeedback}`;
+        }
+
+        // Iniciar gráfico al cargar
+        window.onload = initChart;
+
+        // Lógica del Quiz
+        let correctas = 0;
+        function checkAnswer(btn, answer) {
+            const parent = btn.closest('.quiz-q');
+            const isCorrect = parent.dataset.answer === answer;
+            
+            // Deshabilitar todos los botones del grupo
+            const buttons = parent.querySelectorAll('button');
+            buttons.forEach(b => {
+                b.disabled = true;
+                b.classList.remove('hover:bg-slate-600');
+            });
+
+            if(isCorrect) {
+                btn.classList.add('bg-emerald-600/50', 'border-emerald-500', 'text-emerald-100');
+                parent.classList.add('border-emerald-500/50', 'shadow-[0_0_15px_rgba(16,185,129,0.2)]');
+                correctas++;
+            } else {
+                btn.classList.add('bg-red-600/50', 'border-red-500', 'text-red-100');
+                parent.classList.add('border-red-500/50');
+                // Resaltar la correcta
+                const correctBtn = Array.from(buttons).find(b => b.getAttribute('onclick').includes(`'${parent.dataset.answer}'`));
+                if(correctBtn) correctBtn.classList.add('border', 'border-emerald-500', 'text-emerald-400');
+            }
+
+            // Mostrar mensaje final si completó ambas
+            if(document.querySelectorAll('.quiz-q button:disabled').length === 6) { // 2 preguntas * 3 opciones
+                if(correctas === 2) {
+                    document.getElementById('quiz-success').classList.remove('hidden');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
