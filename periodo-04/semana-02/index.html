@@ -1,1 +1,507 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos: EMPRESA - Tecnología e Informática</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #818cf8; }
+        
+        /* 3D Flip Card Styles */
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Hover animations */
+        .hover-lift { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); }
+        
+        /* Row/Col Hover Effects for Interactive Table */
+        .table-col:hover { background: rgba(99, 102, 241, 0.2); cursor: crosshair; }
+        .table-row:hover { background: rgba(236, 72, 153, 0.2); cursor: crosshair; }
+    </style>
+</head>
+<body class="p-4 md:p-8 overflow-x-hidden antialiased">
+
+    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4">
+        <a href="../../../index.html"
+           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-white/10">
+           ⬅ Inicio (Grado)
+        </a>
+      
+        <a href="../../index.html"
+           class="bg-purple-600/80 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-purple-400/30">
+           ⬅ Menú del Periodo
+        </a>
+      
+        <button type="button" onclick="copiarEnlace()"
+           class="bg-emerald-600/80 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-emerald-400/30">
+           🔗 Copiar enlace
+        </button>
+    </div>
+      
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-emerald-400 px-6 py-3 rounded-xl shadow-2xl backdrop-blur-md border border-emerald-500/50 z-50 flex items-center gap-2 font-semibold">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        Enlace copiado al portapapeles
+    </div>
+
+    <header class="max-w-5xl mx-auto mb-12 relative">
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-fuchsia-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="glass p-8 md:p-12 rounded-3xl relative z-10 text-center hover-lift">
+            <h3 class="text-indigo-300 font-semibold tracking-wider uppercase text-sm mb-2">Colegio Santa Mariana de Jesús</h3>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+                Planeación y Creación de Bases de Datos
+            </h1>
+            <p class="text-xl text-slate-300 mb-6 font-light">Proyecto EMPRESA</p>
+            <div class="inline-block bg-slate-800/50 rounded-full px-6 py-2 border border-slate-700 text-sm mb-8">
+                <span class="text-slate-400">Prof. William Fdo Bernal</span> | <span class="text-indigo-400">Grado 11°</span> | <span class="text-pink-400">Semana 2</span>
+            </div>
+
+            <div class="glass-card max-w-3xl mx-auto p-6 rounded-2xl border-l-4 border-l-indigo-500 text-left">
+                <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Objetivo de Aprendizaje
+                </h4>
+                <p class="text-slate-300">Diseñar la estructura lógica de una base de datos (hojas, campos y registros) para gestionar información comercial con precisión, utilizando Inteligencia Artificial como asistente de planeación y Excel como motor de procesamiento.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto space-y-8">
+
+        <section class="glass-card p-8 rounded-3xl hover-lift relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+                <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+            <div class="mb-6 flex items-center">
+                <span class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-1.5 text-xs font-bold rounded-full shadow-lg border border-blue-400/30 uppercase tracking-wide">
+                    📝 COPIAR AL CUADERNO
+                </span>
+            </div>
+            
+            <h2 class="text-2xl font-bold mb-4 text-blue-300">De la Consulta a la Estructura</h2>
+            <p class="text-slate-300 mb-4 leading-relaxed">
+                La semana pasada trabajamos la <strong class="text-white">Consulta Avanzada en Excel</strong>. Para que una consulta (filtro, suma condicional, búsqueda) funcione correctamente, la información base debe estar perfectamente estructurada. No podemos analizar el "caos".
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-4 mt-6">
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <h4 class="text-indigo-400 font-bold mb-2">1. Hoja (Tabla)</h4>
+                    <p class="text-sm text-slate-300">El contenedor principal de una temática. Ej: <em>Tabla "Artículos"</em>, <em>Tabla "Clientes"</em>.</p>
+                </div>
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <h4 class="text-pink-400 font-bold mb-2">2. Campo (Columna)</h4>
+                    <p class="text-sm text-slate-300">La categoría del dato y su tipo (Texto, Número, Moneda). Define las reglas. Ej: <em>Precio</em>, <em>Categoría</em>.</p>
+                </div>
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                    <h4 class="text-emerald-400 font-bold mb-2">3. Registro (Fila)</h4>
+                    <p class="text-sm text-slate-300">El conjunto de datos que describen un solo elemento completo. Ej: <em>Todos los datos del producto A001</em>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card p-8 rounded-3xl hover-lift">
+            <div class="mb-6 flex items-center">
+                <span class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1.5 text-xs font-bold rounded-full shadow-lg border border-purple-400/30 uppercase tracking-wide">
+                    💻 INTERACTUAR EN EL PC
+                </span>
+            </div>
+            
+            <h2 class="text-2xl font-bold mb-2 text-purple-300">Data Lab: Anatomía de la Tabla & Análisis Dinámico</h2>
+            <p class="text-slate-400 mb-6 text-sm">Pasa el ratón sobre la tabla para entender su estructura. Usa los botones para ver cómo la base de datos se transforma en gráficos en tiempo real.</p>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-slate-900 rounded-2xl p-1 border border-slate-700 overflow-hidden relative group">
+                    <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
+                        <span id="tooltipTable" class="bg-black/80 backdrop-blur text-white px-4 py-2 rounded-lg font-mono text-sm border border-slate-600 hidden"></span>
+                    </div>
+                    
+                    <div class="grid grid-cols-4 text-xs font-bold bg-slate-800 text-slate-300 border-b border-slate-700 table-col transition-colors" onmouseover="showTip('Estos son los CAMPOS (Columnas). Definen qué tipo de dato va aquí.')" onmouseout="hideTip()">
+                        <div class="p-3">Código</div>
+                        <div class="p-3">Nombre</div>
+                        <div class="p-3">Categoría</div>
+                        <div class="p-3 text-right">Existencia</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-4 text-sm text-slate-400 border-b border-slate-800 table-row transition-colors" onmouseover="showTip('Esto es un REGISTRO (Fila). Datos completos del Yogurt.')" onmouseout="hideTip()">
+                        <div class="p-3 font-mono text-indigo-400">AL-01</div>
+                        <div class="p-3 text-white">Yogurt Fresa</div>
+                        <div class="p-3">Alimentos</div>
+                        <div class="p-3 text-right font-mono">45</div>
+                    </div>
+                    <div class="grid grid-cols-4 text-sm text-slate-400 border-b border-slate-800 table-row transition-colors" onmouseover="showTip('Esto es un REGISTRO (Fila). Datos completos del Jabón.')" onmouseout="hideTip()">
+                        <div class="p-3 font-mono text-indigo-400">AS-01</div>
+                        <div class="p-3 text-white">Jabón Líquido</div>
+                        <div class="p-3">Aseo</div>
+                        <div class="p-3 text-right font-mono">12</div>
+                    </div>
+                    <div class="grid grid-cols-4 text-sm text-slate-400 border-b border-slate-800 table-row transition-colors" onmouseover="showTip('Esto es un REGISTRO (Fila). Datos completos del Arroz.')" onmouseout="hideTip()">
+                        <div class="p-3 font-mono text-indigo-400">AL-02</div>
+                        <div class="p-3 text-white">Arroz 1kg</div>
+                        <div class="p-3">Alimentos</div>
+                        <div class="p-3 text-right font-mono">150</div>
+                    </div>
+                     <div class="grid grid-cols-4 text-sm text-slate-400 table-row transition-colors" onmouseover="showTip('Un DATO es la intersección entre un Campo y un Registro.')" onmouseout="hideTip()">
+                        <div class="p-3 font-mono text-indigo-400">AS-02</div>
+                        <div class="p-3 text-white">Esponja</div>
+                        <div class="p-3">Aseo</div>
+                        <div class="p-3 text-right font-mono">30</div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl p-4 border border-slate-700 flex flex-col">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-sm font-bold text-slate-300">Análisis de Existencias</h4>
+                        <div class="flex gap-2">
+                            <button onclick="updateChart('all')" class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-white transition-colors">Todos</button>
+                            <button onclick="updateChart('alimentos')" class="text-xs bg-indigo-600 hover:bg-indigo-500 px-3 py-1 rounded text-white transition-colors">Alimentos</button>
+                            <button onclick="updateChart('aseo')" class="text-xs bg-pink-600 hover:bg-pink-500 px-3 py-1 rounded text-white transition-colors">Aseo</button>
+                        </div>
+                    </div>
+                    <div class="flex-grow relative h-48 w-full">
+                        <canvas id="inventoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card p-8 rounded-3xl border border-emerald-500/30 relative">
+            <div class="absolute -top-4 right-8 bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-[0_0_15px_rgba(16,185,129,0.5)] animate-pulse">
+                PRÁCTICA ACTIVA
+            </div>
+            
+            <div class="mb-6 flex items-center">
+                <span class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-1.5 text-xs font-bold rounded-full shadow-lg uppercase tracking-wide">
+                    🖥️ TRABAJO EN LA SALA
+                </span>
+            </div>
+            
+            <h2 class="text-3xl font-bold mb-6 text-emerald-400">🗃️ Actividad: "Mi Primera BD en Excel con IA"</h2>
+            
+            <div class="flex flex-wrap gap-4 mb-8 text-sm bg-slate-800/50 p-4 rounded-xl">
+                <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-indigo-400"></span> <strong>Grado:</strong> 11°</div>
+                <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-pink-400"></span> <strong>Duración:</strong> 45-60 min</div>
+                <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> <strong>Herramientas:</strong> Chat IA + Excel (1 hoja)</div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="glass p-5 rounded-2xl border border-slate-600 hover:border-emerald-400/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-3 mb-3">
+                        <span class="bg-slate-800 text-emerald-400 w-8 h-8 rounded-full flex items-center justify-center shadow-inner">1</span>
+                        Planifica con IA (5 min)
+                    </h3>
+                    <p class="text-slate-300 mb-2">Ingresa a tu IA favorita (Gemini, ChatGPT) y pega este prompt. Guarda la respuesta como tu guía de trabajo.</p>
+                    <div class="bg-black/50 p-3 rounded-lg border border-slate-700 font-mono text-sm text-pink-300 relative group">
+                        "Soy estudiante de grado 11. Ayúdame a diseñar una tabla en Excel para gestionar un inventario de supermercado. Lista 5 campos clave con tipo de dato y ejemplo."
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-2xl border border-slate-600 hover:border-emerald-400/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-3 mb-3">
+                        <span class="bg-slate-800 text-emerald-400 w-8 h-8 rounded-full flex items-center justify-center shadow-inner">2</span>
+                        Crea la tabla en Excel (15 min)
+                    </h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300 ml-4">
+                        <li>En una nueva hoja, fila 1, escribe los encabezados: <code class="bg-slate-800 px-2 py-0.5 rounded text-indigo-300">Código | Nombre | Categoría | Precio | Existencia</code></li>
+                        <li>Registra 10 artículos (1 registro = 1 fila).</li>
+                        <li>Aplica <strong class="text-white">Formato > Moneda</strong> a la columna Precio.</li>
+                        <li>Asegura que el <strong class="text-white">Código</strong> sea único (sin repetidos).</li>
+                    </ul>
+                </div>
+
+                <div class="glass p-5 rounded-2xl border border-slate-600 hover:border-emerald-400/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-3 mb-3">
+                        <span class="bg-slate-800 text-emerald-400 w-8 h-8 rounded-full flex items-center justify-center shadow-inner">3</span>
+                        Organiza y Filtra (5 min)
+                    </h3>
+                    <p class="text-slate-300">Selecciona los encabezados → <code class="bg-slate-800 px-2 py-0.5 rounded text-indigo-300">Datos > Filtro</code>. Prueba filtrar por Categoría = "Alimentos" y verifica que solo muestre esos registros (esto conecta con la clase pasada).</p>
+                </div>
+
+                <div class="glass p-5 rounded-2xl border border-slate-600 hover:border-emerald-400/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-3 mb-3">
+                        <span class="bg-slate-800 text-emerald-400 w-8 h-8 rounded-full flex items-center justify-center shadow-inner">4</span>
+                        Aplica Funciones de Análisis (15 min)
+                    </h3>
+                    <p class="text-slate-300 mb-3">Debajo de la tabla (ej: fila 13), escribe las siguientes fórmulas de análisis:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-mono mb-4">
+                        <div class="bg-slate-900/80 p-2 rounded border border-slate-700"><span class="text-slate-400">Total artículos:</span> <span class="text-green-400">=SUMA(E2:E11)</span></div>
+                        <div class="bg-slate-900/80 p-2 rounded border border-slate-700"><span class="text-slate-400">Existencias (Alimentos):</span> <span class="text-yellow-400">=SUMAR.SI(C2:C11;"Alimentos";E2:E11)</span></div>
+                        <div class="bg-slate-900/80 p-2 rounded border border-slate-700"><span class="text-slate-400">Precio promedio:</span> <span class="text-blue-400">=PROMEDIO(D2:D11)</span></div>
+                        <div class="bg-slate-900/80 p-2 rounded border border-slate-700"><span class="text-slate-400">Precio MAX/MIN:</span> <span class="text-pink-400">=MAX(D2:D11)</span> / <span class="text-pink-400">=MIN(D2:D11)</span></div>
+                    </div>
+                    <div class="bg-indigo-900/30 border border-indigo-500/30 p-3 rounded-lg text-sm flex gap-3 items-start">
+                        <span class="text-xl">💡</span>
+                        <p class="text-indigo-200"><strong>Ayuda IA:</strong> Pregúntale a tu IA: <em>"Explícame con un ejemplo cómo usar SUMAR.SI para sumar existencias solo de la categoría 'Aseo'"</em></p>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-2xl border border-slate-600 hover:border-emerald-400/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-3 mb-3">
+                        <span class="bg-slate-800 text-emerald-400 w-8 h-8 rounded-full flex items-center justify-center shadow-inner">5</span>
+                        Valida y Reflexiona (5 min)
+                    </h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300 ml-4 mb-4">
+                        <li>Verifica que no haya celdas vacías en campos obligatorios.</li>
+                        <li>En la celda A15, escribe tu reflexión (máx. 1 línea): <br><em class="text-pink-300 ml-5">"¿Por qué es importante que cada campo tenga un tipo de dato definido?"</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-slate-900/80 p-6 rounded-2xl border-2 border-dashed border-emerald-500/50">
+                <h4 class="text-white font-bold text-lg mb-4 flex items-center gap-2"><svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg> Parámetros de Entrega</h4>
+                <div class="space-y-3 text-sm text-slate-300">
+                    <p><strong class="text-white">📁 NOMENCLATURA OBLIGATORIA:</strong> <code class="bg-black px-2 py-1 rounded text-yellow-400">grado_tema_fecha(ddmmaa)_nombre.xlsx</code></p>
+                    <p class="pl-5 text-xs text-slate-400">✅ Ejemplo: 11_basedatos_270426_CamilaRuiz.xlsx</p>
+                    <p><strong class="text-white">📤 QUE ENTREGAR:</strong> Archivo .xlsx con 1 hoja, tabla de 10 registros, 5 fórmulas aplicadas, filtros activos y nombre exacto.</p>
+                    <p class="bg-red-500/10 border border-red-500/30 p-2 rounded text-red-200 mt-2">⚠️ <strong>Regla de calidad:</strong> Una tabla bien estructurada evita errores en análisis futuros. Revisa formatos y unicidad antes de entregar.</p>
+                    <p class="text-emerald-400 mt-2">✨ <strong>Reto opcional (Para los más rápidos):</strong> Usa <code class="bg-black px-1 rounded">=CONTAR.SI(C2:C11;"Alimentos")</code> para contar cuántos artículos hay por categoría.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <section class="glass-card p-6 rounded-3xl hover-lift">
+                <div class="mb-4">
+                    <span class="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-3 py-1 text-xs font-bold rounded-full shadow border border-orange-400/30 uppercase tracking-wide">
+                        🔍 INVESTIGACIÓN
+                    </span>
+                </div>
+                <h3 class="text-xl font-bold text-orange-300 mb-3">Busca en Google</h3>
+                <p class="text-slate-300 text-sm">Investiga: <strong class="text-white">"¿Qué es la 'Integridad de los Datos' en el diseño de una Base de Datos y por qué es un riesgo financiero para una empresa si falla?"</strong></p>
+            </section>
+
+            <section class="glass-card p-6 rounded-3xl hover-lift">
+                <div class="mb-4">
+                    <span class="bg-gradient-to-r from-red-500 to-rose-500 text-white px-3 py-1 text-xs font-bold rounded-full shadow border border-red-400/30 uppercase tracking-wide">
+                        📄 TAREA EN HOJA SUELTA
+                    </span>
+                </div>
+                <h3 class="text-xl font-bold text-rose-300 mb-3">Entregable Físico</h3>
+                <p class="text-slate-300 text-sm">La respuesta a la investigación anterior debes entregarla en una <strong class="text-white">hoja de bloc en blanco</strong>. Debe estar claramente marcada con tu <strong>Nombre completo, Grado (11°) y Fecha</strong>.</p>
+            </section>
+        </div>
+
+        <section class="glass p-8 rounded-3xl border border-indigo-500/30">
+            <h2 class="text-2xl font-bold mb-6 text-center text-white flex justify-center items-center gap-2">
+                🎮 Verifica tu Lógica
+            </h2>
+            <div id="quiz-container" class="max-w-2xl mx-auto space-y-4">
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-indigo-400 transition-colors" onclick="checkAnswer(this, true)">
+                    <p class="font-semibold text-slate-200">1. En Excel, una "Columna" representa lo que en bases de datos llamamos un:</p>
+                    <div class="mt-3 grid grid-cols-2 gap-2 text-sm hidden-opts transition-all">
+                        <div class="bg-slate-700 p-2 rounded text-center hover:bg-slate-600" data-correct="false">Registro</div>
+                        <div class="bg-slate-700 p-2 rounded text-center hover:bg-slate-600" data-correct="true">Campo</div>
+                    </div>
+                </div>
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-indigo-400 transition-colors" onclick="checkAnswer(this, true)">
+                    <p class="font-semibold text-slate-200">2. Si aplicamos la función =SUMAR.SI para ventas, ¿por qué fallaría si el campo "Precio" se guardó como Texto?</p>
+                    <div class="mt-3 grid grid-cols-1 gap-2 text-sm hidden-opts transition-all">
+                        <div class="bg-slate-700 p-2 rounded text-center hover:bg-slate-600" data-correct="true">Porque las fórmulas matemáticas requieren el tipo de dato Número/Moneda.</div>
+                        <div class="bg-slate-700 p-2 rounded text-center hover:bg-slate-600" data-correct="false">Porque el código de artículo no es único.</div>
+                    </div>
+                </div>
+            </div>
+            <div id="quiz-feedback" class="mt-6 text-center hidden">
+                <p class="text-xl font-bold text-emerald-400 animate-bounce">¡Excelente lógica! Listo para la sala de sistemas. 🚀</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-16 bg-[#0B0F19] py-8 text-center border-t border-slate-800">
+        <p class="text-slate-500 font-mono text-sm">
+            © 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
+        </p>
+    </footer>
+
+    <script>
+        // FUNCIÓN OBLIGATORIA: Copiar Enlace
+        function copiarEnlace(){
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const t = document.getElementById('toastCopiado');
+                if(t){
+                    t.classList.remove('hidden');
+                    // Add tiny animation class if needed
+                    t.classList.add('animate-pulse');
+                    setTimeout(() => {
+                        t.classList.remove('animate-pulse');
+                        t.classList.add('hidden');
+                    }, 2500);
+                } else {
+                    alert("Enlace copiado ✅");
+                }
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Copia el enlace manualmente desde la barra del navegador.");
+            });
+        }
+
+        // Tooltip interaction para el Modulo Visual
+        const tooltip = document.getElementById('tooltipTable');
+        function showTip(text) {
+            tooltip.innerText = text;
+            tooltip.classList.remove('hidden');
+        }
+        function hideTip() {
+            tooltip.classList.add('hidden');
+        }
+
+        // LÓGICA DE CHART.JS (Data Lab)
+        const ctx = document.getElementById('inventoryChart').getContext('2d');
+        
+        // Data sets
+        const dataAll = [45, 12, 150, 30];
+        const labelsAll = ['Yogurt Fresa', 'Jabón Líquido', 'Arroz 1kg', 'Esponja'];
+        const colorsAll = ['#818cf8', '#f472b6', '#818cf8', '#f472b6']; // Alimentos=Indigo, Aseo=Pink
+
+        const dataAlimentos = [45, 150];
+        const labelsAlimentos = ['Yogurt Fresa', 'Arroz 1kg'];
+        const colorsAlimentos = ['#818cf8', '#818cf8'];
+
+        const dataAseo = [12, 30];
+        const labelsAseo = ['Jabón Líquido', 'Esponja'];
+        const colorsAseo = ['#f472b6', '#f472b6'];
+
+        let inventoryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labelsAll,
+                datasets: [{
+                    label: 'Existencias',
+                    data: dataAll,
+                    backgroundColor: colorsAll,
+                    borderRadius: 6,
+                    borderWidth: 1,
+                    borderColor: 'rgba(255, 255, 255, 0.2)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 800,
+                    easing: 'easeOutQuart'
+                },
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#94a3b8' }
+                    }
+                }
+            }
+        });
+
+        function updateChart(filter) {
+            if(filter === 'all') {
+                inventoryChart.data.labels = labelsAll;
+                inventoryChart.data.datasets[0].data = dataAll;
+                inventoryChart.data.datasets[0].backgroundColor = colorsAll;
+            } else if(filter === 'alimentos') {
+                inventoryChart.data.labels = labelsAlimentos;
+                inventoryChart.data.datasets[0].data = dataAlimentos;
+                inventoryChart.data.datasets[0].backgroundColor = colorsAlimentos;
+            } else if(filter === 'aseo') {
+                inventoryChart.data.labels = labelsAseo;
+                inventoryChart.data.datasets[0].data = dataAseo;
+                inventoryChart.data.datasets[0].backgroundColor = colorsAseo;
+            }
+            inventoryChart.update();
+        }
+
+        // LÓGICA GAMIFICACIÓN (Micro-Quiz)
+        let correctAnswers = 0;
+        function checkAnswer(element, expand) {
+            // First click opens options
+            const opts = element.querySelector('.hidden-opts');
+            if(opts.classList.contains('hidden-opts')) {
+                opts.classList.remove('hidden-opts');
+                opts.classList.add('flex'); // or block depending on layout, here grid is used so we just show children
+                // setup click listeners on children
+                const buttons = opts.querySelectorAll('div');
+                buttons.forEach(btn => {
+                    btn.onclick = function(e) {
+                        e.stopPropagation();
+                        if(btn.dataset.correct === "true") {
+                            btn.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+                            btn.classList.add('bg-emerald-500', 'text-white', 'font-bold');
+                            element.classList.add('border-emerald-500');
+                            element.style.pointerEvents = "none";
+                            correctAnswers++;
+                            checkWin();
+                        } else {
+                            btn.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+                            btn.classList.add('bg-red-500', 'text-white');
+                            // shake effect
+                            element.style.transform = "translateX(-5px)";
+                            setTimeout(() => element.style.transform = "translateX(5px)", 100);
+                            setTimeout(() => element.style.transform = "translateX(0)", 200);
+                        }
+                    }
+                });
+            }
+        }
+
+        function checkWin() {
+            if(correctAnswers === 2) { // Total questions
+                document.getElementById('quiz-feedback').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
