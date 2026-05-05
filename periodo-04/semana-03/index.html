@@ -3,316 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clase: Creación y Calidad de Tablas de Datos</title>
+    <title>Clase: Creación y Calidad de Tablas de Datos | Grado 11°</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuraciones Tailwind personalizadas -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                        glassBorder: 'rgba(255, 255, 255, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Custom scrollbar and animations */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #60a5fa; }
+        /* Utilidades para Glassmorphism y Animaciones */
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            background-attachment: fixed;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .flip-card {
-            perspective: 1000px;
-        }
-        .flip-card-inner {
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-        .flip-card-front, .flip-card-back {
-            backface-visibility: hidden;
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-        }
-        .flip-card-back {
-            transform: rotateY(180deg);
-        }
+        /* 3D Flip Cards */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .group:hover .flip-card-inner { transform: rotateY(180deg); }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-slate-100 min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white">
+<body class="min-h-screen py-8 px-4 sm:px-8">
 
-    <!-- BOTONES OBLIGATORIOS -->
-    <div class="max-w-5xl mx-auto flex justify-end gap-3 mb-4 pt-6 px-4">
+    <!-- ==========================================
+         BOTONES OBLIGATORIOS Y RUTAS DINÁMICAS
+         ========================================== -->
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-end gap-3 mb-6 relative z-50">
         <a href="../../../index.html"
-           class="bg-slate-800/70 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300 backdrop-blur border border-slate-600">
-           ⬅ Inicio (Grado)
+           class="bg-slate-800/70 border border-slate-600 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-slate-700 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <i class="fas fa-home"></i> Inicio (Grado)
         </a>
       
         <a href="../../index.html"
-           class="bg-purple-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
-           ⬅ Menú del Periodo
+           class="bg-purple-600/90 border border-purple-500 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-purple-500 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <i class="fas fa-folder-open"></i> Menú del Periodo
         </a>
       
         <button type="button" onclick="copiarEnlace()"
-           class="bg-emerald-600 text-white px-4 py-2 rounded-xl shadow hover:scale-105 transition-all duration-300">
-           🔗 Copiar enlace
+           class="bg-emerald-600/90 border border-emerald-500 text-white px-4 py-2 rounded-xl shadow-lg hover:scale-105 hover:bg-emerald-500 transition-all duration-300 backdrop-blur flex items-center gap-2">
+           <i class="fas fa-link"></i> Copiar enlace
         </button>
     </div>
       
-    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-black/80 text-white px-4 py-3 rounded-xl shadow-lg backdrop-blur z-50 border border-emerald-500">
+    <div id="toastCopiado" class="fixed top-6 right-6 hidden bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur font-bold z-50 animate-bounce">
         Enlace copiado ✅
     </div>
 
-    <main class="max-w-5xl mx-auto px-4 pb-12 space-y-8">
+    <!-- ==========================================
+         SECCIÓN 1: HERO
+         ========================================== -->
+    <header class="max-w-5xl mx-auto glass-card rounded-3xl p-8 mb-10 relative overflow-hidden">
+        <div class="absolute top-[-50px] right-[-50px] w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div class="absolute bottom-[-50px] left-[-50px] w-64 h-64 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
         
-        <!-- SECCIÓN 1: HERO -->
-        <header class="glass-panel rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div class="relative z-10 text-center">
+            <h3 class="text-emerald-400 font-bold tracking-widest uppercase text-sm mb-2">Colegio Santa Mariana de Jesús | Prof. William Fdo Bernal</h3>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-4 drop-shadow-lg">
+                Creación y Calidad de Tablas de Datos
+            </h1>
+            <div class="inline-block bg-white/10 px-4 py-1 rounded-full text-sm font-semibold border border-white/20 mb-6">
+                Grado 11° | Semana 3
+            </div>
             
-            <div class="relative z-10">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h2 class="text-indigo-400 font-bold tracking-wider text-sm">COLEGIO SANTA MARIANA DE JESÚS</h2>
-                        <h3 class="text-slate-400 text-sm">Prof. William Fdo Bernal | Tecnología e Informática - Grado 11°</h3>
-                    </div>
-                    <div class="bg-indigo-600/30 border border-indigo-400/30 px-3 py-1 rounded-lg text-sm text-indigo-300">
-                        Semana 3
-                    </div>
+            <div class="max-w-3xl mx-auto bg-slate-900/50 border border-slate-700 rounded-2xl p-6 shadow-inner text-left flex gap-4 items-start">
+                <div class="bg-indigo-500/20 p-3 rounded-xl">
+                    <i class="fas fa-bullseye text-2xl text-indigo-400"></i>
                 </div>
-                
-                <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-indigo-200 to-emerald-200 mb-6 drop-shadow-sm">
-                    Creación y Calidad de Tablas de Datos
-                </h1>
-                
-                <div class="bg-slate-800/50 border border-slate-700 p-5 rounded-2xl">
-                    <p class="text-lg text-slate-300 flex items-center gap-3">
-                        <span class="text-2xl">🎯</span>
-                        <strong>Objetivo:</strong> Estructurar bases de datos relacionales asegurando la integridad, formato y consistencia de los registros para su uso en entornos profesionales y análisis con IA.
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-1">Objetivo de Aprendizaje</h4>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        Construir y validar tablas estructuradas de clientes aplicando formatos profesionales y fórmulas de control de calidad en Excel, comprendiendo el impacto vital de la limpieza de datos en el análisis corporativo.
                     </p>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <!-- SECCIÓN: COPIAR AL CUADERNO -->
-        <section class="glass-panel rounded-3xl p-8 shadow-xl">
-            <span class="badge bg-amber-500/20 text-amber-300 border border-amber-500/30">📝 COPIAR AL CUADERNO</span>
+    <main class="max-w-5xl mx-auto space-y-10">
+
+        <!-- ==========================================
+             SECCIÓN: COPIAR AL CUADERNO
+             ========================================== -->
+        <section class="glass-card rounded-3xl p-8 transition-all duration-300 hover:shadow-cyan-500/10 hover:shadow-2xl">
+            <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                <span class="bg-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    <i class="fas fa-pen-nib mr-1"></i> [📝 COPIAR AL CUADERNO]
+                </span>
+                <h2 class="text-2xl font-bold text-cyan-400">Fundamentos de Calidad de Datos</h2>
+            </div>
             
-            <div class="space-y-4 text-slate-200 leading-relaxed">
-                <p>En la <strong>Semana 2</strong> trabajamos la <em>Planeación de Bases de Datos</em>. Hoy pasaremos a la construcción de la tabla core de cualquier modelo de negocio: <strong>La Tabla Clientes</strong>.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    <div class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700">
-                        <h3 class="text-xl font-bold text-indigo-300 mb-3">1. Estructura de la Tabla</h3>
-                        <p class="mb-2">Una tabla profesional requiere 3 pilares de información:</p>
-                        <ul class="list-disc list-inside space-y-1 text-slate-300">
-                            <li><strong>Identificación:</strong> ID único (Primary Key), NIT o Cédula.</li>
-                            <li><strong>Contacto:</strong> Teléfono móvil, Correo corporativo.</li>
-                            <li><strong>Clasificación:</strong> Categorización (VIP, Frecuente, Prospecto) para análisis de inteligencia de negocios.</li>
-                        </ul>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
+                    <p class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                        <i class="fas fa-link text-indigo-400 mr-2"></i> <strong>Conexión:</strong> En la <em>Semana 2</em> planificamos y creamos bases de datos a nivel estructural. Hoy nos enfocamos en el contenido: <strong>la calidad de la tabla de Clientes</strong>.
+                    </p>
                     
-                    <div class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700">
-                        <h3 class="text-xl font-bold text-emerald-300 mb-3">2. Pilares de Calidad de Datos</h3>
-                        <p class="mb-2">Los datos crudos no sirven; deben pasar auditoría:</p>
-                        <ul class="list-disc list-inside space-y-1 text-slate-300">
-                            <li><strong>Orden:</strong> Estructura lógica y normalizada.</li>
-                            <li><strong>Claridad:</strong> Cero ambigüedad (no abreviaturas locales).</li>
-                            <li><strong>Consistencia:</strong> Nomenclatura unificada en todos los registros.</li>
-                            <li><strong>Formato:</strong> Tipos de datos correctos (Fechas son fechas, números son números).</li>
-                        </ul>
+                    <p>
+                        En un entorno profesional, una tabla de clientes debe garantizar 3 ejes principales de información:
+                        <strong class="text-white">Identificación</strong> (¿Quién es?), 
+                        <strong class="text-white">Contacto</strong> (¿Cómo lo ubico?), y 
+                        <strong class="text-white">Clasificación</strong> (¿Qué valor aporta al negocio?).
+                    </p>
+
+                    <h4 class="text-white font-bold text-lg mt-4"><i class="fas fa-check-double text-emerald-400 mr-2"></i> Los 4 Pilares de la Calidad</h4>
+                    <ul class="space-y-2 ml-2">
+                        <li class="flex items-start gap-2"><i class="fas fa-caret-right text-cyan-500 mt-1"></i> <span><strong>Orden:</strong> Estructura lógica sin columnas redundantes.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-caret-right text-cyan-500 mt-1"></i> <span><strong>Claridad:</strong> Nomenclatura semántica (ej. usar `Email_Cliente` en vez de `Dato3`).</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-caret-right text-cyan-500 mt-1"></i> <span><strong>Consistencia:</strong> Patrones uniformes (ej. ID siempre como <em>CLI-001</em>).</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-caret-right text-cyan-500 mt-1"></i> <span><strong>Formato:</strong> Tipos de datos correctos (Fechas como fechas, números como números).</span></li>
+                    </ul>
+                </div>
+                
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <div class="relative bg-slate-900 ring-1 ring-white/10 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center p-2">
+                         
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: INTERACTUAR EN EL PC -->
-        <section class="glass-panel rounded-3xl p-8 shadow-xl">
-            <span class="badge bg-blue-500/20 text-blue-300 border border-blue-500/30">💻 INTERACTUAR EN EL PC</span>
-            
-            <h2 class="text-2xl font-bold mb-6 text-white">Data Lab: Auditoría de Calidad</h2>
-            <p class="text-slate-300 mb-6">El siguiente dashboard simula una base de datos recién exportada. Haz clic en "Ejecutar Limpieza" para aplicar los criterios de Orden, Claridad, Consistencia y Formato, y observa cómo mejora el modelo de datos.</p>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Tabla interactiva -->
-                <div class="lg:col-span-2 bg-slate-900/80 rounded-2xl border border-slate-700 overflow-hidden">
-                    <div class="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center">
-                        <h3 class="font-bold text-slate-200">Terminal de Datos</h3>
-                        <button id="btnLimpiar" onclick="ejecutarLimpieza()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1.5 rounded-lg text-sm transition-all shadow-lg hover:shadow-indigo-500/50 flex items-center gap-2">
-                            <span>⚙️</span> Ejecutar Limpieza (Data Cleaning)
-                        </button>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm">
-                            <thead class="bg-slate-800/50 text-slate-400">
-                                <tr>
-                                    <th class="p-3">ID</th>
-                                    <th class="p-3">Nombre</th>
-                                    <th class="p-3">Teléfono</th>
-                                    <th class="p-3">Correo</th>
-                                    <th class="p-3">Tipo</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tablaDatos" class="divide-y divide-slate-700/50">
-                                <!-- Datos inyectados por JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <!-- ==========================================
+             SECCIÓN: INTERACTUAR EN EL PC
+             ========================================== -->
+        <section class="glass-card rounded-3xl p-8 transition-all duration-300 hover:shadow-purple-500/10 hover:shadow-2xl">
+            <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    <i class="fas fa-mouse-pointer mr-1"></i> [💻 INTERACTUAR EN EL PC]
+                </span>
+                <h2 class="text-2xl font-bold text-purple-400">Data Lab: Impacto de la Calidad</h2>
+            </div>
+
+            <!-- MOD-B: Data Lab Dashboard con Chart.js -->
+            <div class="bg-slate-900/80 rounded-2xl p-6 border border-slate-700 shadow-inner mb-8">
+                <h3 class="text-center font-bold text-xl text-white mb-2">Tasas de Éxito Comercial según Estado de Datos</h3>
+                <p class="text-center text-slate-400 text-sm mb-6">Alterna entre los escenarios para ver cómo la mala captura de datos impacta a una empresa tecnológica.</p>
                 
-                <!-- Chart.js -->
-                <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-700 flex flex-col items-center justify-center">
-                    <h3 class="font-bold text-slate-200 mb-4 text-center">Índice de Calidad de Datos (DQI)</h3>
-                    <div class="relative w-full max-w-[200px] aspect-square">
-                        <canvas id="qualityChart"></canvas>
-                        <div class="absolute inset-0 flex items-center justify-center flex-col pointer-events-none">
-                            <span id="scoreText" class="text-3xl font-black text-rose-400">40%</span>
+                <div class="flex justify-center gap-4 mb-6">
+                    <button onclick="updateChart('sucios')" class="px-6 py-2 rounded-lg bg-red-900/50 text-red-300 border border-red-700 hover:bg-red-800 transition-colors font-bold flex items-center gap-2">
+                        <i class="fas fa-times-circle"></i> Datos Sucios/Inconsistentes
+                    </button>
+                    <button onclick="updateChart('limpios')" class="px-6 py-2 rounded-lg bg-emerald-900/50 text-emerald-300 border border-emerald-700 hover:bg-emerald-800 transition-colors font-bold flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i> Datos Estructurados (Norma)
+                    </button>
+                </div>
+
+                <div class="relative h-64 w-full">
+                    <canvas id="qualityChart"></canvas>
+                </div>
+            </div>
+
+            <!-- MOD-C: Zona de Analogías (Flip Cards) -->
+            <h3 class="font-bold text-lg text-white mb-4"><i class="fas fa-layer-group text-purple-400 mr-2"></i> Anatomía de la Tabla de Clientes</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="group h-48 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transition-transform duration-700 transform-style-3d flip-card-inner">
+                        <!-- Front -->
+                        <div class="absolute w-full h-full bg-slate-800 border border-slate-600 rounded-xl flex flex-col items-center justify-center backface-hidden shadow-lg p-4">
+                            <i class="fas fa-id-card text-4xl text-blue-400 mb-3"></i>
+                            <h4 class="text-lg font-bold text-white">Identificación</h4>
+                            <p class="text-xs text-slate-400 mt-2">(Pasa el ratón para girar)</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute w-full h-full bg-blue-900 border border-blue-500 rounded-xl flex flex-col items-center justify-center rotate-y-180 backface-hidden shadow-lg p-6 text-center">
+                            <h4 class="font-bold text-white mb-2">Llaves Únicas</h4>
+                            <p class="text-sm text-blue-100">ID de Cliente, CC, NIT. Deben ser únicos e irrepetibles para evitar duplicar facturación.</p>
                         </div>
                     </div>
-                    <p id="statusText" class="mt-4 text-sm text-rose-300 text-center font-medium bg-rose-500/10 px-3 py-1 rounded-lg">Datos con errores críticos</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="group h-48 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transition-transform duration-700 transform-style-3d flip-card-inner">
+                        <!-- Front -->
+                        <div class="absolute w-full h-full bg-slate-800 border border-slate-600 rounded-xl flex flex-col items-center justify-center backface-hidden shadow-lg p-4">
+                            <i class="fas fa-envelope-open-text text-4xl text-emerald-400 mb-3"></i>
+                            <h4 class="text-lg font-bold text-white">Contacto</h4>
+                            <p class="text-xs text-slate-400 mt-2">(Pasa el ratón para girar)</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute w-full h-full bg-emerald-900 border border-emerald-500 rounded-xl flex flex-col items-center justify-center rotate-y-180 backface-hidden shadow-lg p-6 text-center">
+                            <h4 class="font-bold text-white mb-2">Canales de Valor</h4>
+                            <p class="text-sm text-emerald-100">Email, Teléfono, Ciudad. Requieren validación estricta para evitar campañas de marketing fallidas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group h-48 perspective-1000 cursor-pointer">
+                    <div class="relative w-full h-full transition-transform duration-700 transform-style-3d flip-card-inner">
+                        <!-- Front -->
+                        <div class="absolute w-full h-full bg-slate-800 border border-slate-600 rounded-xl flex flex-col items-center justify-center backface-hidden shadow-lg p-4">
+                            <i class="fas fa-star text-4xl text-yellow-400 mb-3"></i>
+                            <h4 class="text-lg font-bold text-white">Clasificación</h4>
+                            <p class="text-xs text-slate-400 mt-2">(Pasa el ratón para girar)</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute w-full h-full bg-yellow-900 border border-yellow-500 rounded-xl flex flex-col items-center justify-center rotate-y-180 backface-hidden shadow-lg p-6 text-center">
+                            <h4 class="font-bold text-white mb-2">Segmentación</h4>
+                            <p class="text-sm text-yellow-100">Estado (Activo), Categoría (Oro/Plata). Permite aplicar filtros dinámicos y tomar decisiones de negocio.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: TRABAJO EN LA SALA -->
-        <section class="glass-panel rounded-3xl p-8 shadow-xl">
-            <span class="badge bg-purple-500/20 text-purple-300 border border-purple-500/30">🖥️ TRABAJO EN LA SALA</span>
-            <p class="text-slate-300 mb-4">Ejecuta la siguiente actividad práctica utilizando tu asistente de Inteligencia Artificial (ChatGPT, Gemini, Copilot) y Microsoft Excel.</p>
+        <!-- ==========================================
+             SECCIÓN: TRABAJO EN LA SALA
+             ========================================== -->
+        <section class="glass-card rounded-3xl p-8 border-l-4 border-emerald-500 transition-all duration-300">
+            <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    <i class="fas fa-laptop-code mr-1"></i> [🖥️ TRABAJO EN LA SALA]
+                </span>
+                <h2 class="text-2xl font-bold text-emerald-400">Actividad: Mi solución con IA</h2>
+            </div>
             
-            <div class="bg-slate-950 rounded-xl p-4 overflow-x-auto border border-slate-700 font-mono text-sm text-slate-300">
-<pre><code>```markdown
-# 📌 Actividad: "Optimizando la Cartera: Base de Datos de Clientes Inteligente"
-
-**Grado:** 11° | **Herramientas:** Excel + IA Generativa
-
-**Objetivo:** Aplicar principios de calidad de datos para organizar y clasificar una tabla de clientes corporativos mediante IA y tablas dinámicas.
-
----
-
-## 🤖 Paso 1: Generación de Datos Sintéticos
-
-Pide a tu asistente de IA que genere los datos en crudo para nuestra práctica.
-
-> "Actúa como un analista de datos. Genera una tabla de 20 clientes para una empresa de tecnología. Incluye las columnas: ID_Cliente, Nombre_Completo, Telefono, Correo, y Tipo_Cliente (VIP, Frecuente, Nuevo). Introduce intencionalmente 5 errores de formato en teléfonos y correos para que yo los pueda limpiar en Excel. Entrega solo la tabla para copiar y pegar."
-
-⚠️ Si la IA no incluye los errores intencionales, pídele que los agregue (ej. correos sin @, letras en teléfonos).
-
-💡 La limpieza de datos (Data Cleaning) es el paso que más tiempo consume en el mundo real del análisis de datos.
-
----
-
-## 📊 Paso 2: Estructuración y Calidad
-
-Pega los datos en Excel y conviértelos en una tabla profesional.
-
-1. Selecciona los datos y presiona 'Ctrl + T' para crear una Tabla oficial.
-2. Aplica un estilo visual coherente y nombra la tabla como "TablaClientes".
-3. Corrige manualmente los 5 errores de formato garantizando consistencia.
-
-✅ Visualmente, todas las columnas deben tener el tipo de dato correcto (Texto, Número, etc.) y un diseño limpio.
-
----
-
-## ⚙️ Paso 3: Análisis y Validación
-
-Agrega fórmulas para validar y analizar la calidad de nuestra base.
-
-1. Añade una columna llamada "Validación Correo".
-2. Usa la función: '=SI(ESNUMERO(HALLAR("@"; D2)); "Válido"; "Error")' (asumiendo que D2 es el correo).
-3. Cuenta cuántos clientes VIP tienes usando: '=CONTAR.SI(E2:E21; "VIP")'.
-
-⚠️ Si aparece '#¡NOMBRE?' o '#¡VALOR!', revisa la sintaxis y el idioma de Excel.
-
-💡 Usamos funciones lógicas para automatizar la auditoría de calidad de datos en bases masivas.
-
----
-
-## 💾 Paso final: Guarda el archivo
-
-Nomenclatura técnica: '11_calidaddatos_ddmmaa_nombre.xlsx'
-
-Ejemplo: '11_calidaddatos_040526_WilliamBernal.xlsx'
-
-🔒 Confirma que termine en .xlsx, sin espacios, sin tildes y sin caracteres especiales.
-```</code></pre>
+            <div class="bg-slate-950 rounded-2xl p-6 font-mono text-sm shadow-inner border border-slate-800 overflow-x-auto text-slate-300 leading-relaxed space-y-1">
+                <div><span class="text-slate-500">1:</span> <span class="text-yellow-400 font-bold"># 📌 Actividad: "Gestión Profesional de Base de Datos de Clientes"</span></div>
+                <div><span class="text-slate-500">2:</span> <strong>Grado:</strong> 11° | <strong>Herramientas:</strong> Excel + IA Generativa</div>
+                <div><span class="text-slate-500">3:</span> <strong>Objetivo:</strong> Construir y validar una tabla estructurada de clientes aplicando formatos profesionales y fórmulas de control de calidad de datos en Excel.</div>
+                <div><span class="text-slate-500">4:</span> </div>
+                <div><span class="text-slate-500">5:</span> <span class="text-cyan-400 font-bold">🤖 Paso 1: Generación de datos con IA generativa 🤖</span></div>
+                <div><span class="text-slate-500">6:</span> Solicita a tu asistente de IA que genere datos realistas de clientes para practicar gestión de bases de datos.</div>
+                <div><span class="text-slate-500">7:</span> Copia y pega este prompt exacto: <span class="text-emerald-300">"Genera una tabla de 20 clientes ficticios para una empresa de servicios tecnológicos con las columnas: ID_Cliente (formato CLI-001), Nombre_Completo, Tipo_Documento (CC/TI/NIT), Numero_Documento, Email, Telefono, Ciudad, Clasificacion_Cliente (Oro/Plata/Bronce), Fecha_Registro (DD/MM/AAAA), Estado (Activo/Inactivo). Datos coherentes, realistas y sin información personal real."</span></div>
+                <div><span class="text-slate-500">8:</span> <span class="text-red-400">⚠️ Si la IA devuelve texto sin estructura de tabla o datos inconsistentes, solicita: "Reorganiza la respuesta en formato CSV o tabla markdown con encabezados claros".</span></div>
+                <div><span class="text-slate-500">9:</span> <span class="text-purple-400">💡 Concepto clave: La calidad del análisis en Excel depende directamente de la estructura y consistencia de los datos de entrada.</span></div>
+                <div><span class="text-slate-500">10:</span> </div>
+                <div><span class="text-slate-500">11:</span> <span class="text-cyan-400 font-bold">📊 Paso 2: Estructuración profesional con formato de tabla 📊</span></div>
+                <div><span class="text-slate-500">12:</span> Pega los datos en Excel desde la celda A1, selecciona todo el rango incluyendo encabezados y presiona <span class="text-yellow-300">'Ctrl + T'</span> para convertirlo en tabla oficial de Excel.</div>
+                <div><span class="text-slate-500">13:</span> En el cuadro de diálogo, verifica que "La tabla tiene encabezados" esté marcado y haz clic en Aceptar.</div>
+                <div><span class="text-slate-500">14:</span> Aplica un estilo de tabla profesional (ej: Azul Medio, Estilo de Tabla 2) desde la pestaña Diseño de tabla para mejorar legibilidad y jerarquía visual.</div>
+                <div><span class="text-slate-500">15:</span> Ordena la tabla por la columna Clasificacion_Cliente (de A a Z) y verifica que las fechas en Fecha_Registro tengan formato consistente DD/MM/AAAA.</div>
+                <div><span class="text-slate-500">16:</span> <span class="text-emerald-400">✅ Verificación visual: Los encabezados deben permanecer fijos al desplazarte, las filas alternan color y todos los ID_Cliente siguen el patrón CLI-XXX.</span></div>
+                <div><span class="text-slate-500">17:</span> </div>
+                <div><span class="text-slate-500">18:</span> <span class="text-cyan-400 font-bold">⚙️ Paso 3: Fórmulas de control de calidad y análisis segmentado ⚙️</span></div>
+                <div><span class="text-slate-500">19:</span> En una nueva hoja llamada "Resumen", crea celdas para métricas de calidad usando referencias estructuradas de tabla.</div>
+                <div><span class="text-slate-500">20:</span> Escribe <span class="text-pink-400">'=CONTAR.SI(Table1[Clasificacion_Cliente],"Oro")'</span> para contar clientes de categoría premium.</div>
+                <div><span class="text-slate-500">21:</span> Escribe <span class="text-pink-400">'=SI(Y(Table1[@Email]<>"",Table1[@Telefono]<>""),"Completo","Incompleto")'</span> en una nueva columna de la tabla para validar contactos completos por fila.</div>
+                <div><span class="text-slate-500">22:</span> Escribe <span class="text-pink-400">'=CONTAR.SI(Table1[Estado],"Activo")/CONTAR(Table1[ID_Cliente])'</span> y aplica formato de porcentaje para obtener la tasa de clientes activos.</div>
+                <div><span class="text-slate-500">23:</span> <span class="text-red-400">⚠️ Si aparece '#¡NOMBRE?' o '#¡VALOR!', revisa que los nombres de columna coincidan exactamente con los encabezados de tu tabla y que uses punto y coma o coma según la configuración regional de tu Excel.</span></div>
+                <div><span class="text-slate-500">24:</span> <span class="text-purple-400">💡 Explicación: Las referencias estructuradas (Table1[Columna]) hacen que las fórmulas sean más legibles y se actualicen automáticamente al agregar nuevos registros, esencial en flujos de trabajo profesionales.</span></div>
+                <div><span class="text-slate-500">25:</span> </div>
+                <div><span class="text-slate-500">26:</span> <span class="text-cyan-400 font-bold">💾 Paso final: Guarda el archivo 💾</span></div>
+                <div><span class="text-slate-500">27:</span> Nomenclatura: <span class="text-yellow-300 bg-slate-800 px-1 rounded">`grado_tema_fecha(ddmmaa)_nombre.xlsx`</span></div>
+                <div><span class="text-slate-500">28:</span> Ejemplo concreto: <span class="text-yellow-300 bg-slate-800 px-1 rounded">`11_clientes_050526_maria_rodriguez.xlsx`</span></div>
+                <div><span class="text-slate-500">29:</span> <span class="text-blue-400">🔒 Confirma que termine en .xlsx, sin espacios, tildes ni caracteres especiales.</span></div>
+                <div><span class="text-slate-500">30:</span> </div>
+                <div><span class="text-slate-500">31:</span> <span class="text-yellow-400 font-bold">✨ Reto avanzado: Crea un segmento dinámico con filtros de tabla para mostrar solo clientes "Oro" con estado "Activo" y aplica formato condicional que resalte en verde las filas con datos de contacto completos.</span></div>
             </div>
         </section>
 
+        <!-- ==========================================
+             SECCIONES: INVESTIGACIÓN Y TAREA
+             ========================================== -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- SECCIÓN: INVESTIGACIÓN -->
-            <section class="glass-panel rounded-3xl p-8 shadow-xl">
-                <span class="badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">🔍 INVESTIGACIÓN</span>
-                <h3 class="text-xl font-bold mb-3 text-white">Consulta Rápida</h3>
-                <p class="text-slate-300 mb-4">Investiga en internet y responde en tu cuaderno:</p>
-                <div class="bg-emerald-900/30 border-l-4 border-emerald-500 p-4 rounded-r-lg">
-                    <p class="font-medium text-emerald-100">¿Qué es la "Validación de Datos" en Excel y cómo puede ayudarnos a evitar que un usuario escriba texto en una celda destinada para números telefónicos?</p>
+            <section class="glass-card rounded-3xl p-8 hover:shadow-orange-500/10 hover:shadow-2xl transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        <i class="fas fa-search mr-1"></i> [🔍 INVESTIGACIÓN]
+                    </span>
                 </div>
+                <h3 class="text-xl font-bold text-orange-400 mb-2">Para el cuaderno:</h3>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Investiga: <strong>¿Qué es la "Normalización de Bases de Datos" (1FN, 2FN, 3FN)?</strong><br> Escribe un párrafo breve explicando cómo esto previene la redundancia de datos (que un dato se repita innecesariamente) y da un ejemplo corto.
+                </p>
             </section>
 
-            <!-- SECCIÓN: TAREA -->
-            <section class="glass-panel rounded-3xl p-8 shadow-xl">
-                <span class="badge bg-slate-500/20 text-slate-300 border border-slate-500/30">📄 TAREA EN HOJA SUELTA</span>
-                <div class="flex flex-col items-center justify-center h-full opacity-70">
-                    <span class="text-4xl mb-3">🎉</span>
-                    <h3 class="text-xl font-bold text-slate-300">¡Sin asignación externa!</h3>
-                    <p class="text-slate-400 text-center mt-2">Esta semana nos enfocamos en el reto práctico en la sala de sistemas. No hay tarea para la casa.</p>
+            <section class="glass-card rounded-3xl p-8 hover:shadow-slate-500/10 hover:shadow-2xl transition-all duration-300 opacity-80">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-slate-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        <i class="fas fa-file-alt mr-1"></i> [📄 TAREA EN HOJA SUELTA]
+                    </span>
+                </div>
+                <div class="flex flex-col items-center justify-center text-center h-full pb-4">
+                    <i class="fas fa-glass-cheers text-4xl text-slate-500 mb-3"></i>
+                    <h3 class="text-xl font-bold text-slate-400">Esta semana no hay tarea.</h3>
+                    <p class="text-slate-500 text-sm">
+                        ¡Enfócate en dominar las fórmulas estructuradas y la integración con IA directamente en la sala de sistemas!
+                    </p>
                 </div>
             </section>
         </div>
 
-        <!-- SECCIÓN: GAMIFICACIÓN (QUIZ) -->
-        <section class="glass-panel rounded-3xl p-8 shadow-xl relative overflow-hidden">
-            <h2 class="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-                <span>🎮</span> Micro-Quiz: Auditor de Datos
-            </h2>
-            <div id="quizContainer" class="space-y-6">
+        <!-- ==========================================
+             SECCIÓN 3: GAMIFICACIÓN (QUIZ)
+             ========================================== -->
+        <section class="glass-card rounded-3xl p-8 mb-12 border-t-4 border-indigo-500">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                    <i class="fas fa-gamepad text-indigo-400 mr-2"></i> Quiz Relámpago
+                </h2>
+                <p class="text-slate-400 mt-2">Pon a prueba tu lógica sobre Calidad de Datos</p>
+            </div>
+
+            <div id="quiz-container" class="max-w-2xl mx-auto space-y-6">
                 <!-- Pregunta 1 -->
-                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 quiz-card">
-                    <p class="font-bold text-lg mb-4 text-indigo-200">1. ¿Qué pilar de calidad de datos se viola si en la columna "Teléfono" escribimos "No tiene"?</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <button onclick="checkAnswer(this, false)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-3 rounded-lg transition-all">A) Orden</button>
-                        <button onclick="checkAnswer(this, true)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-3 rounded-lg transition-all">B) Formato</button>
-                        <button onclick="checkAnswer(this, false)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-3 rounded-lg transition-all">C) Claridad</button>
-                        <button onclick="checkAnswer(this, false)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-3 rounded-lg transition-all">D) Identificación</button>
+                <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700 quiz-card transition-all duration-300">
+                    <h3 class="text-white font-bold mb-3">1. ¿Cuál es un ejemplo de "Consistencia" en una tabla de clientes?</h3>
+                    <div class="space-y-2">
+                        <button onclick="checkAnswer(this, true)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">A) Todos los IDs tienen el formato CLI-XXX.</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">B) Llenar la tabla con cientos de registros.</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">C) Pintar los encabezados de colores llamativos.</button>
                     </div>
                 </div>
+
                 <!-- Pregunta 2 -->
-                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 quiz-card">
-                    <p class="font-bold text-lg mb-4 text-indigo-200">2. En una tabla de clientes, ¿cuál sería el mejor dato para usar como "Identificación" (Primary Key)?</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <button onclick="checkAnswer(this, false)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-3 rounded-lg transition-all">A) Nombre completo</button>
-                        <button onclick="checkAnswer(this, false)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-3 rounded-lg transition-all">B) Correo electrónico</button>
-                        <button onclick="checkAnswer(this, true)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-3 rounded-lg transition-all">C) Cédula o NIT</button>
-                        <button onclick="checkAnswer(this, false)" class="bg-slate-700 hover:bg-slate-600 text-left px-4 py-3 rounded-lg transition-all">D) Número de celular</button>
+                <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700 quiz-card transition-all duration-300">
+                    <h3 class="text-white font-bold mb-3">2. En un entorno laboral, ¿Para qué sirve el atajo 'Ctrl + T' en Excel?</h3>
+                    <div class="space-y-2">
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">A) Eliminar todos los datos duplicados de inmediato.</button>
+                        <button onclick="checkAnswer(this, true)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">B) Convertir un rango de celdas en una Tabla Oficial estructurada.</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">C) Guardar el archivo en la nube automáticamente.</button>
                     </div>
                 </div>
+
+                <!-- Pregunta 3 -->
+                <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700 quiz-card transition-all duration-300">
+                    <h3 class="text-white font-bold mb-3">3. Si en una fórmula de validación te aparece '#¡NOMBRE?', ¿qué significa?</h3>
+                    <div class="space-y-2">
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">A) Que la licencia de Excel expiró.</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">B) Que no se ingresó el "Nombre_Completo" del cliente.</button>
+                        <button onclick="checkAnswer(this, true)" class="w-full text-left bg-slate-900/50 hover:bg-indigo-900/50 p-3 rounded-lg text-sm text-slate-300 border border-slate-700 transition-colors">C) Un error de sintaxis al escribir la función o el nombre de la columna referenciada.</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="quiz-result" class="hidden mt-8 text-center bg-emerald-900/40 border border-emerald-500 rounded-2xl p-6">
+                <i class="fas fa-trophy text-4xl text-yellow-400 mb-3 animate-bounce"></i>
+                <h3 class="text-2xl font-bold text-white">¡Módulo Superado!</h3>
+                <p class="text-emerald-300">Comprendes los estándares de calidad para bases de datos profesionales.</p>
             </div>
         </section>
 
     </main>
 
-    <!-- SECCIÓN 4: FOOTER -->
-    <footer class="bg-slate-950 py-8 text-center border-t border-slate-800">
-        <p class="text-slate-500 text-sm tracking-widest uppercase">
+    <!-- ==========================================
+         SECCIÓN 4: FOOTER (Regla de Oro)
+         ========================================== -->
+    <footer class="bg-[#050b14] border-t border-white/10 mt-16 py-8 text-center">
+        <p class="text-slate-500 text-sm tracking-wide">
             &copy; 2026 | Prof. William Fdo Bernal - Área de Tecnología e Informática
         </p>
     </footer>
 
-    <!-- LOGICA JS EMBEBIDA -->
+    <!-- ==========================================
+         LÓGICA JAVASCRIPT
+         ========================================== -->
     <script>
-        // Función 1: Copiar Enlace (Obligatoria)
+        // 1. Lógica Obligatoria: Copiar Enlace
         function copiarEnlace(){
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
@@ -328,143 +404,136 @@ Ejemplo: '11_calidaddatos_040526_WilliamBernal.xlsx'
             });
         }
 
-        // Datos del simulador (Sucios vs Limpios)
-        const datosSucios = [
-            { id: "102030", nombre: "C. Giraldo", tel: "300-123", email: "caro@mail", tipo: "v.i.p" },
-            { id: "ID-504", nombre: "juan perez", tel: "No tiene", email: "juanito@empresa.com", tipo: "NUEVO" },
-            { id: "987654", nombre: "Ana Maria Lopez", tel: "3159998877", email: "ana.m@correo,com", tipo: "Frecuente " }
-        ];
-
-        const datosLimpios = [
-            { id: "102030", nombre: "Carolina Giraldo", tel: "3001230000", email: "caro@mail.com", tipo: "VIP" },
-            { id: "504000", nombre: "Juan Perez", tel: "0000000000", email: "juanito@empresa.com", tipo: "Nuevo" },
-            { id: "987654", nombre: "Ana Maria Lopez", tel: "3159998877", email: "ana.m@correo.com", tipo: "Frecuente" }
-        ];
-
-        let esLimpio = false;
+        // 2. Lógica Chart.js (Data Lab)
         let chartInstance = null;
+        
+        const dataSucios = {
+            labels: ['Emails Rebotados', 'Teléfonos Inválidos', 'Contactos Exitosos'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [45, 30, 25],
+                backgroundColor: ['rgba(239, 68, 68, 0.7)', 'rgba(245, 158, 11, 0.7)', 'rgba(16, 185, 129, 0.7)'],
+                borderColor: ['#ef4444', '#f59e0b', '#10b981'],
+                borderWidth: 1
+            }]
+        };
 
-        // Renderizar tabla
-        function renderTable(datos) {
-            const tbody = document.getElementById('tablaDatos');
-            tbody.innerHTML = '';
-            datos.forEach((row, i) => {
-                const tr = document.createElement('tr');
-                tr.className = `transition-colors duration-500 ${esLimpio ? 'hover:bg-emerald-900/30' : 'hover:bg-rose-900/30'}`;
-                
-                // Aplicar estilos de error si está sucio
-                const errStyle = "text-rose-400 font-bold bg-rose-500/10 px-1 rounded";
-                const cleanStyle = "text-emerald-400 font-medium";
+        const dataLimpios = {
+            labels: ['Emails Rebotados', 'Teléfonos Inválidos', 'Contactos Exitosos'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [5, 2, 93],
+                backgroundColor: ['rgba(239, 68, 68, 0.7)', 'rgba(245, 158, 11, 0.7)', 'rgba(16, 185, 129, 0.7)'],
+                borderColor: ['#ef4444', '#f59e0b', '#10b981'],
+                borderWidth: 1
+            }]
+        };
 
-                tr.innerHTML = `
-                    <td class="p-3 ${!esLimpio && i===1 ? errStyle : (esLimpio ? cleanStyle : '')}">${row.id}</td>
-                    <td class="p-3 ${!esLimpio && i===0 ? errStyle : (esLimpio ? cleanStyle : '')}">${row.nombre}</td>
-                    <td class="p-3 ${!esLimpio && (i===0 || i===1) ? errStyle : (esLimpio ? cleanStyle : '')}">${row.tel}</td>
-                    <td class="p-3 ${!esLimpio && (i===0 || i===2) ? errStyle : (esLimpio ? cleanStyle : '')}">${row.email}</td>
-                    <td class="p-3 ${!esLimpio && (i===0 || i===2) ? errStyle : (esLimpio ? cleanStyle : '')}">${row.tipo}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        // Inicializar Chart.js
         function initChart() {
             const ctx = document.getElementById('qualityChart').getContext('2d');
+            Chart.defaults.color = '#cbd5e1';
             chartInstance = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Datos Válidos', 'Errores Detectados'],
-                    datasets: [{
-                        data: [40, 60],
-                        backgroundColor: ['#10b981', '#f43f5e'],
-                        borderWidth: 0,
-                        hoverOffset: 4
-                    }]
-                },
+                type: 'bar',
+                data: dataSucios,
                 options: {
                     responsive: true,
-                    cutout: '75%',
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
-                        tooltip: { enabled: true }
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleFont: { size: 14, family: 'Segoe UI' },
+                            padding: 12,
+                            boxPadding: 4
+                        }
                     },
-                    animation: { animateScale: true, animateRotate: true }
+                    scales: {
+                        y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        x: { grid: { display: false } }
+                    },
+                    animation: {
+                        duration: 800,
+                        easing: 'easeOutQuart'
+                    }
                 }
             });
         }
 
-        // Lógica del botón de limpieza
-        function ejecutarLimpieza() {
-            const btn = document.getElementById('btnLimpiar');
-            const scoreText = document.getElementById('scoreText');
-            const statusText = document.getElementById('statusText');
-
-            if (!esLimpio) {
-                // Limpiar
-                renderTable(datosLimpios);
-                chartInstance.data.datasets[0].data = [100, 0];
-                chartInstance.update();
-                
-                scoreText.textContent = "100%";
-                scoreText.className = "text-3xl font-black text-emerald-400";
-                
-                statusText.textContent = "Datos óptimos y estructurados";
-                statusText.className = "mt-4 text-sm text-emerald-300 text-center font-medium bg-emerald-500/10 px-3 py-1 rounded-lg";
-                
-                btn.innerHTML = "<span>🔄</span> Deshacer Limpieza";
-                btn.classList.replace('bg-indigo-600', 'bg-slate-600');
-                btn.classList.replace('hover:bg-indigo-500', 'hover:bg-slate-500');
-                esLimpio = true;
+        function updateChart(type) {
+            if(type === 'sucios') {
+                chartInstance.data = dataSucios;
             } else {
-                // Ensuciar (Reset)
-                renderTable(datosSucios);
-                chartInstance.data.datasets[0].data = [40, 60];
-                chartInstance.update();
-                
-                scoreText.textContent = "40%";
-                scoreText.className = "text-3xl font-black text-rose-400";
-                
-                statusText.textContent = "Datos con errores críticos";
-                statusText.className = "mt-4 text-sm text-rose-300 text-center font-medium bg-rose-500/10 px-3 py-1 rounded-lg";
-                
-                btn.innerHTML = "<span>⚙️</span> Ejecutar Limpieza (Data Cleaning)";
-                btn.classList.replace('bg-slate-600', 'bg-indigo-600');
-                btn.classList.replace('hover:bg-slate-500', 'hover:bg-indigo-500');
-                esLimpio = false;
+                chartInstance.data = dataLimpios;
             }
+            chartInstance.update();
         }
 
-        // Lógica del Quiz
+        window.addEventListener('DOMContentLoaded', initChart);
+
+        // 3. Lógica del Quiz Gamificado
+        let aciertos = 0;
+        let respondidas = 0;
+        const totalPreguntas = 3;
+
         function checkAnswer(button, isCorrect) {
+            // Prevenir doble clic en la misma pregunta
             const parent = button.parentElement;
-            const buttons = parent.querySelectorAll('button');
+            if (parent.dataset.answered === "true") return;
+            parent.dataset.answered = "true";
             
-            // Deshabilitar botones de esta pregunta
-            buttons.forEach(btn => {
-                btn.disabled = true;
-                btn.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+            respondidas++;
+
+            // Estilos de los botones
+            const allButtons = parent.querySelectorAll('button');
+            allButtons.forEach(btn => {
+                btn.classList.remove('hover:bg-indigo-900/50');
+                btn.style.opacity = '0.5';
+                btn.style.cursor = 'not-allowed';
             });
 
+            button.style.opacity = '1';
+            
+            const card = parent.parentElement;
+            
             if (isCorrect) {
-                button.classList.add('bg-emerald-600', 'text-white', 'shadow-lg', 'shadow-emerald-500/50', 'scale-105');
-                button.innerHTML += " ✅";
+                button.classList.replace('bg-slate-900/50', 'bg-emerald-600/50');
+                button.classList.replace('border-slate-700', 'border-emerald-500');
+                card.classList.add('shadow-[0_0_15px_rgba(16,185,129,0.3)]', 'border-emerald-500/50');
+                aciertos++;
             } else {
-                button.classList.add('bg-rose-600', 'text-white', 'opacity-50');
-                button.innerHTML += " ❌";
-                // Mostrar correcta
-                buttons.forEach(btn => {
-                    if(btn.getAttribute('onclick').includes('true')){
-                        btn.classList.add('bg-emerald-600', 'text-white');
+                button.classList.replace('bg-slate-900/50', 'bg-red-600/50');
+                button.classList.replace('border-slate-700', 'border-red-500');
+                card.classList.add('shadow-[0_0_15px_rgba(239,68,68,0.3)]', 'border-red-500/50');
+                // Efecto vibración al fallar
+                card.animate([
+                    { transform: 'translateX(0)' },
+                    { transform: 'translateX(-5px)' },
+                    { transform: 'translateX(5px)' },
+                    { transform: 'translateX(0)' }
+                ], { duration: 300 });
+            }
+
+            // Verificar final
+            if (respondidas === totalPreguntas) {
+                setTimeout(() => {
+                    const resultDiv = document.getElementById('quiz-result');
+                    resultDiv.classList.remove('hidden');
+                    
+                    if (aciertos === totalPreguntas) {
+                        resultDiv.querySelector('h3').innerText = "¡Módulo Superado (3/3)!";
+                    } else {
+                        resultDiv.querySelector('h3').innerText = `Completado: ${aciertos} de ${totalPreguntas} correctas`;
+                        resultDiv.querySelector('p').innerText = "Repasa los apuntes del cuaderno y vuélvelo a intentar mentalmente.";
+                        resultDiv.classList.replace('bg-emerald-900/40', 'bg-slate-800/80');
+                        resultDiv.classList.replace('border-emerald-500', 'border-slate-500');
+                        resultDiv.querySelector('i').classList.replace('fa-trophy', 'fa-book-reader');
+                        resultDiv.querySelector('i').classList.replace('text-yellow-400', 'text-slate-300');
                     }
-                });
+                    
+                    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 500);
             }
         }
-
-        // Init
-        document.addEventListener('DOMContentLoaded', () => {
-            renderTable(datosSucios);
-            initChart();
-        });
     </script>
 </body>
 </html>
