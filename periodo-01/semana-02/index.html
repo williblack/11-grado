@@ -9,15 +9,15 @@
     html {
       font-size: clamp(14px, 1.5vw, 18px);
       overflow-x: hidden;
+      overflow-y: auto;
     }
     body {
       margin: 0;
       padding: 0;
       word-wrap: break-word;
       overflow-wrap: break-word;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
       font-family: system-ui, -apple-system, sans-serif;
     }
     /* Plantilla de encabezado y pie de página institucionales */
@@ -34,7 +34,7 @@
     .pie-clase {
       border-bottom: none;
       border-top: 1px solid #e2e8f0;
-      margin-top: auto;
+      margin-top: 2rem;
     }
   </style>
 </head>
