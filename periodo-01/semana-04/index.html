@@ -1,1 +1,255 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introducción a la metrología 📏⚖️ | Grado 11°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 11,
+  edad: 16,
+  periodo: 1,
+  semana: 4,
+  tema: "Introducción a la metrología 📏⚖️",
+  temaAnterior: "Plataformas virtuales para el aprendizaje",
+  video: "",
+  estilo: "hojacalculo",
+  emoji: "📏⚖️",
+  objetivo: "Comprender la metrología como la ciencia de la medición y reconocer su importancia en la vida cotidiana, la ciencia y la tecnología mediante el análisis y registro de datos físicos.",
+  competencia: "Evalúa magnitudes físicas del Sistema Internacional (SI) y utiliza herramientas digitales para estructurar, procesar y presentar tablas de datos con rigor técnico.",
+  preguntaGancho: "¿Te imaginas qué pasaría si los ingenieros que construyen un avión usaran reglas con centímetros de tamaños diferentes o si en la farmacia midieran las medicinas a ojo?",
+  agenda: [
+    { min: 5, titulo: "Contextualización y Gancho", texto: "Reflexión inicial sobre la necesidad de precisión e impacto de los errores de medición en la ciencia y la industria." },
+    { min: 15, titulo: "Estructuración en el Cuaderno", texto: "Transcripción y análisis de conceptos fundamentales: metrología, magnitudes, Unidades SI y diferencia entre medir y calcular." },
+    { min: 15, titulo: "Reto con IA y Excel en Sala", texto: "Generación de datos metrológicos en formato TSV mediante IA e importación estructurada a Microsoft Excel." },
+    { min: 10, titulo: "Cierre, Evaluación y Asignación", texto: "Verificación de la actividad en Excel, desarrollo de la hoja digital y explicación de la investigación y tarea." }
+  ],
+  cuaderno: {
+    conexion: "En la semana anterior exploramos las plataformas virtuales para el aprendizaje y la gestión del conocimiento. Hoy aplicamos esa capacidad de organización digital a la metrología, la ciencia transversal que fundamenta toda la experimentación científica, la producción industrial y la analítica de datos.",
+    bloques: [
+      {
+        icono: "🎯",
+        titulo: "1. Concepto e Importancia de la Metrología",
+        puntos: [
+          { icono: "🔬", termino: "Concepto de Metrología", texto: "Es la ciencia que estudia las mediciones, sus sistemas de unidades y los instrumentos utilizados para efectuarlas. Garantiza que las medidas sean confiables y comparables globalmente." },
+          { icono: "⚠️", termino: "Importancia de la Precisión", texto: "En la ingeniería, la medicina y el comercio internacional, la exactitud es crítica. Un margen de error mínimo en la calibración puede ocasionar fallas estructurales, dosificaciones letales o pérdidas económicas millonarias." }
+        ],
+        ampliacion: "La metrología no es solo tomar una regla y medir una hoja; es la disciplina científica que sostiene el comercio global y la alta tecnología. Imagina que un fabricante de procesadores en Taiwán use un milímetro levemente distinto al de un ensamblador de computadores en Colombia: los componentes jamás encajarían. Por ello, existe la necesidad internacional de establecer patrones universales de medición que garanticen la interoperabilidad técnica y la seguridad en todos los campos industriales."
+      },
+      {
+        icono: "🌍",
+        titulo: "2. Magnitudes Físicas y el Sistema Internacional (SI)",
+        puntos: [
+          { icono: "📏", termino: "Magnitud Física", texto: "Es toda propiedad de un cuerpo o sistema natural que se puede medir cuantitativamente (ejemplo: longitud, masa, tiempo, temperatura)." },
+          { icono: "🏛️", termino: "Sistema Internacional (SI)", texto: "Es el estándar global que define las unidades oficiales: Longitud en metros (m), Masa en kilogramos (kg), Tiempo en segundos (s) y Temperatura en Kelvin (K)." }
+        ],
+        ampliacion: "El Sistema Internacional de Unidades (SI) fue creado para unificar criterios globales y eliminar la confusión causada por sistemas regionales (como las pulgadas, pies o libras del sistema anglosajón). Las magnitudes fundamentales son aquellas que se definen por sí mismas, mientras que las magnitudes derivadas (como la velocidad en m/s o la densidad en kg/m³) resultan de combinar matemáticamente las fundamentales. Comprender estas unidades es el primer paso para estructurar bases de datos científicas e industriales."
+      },
+      {
+        icono: "🧮",
+        titulo: "3. Diferencia entre Medir y Calcular",
+        puntos: [
+          { icono: "📐", termino: "Medir", texto: "Es la comparación directa de una cantidad física con una unidad patrón preestablecida mediante un instrumento físico (ejemplo: medir el ancho de un marco con un flexómetro)." },
+          { icono: "🖥️", termino: "Calcular", texto: "Es la obtención indirecta de un valor aplicando fórmulas matemáticas sobre datos previamente medidos (ejemplo: multiplicar el largo por el ancho para hallar el área)." }
+        ],
+        ampliacion: "En el trabajo técnico e informático es crucial no confundir los datos primarios (medidos) con los datos procesados (calculados). La medición siempre conlleva una incertidumbre experimental inherente al instrumento o al observador. Por el contrario, el cálculo es una operación matemática pura que procesa dichos valores. Cuando estructuramos tablas en hojas de cálculo como Excel, las columnas de entrada representan lo medido, mientras que las columnas con fórmulas representan lo calculado."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Metrología", definicion: "Ciencia de la medición que abarca los aspectos teóricos y prácticos relativos a las mediciones, independiente de su incertidumbre." },
+    { termino: "Incertidumbre de Medición", definicion: "Parámetro asociado al resultado de una medición que caracteriza la dispersión de los valores que podrían ser atribuidos a la magnitud." },
+    { termino: "Sistema Internacional de Unidades (SI)", definicion: "Sistema oficial de pesas y medidas adoptado de forma casi universal para estandarizar las ciencias y la industria." },
+    { termino: "Calibración", definicion: "Conjunto de operaciones que comparan las lecturas de un instrumento con un patrón de referencia de valor conocido." }
+  ],
+  sabiasQue: [
+    "En 1999, la NASA perdió la sonda espacial Mars Climate Orbiter de 125 millones de dólares porque un equipo de ingeniería usó el sistema inglés (libras-fuerza) y otro el Sistema Internacional (Newton) en el software de navegación.",
+    "Originalmente en 1791, el metro se definió como la diezmillonésima parte de la distancia entre el ecuador y el polo norte a lo largo del meridiano de París.",
+    "Desde mayo de 2019, el kilogramo ya no se define por un cilindro físico de platino guardado en Francia, sino mediante una constante física fundamental: la constante de Planck."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Instrumentos y Magnitudes del SI",
+      items: [
+        { icono: "📏", frente: "Cinta Métrica / Pie de Rey", reverso: "Mide la magnitud de Longitud. Su unidad fundamental en el Sistema Internacional es el metro (m)." },
+        { icono: "⚖️", frente: "Báscula / Balanza Digital", reverso: "Mide la magnitud de Masa. Su unidad fundamental en el Sistema Internacional es el kilogramo (kg)." },
+        { icono: "⏱️", frente: "Cronómetro Digital", reverso: "Mide la magnitud de Tiempo. Su unidad fundamental en el Sistema Internacional es el segundo (s)." },
+        { icono: "🌡️", frente: "Termómetro / Termopar", reverso: "Mide la magnitud de Temperatura. Su unidad oficial en el SI es el Kelvin (K) y la de uso cotidiano Celsius (°C)." }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasificador Metrológico: ¿Medir o Calcular?",
+      categorias: ["Operación de MEDIR", "Operación de CALCULAR"],
+      items: [
+        { texto: "Usar un calibrador vernier para determinar el diámetro de un tornillo", categoria: 0 },
+        { texto: "Multiplicar la masa por la gravedad en Excel para obtener la fuerza en Newtons", categoria: 1 },
+        { texto: "Registrar la temperatura del agua con un termómetro de inmersión", categoria: 0 },
+        { texto: "Dividir la distancia recorrida entre el tiempo empleado para hallar la velocidad", categoria: 1 },
+        { texto: "Contar el tiempo de una reacción química con un cronómetro de laboratorio", categoria: 0 },
+        { texto: "Aplicar la fórmula V = L x A x H para conocer el volumen de un recipiente", categoria: 1 }
+      ]
+    },
+    explorador: {
+      titulo: "Las Tres Ramas de la Metrología",
+      items: [
+        {
+          icono: "🔬",
+          nombre: "Metrología Científica",
+          secciones: [
+            { titulo: "Campo de Acción", items: ["Desarrollo y mantenimiento de patrones primarios de medición.", "Investigación de nuevas unidades basadas en constantes universales de la física."] }
+          ]
+        },
+        {
+          icono: "🏭",
+          nombre: "Metrología Industrial",
+          secciones: [
+            { titulo: "Campo de Acción", items: ["Calibración metódica de herramientas e instrumentos en las líneas de producción.", "Garantía de calidad para que piezas fabricadas en distintas partes encajen con precisión."] }
+          ]
+        },
+        {
+          icono: "⚖️",
+          nombre: "Metrología Legal",
+          secciones: [
+            { titulo: "Campo de Acción", items: ["Verificación oficial de balanzas comerciales, surtidores de combustible y medidores de energía.", "Protección al consumidor garantizando la equidad en transacciones económicas cotidianas."] }
+          ]
+        }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Generación de Tabla de Metrología e Importación TSV en Excel",
+    descripcion: "Estructurarás una base de datos sobre magnitudes e instrumentos utilizando Inteligencia Artificial, para luego importarla a Microsoft Excel garantizando la distribución perfecta de filas y columnas gracias al formato de tabulaciones (TSV).",
+    pasos: [
+      "Paso 1: Abre tu asistente de IA (ChatGPT, Gemini o Copilot) en la computadora.",
+      "Paso 2: Copia y pega exactamente el prompt de metrología proporcionado a continuación.",
+      "Paso 3: Copia únicamente la tabla devuelta por la IA sin seleccionar textos explicativos.",
+      "Paso 4: Abre Microsoft Excel y pega el contenido directamente en la celda A1. Observa cómo las tabulaciones separan automáticamente los datos en las columnas A a E.",
+      "Paso 5: Selecciona los encabezados (A1:E1), aplícales relleno de color oscuro, fuente en color blanco, negrita y alineación centrada.",
+      "Paso 6: Selecciona todas las columnas y haz doble clic en los bordes de la cabecera para autoajustar el ancho y evitar textos cortados."
+    ],
+    prompt: "Actúa como un ingeniero experto en metrología. Genera una tabla TSV con 5 columnas exactas: Objeto_Cotidiano, Magnitud_Fisica, Instrumento_de_Medicion, Unidad_SI, Situacion_de_Uso. La columna Objeto_Cotidiano debe tener 8 ejemplos reales y diferentes. La columna Magnitud_Fisica debe incluir ejemplos variados de Longitud, Masa, Tiempo o Temperatura. Entrega SOLO la tabla en formato TSV con exactamente 8 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código. Usa tabulaciones reales como separador.",
+    herramientas: [
+      { nombre: "ChatGPT / Gemini / Copilot", url: "https://gemini.google.com" },
+      { nombre: "Microsoft Excel", url: "https://www.office.com" }
+    ],
+    requisitos: [
+      "Exactamente 8 filas de datos válidos más 1 fila de encabezados.",
+      "Datos pegados directamente desde A1 respetando el orden de 5 columnas independientes.",
+      "Estilo visual profesional en la fila 1 (Relleno oscuro, texto blanco y negrita).",
+      "Ancho de columnas autoajustado para la lectura completa de cada celda."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Qué es la metrología?",
+      opciones: [
+        "La ciencia que estudia el clima y el pronóstico del tiempo meteorológico.",
+        "La ciencia que estudia las mediciones, sus sistemas de unidades y los instrumentos para realizarlas.",
+        "La técnica de medir exclusivamente terrenos y fincas en la agronomía.",
+        "Una rama de la informática dedicada a contar líneas de código en un programa."
+      ],
+      correcta: 1,
+      explicacion: "La metrología es la ciencia de las mediciones y garantiza que los valores medidos sean confiables y universales."
+    },
+    {
+      pregunta: "En el Sistema Internacional de Unidades (SI), ¿cuáles son las unidades oficiales para las magnitudes de Longitud y Masa respectivamente?",
+      opciones: [
+        "Pulgada y Libra",
+        "Centímetro y Gramo",
+        "Metro (m) y Kilogramo (kg)",
+        "Kilómetro y Tonelada"
+      ],
+      correcta: 2,
+      explicacion: "El metro (m) y el kilogramo (kg) son las unidades fundamentales del SI aprobadas globalmente para longitud y masa."
+    },
+    {
+      pregunta: "¿Cuál fue la causa principal de la pérdida de la sonda espacial Mars Climate Orbiter de la NASA en 1999?",
+      opciones: [
+        "Una colisión no prevista con un asteroide cercano a Marte.",
+        "Un fallo mecánico en los paneles solares de la nave.",
+        "Un error de conversión entre el sistema de unidades anglosajón y el Sistema Internacional (SI) en el software.",
+        "Un ataque informático a los servidores de control en la Tierra."
+      ],
+      correcta: 2,
+      explicacion: "Un equipo envió datos en libras-fuerza (sistema inglés) y el software de la nave interpretaba Newtons (SI), desviando su trayectoria fatalmente."
+    },
+    {
+      pregunta: "¿Cuál de las siguientes acciones corresponde a la operación de CALCULAR y no a la de MEDIR?",
+      opciones: [
+        "Usar una cinta métrica para medir la altura de una puerta.",
+        "Determinar el peso de un bulto usando una báscula electrónica.",
+        "Multiplicar la longitud por el ancho por la altura para hallar el volumen de una caja.",
+        "Leer la temperatura corporal registrada por un termómetro infrarrojo."
+      ],
+      correcta: 2,
+      explicacion: "Calcular implica procesar matemáticamente mediante fórmulas datos medidos previamente."
+    },
+    {
+      pregunta: "Al trabajar con Inteligencia Artificial y Excel, ¿por qué el formato TSV es el más adecuado para exportar tablas?",
+      opciones: [
+        "Porque convierte automáticamente los textos en imágenes de alta resolución.",
+        "Porque utiliza tabulaciones como separadores, permitiendo que Excel ubique cada dato en su columna correcta al pegar.",
+        "Porque encripta la información para que nadie pueda cambiar los números.",
+        "Porque borra automáticamente los encabezados repetidos."
+      ],
+      correcta: 1,
+      explicacion: "TSV significa Tab-Separated Values; las tabulaciones le indican a Excel exactamente dónde termina una celda y empieza la siguiente."
+    },
+    {
+      pregunta: "¿Qué rama de la metrología se encarga de verificar que las balanzas de los supermercados y los surtidores de gasolina midan con exactitud legal?",
+      opciones: [
+        "Metrología Científica",
+        "Metrología Teórica",
+        "Metrología Legal",
+        "Metrología Astronómica"
+      ],
+      correcta: 2,
+      explicacion: "La metrología legal vela por el cumplimiento de las regulaciones gubernamentales para proteger la equidad en el comercio."
+    }
+  ],
+  investigacion: {
+    titulo: "El precio de un error de medición",
+    instruccion: "Investiga de forma corta y explica en tu cuaderno (máximo 5 renglones):",
+    preguntas: [
+      "¿Qué le pasó a la sonda espacial Mars Climate Orbiter de la NASA en 1999?",
+      "¿Cómo un simple error de conversión entre el sistema inglés y el Sistema Internacional (SI) hizo que se perdieran millones de dólares?"
+    ],
+    fuentes: [
+      "Documentos oficiales e históricos de misiones espaciales de la NASA",
+      "Publicaciones sobre metrología e historia de las unidades de medida"
+    ]
+  },
+  tarea: {
+    titulo: "Mi Laboratorio en Casa: Mediciones Reales",
+    instruccion: "Elabora una tabla de registro aplicando los conceptos de metrología vistos en clase. Debes elegir 5 objetos diferentes de tu entorno, medirlos físicamente y registrar los resultados.",
+    renglones: 6,
+    indicacion: "Escríbela en la hoja suelta para entregar",
+    criterios: [
+      "Incluir el encabezado completo: Nombre del Estudiante y Grado.",
+      "Dibujar la tabla de mediciones utilizando regla y de forma muy organizada.",
+      "Completar las 5 columnas: N°, Objeto / Situación, Magnitud Física, Instrumento utilizado, Unidad de medida y Resultado medido.",
+      "Garantizar la coherencia absoluta entre magnitud, instrumento y unidad (ej: si es masa, usar báscula y gramos)."
+    ],
+    entrega: "Próxima clase"
+  },
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "Diferencia crítica: Explica con un ejemplo cotidiano por qué es distinto MEDIR una propiedad directamente a CALCULARLA mediante una fórmula.", lineas: 3 },
+      { id: "r2", texto: "Importancia de los estándares: ¿Qué problemas globales ocurrirían si cada país utilizara un sistema de medición completamente diferente y rehusara usar el SI?", lineas: 3 },
+      { id: "r3", texto: "Análisis técnico de la sala: ¿Por qué fue indispensable exigirle a la IA que entregara el resultado en formato TSV para poder procesarlo en Excel?", lineas: 3 },
+      { id: "r4", texto: "Reflexión metrológica: ¿Qué impacto social o económico tendría que los instrumentos de un laboratorio farmacéutico tuvieran un error de calibración del 5%?", lineas: 3 },
+      { id: "r5", texto: "¿Qué aprendí hoy sobre la precisión de los datos y el Sistema Internacional de Unidades?", lineas: 2 }
+    ]
+  },
+  notasDocente: [
+    "Inicie los primeros 5 minutos proyectando la historia del Mars Climate Orbiter para enganchar de inmediato a los estudiantes con el valor de la precisión.",
+    "Supervise de cerca la instrucción del prompt en la IA para asegurarse de que todos obtengan texto TSV limpio con tabulaciones reales.",
+    "Compruebe que al pegar los datos en Excel, ningún estudiante quede con la información amontonada en la columna A por no haber copiado las tabulaciones."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
