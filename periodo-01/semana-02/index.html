@@ -1,562 +1,607 @@
-<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Plataformas virtuales para el aprendizaje | Grado 11°</title> </head> <body> <script> const CLASE = { grado: 11, edad: 16, periodo: 1, semana: 2, tema: "Plataformas virtuales para el aprendizaje", temaAnterior: "Netiqueta y comportamiento responsable en Internet", video: "", estilo: "oceano",
-
-emoji: "💻🌐",
-objetivo: "Identificar las características, secciones y funciones de las plataformas virtuales utilizadas para aprender, investigar, comunicarse y presentar actividades académicas.",
-competencia: "Utiliza plataformas educativas de manera autónoma, crítica, segura y responsable para gestionar su proceso de aprendizaje.",
-preguntaGancho: "¿Una plataforma virtual puede mejorar el aprendizaje o solamente cambia el lugar donde estudiamos?",
-
-agenda: [
-{
-min: 5,
-titulo: "Conexión inicial",
-texto: "Recordar las normas de netiqueta y relacionarlas con la comunicación dentro de las plataformas educativas."
-},
-{
-min: 12,
-titulo: "Explicación del tema",
-texto: "Reconocer qué es una plataforma educativa, cuáles son sus características y para qué sirven sus secciones."
-},
-{
-min: 18,
-titulo: "Reto en Excel",
-texto: "Completar un cuadro comparativo entre la clase presencial y la clase apoyada en una plataforma virtual."
-},
-{
-min: 6,
-titulo: "Socialización",
-texto: "Comparar respuestas, justificar diferencias y revisar que la tabla esté completa."
-},
-{
-min: 4,
-titulo: "Cierre y evaluación",
-texto: "Resolver preguntas breves para comprobar lo aprendido y registrar la tarea entregable."
-}
-],
-
-cuaderno: {
-conexion: "En la clase anterior estudiamos la netiqueta y el comportamiento responsable en Internet. Estas normas también deben aplicarse en las plataformas educativas, especialmente al escribir mensajes, participar en foros, entregar trabajos y comunicarse con docentes y compañeros.",
-bloques: [
-{
-icono: "🎓",
-titulo: "1. Plataformas educativas",
-puntos: [
-{
-icono: "💻",
-termino: "Plataforma educativa",
-texto: "Es un espacio digital diseñado para apoyar los procesos de enseñanza y aprendizaje."
-},
-{
-icono: "🌐",
-termino: "Acceso virtual",
-texto: "Permite consultar contenidos y desarrollar actividades mediante un dispositivo conectado a Internet."
-},
-{
-icono: "🏫",
-termino: "Complemento académico",
-texto: "Puede apoyar una clase presencial o permitir el desarrollo de actividades a distancia."
-}
-],
-ampliacion: "Una plataforma educativa reúne en un mismo entorno los recursos necesarios para desarrollar una asignatura. Allí se pueden encontrar explicaciones, documentos, videos, enlaces, actividades, evaluaciones y canales de comunicación. Por ejemplo, un estudiante puede asistir a una clase presencial y después ingresar a la plataforma institucional para descargar una guía, revisar una fecha de entrega o presentar una evaluación. En la universidad y en muchos empleos también se utilizan plataformas para realizar cursos, capacitaciones y proyectos. La idea clave es que una plataforma educativa organiza y facilita el aprendizaje, pero exige participación activa y responsabilidad del estudiante."
-},
-{
-icono: "🧩",
-titulo: "2. Características de un entorno virtual",
-puntos: [
-{
-icono: "🔐",
-termino: "Acceso personal",
-texto: "Cada usuario ingresa mediante credenciales que protegen su información académica."
-},
-{
-icono: "📚",
-termino: "Organización",
-texto: "Los contenidos se distribuyen por cursos, materias, unidades, temas o semanas."
-},
-{
-icono: "⏰",
-termino: "Disponibilidad",
-texto: "Los materiales pueden consultarse desde diferentes lugares y horarios, según las condiciones de la plataforma."
-},
-{
-icono: "📱",
-termino: "Acceso multidispositivo",
-texto: "Muchas plataformas pueden utilizarse desde computadores, tabletas y teléfonos celulares."
-}
-],
-ampliacion: "Un entorno virtual de aprendizaje debe ser organizado, accesible y fácil de utilizar. Cuando el estudiante ingresa, necesita reconocer rápidamente sus cursos, actividades pendientes y fechas importantes. El usuario y la contraseña identifican a la persona y permiten registrar su participación, por lo que no deben compartirse. Por ejemplo, si un estudiante presta su contraseña y otra persona envía un mensaje inapropiado desde su cuenta, la plataforma puede registrar la acción como realizada por el propietario. La idea clave es que el acceso personal permite estudiar y gestionar información, pero también implica cuidar la identidad digital y asumir responsabilidad por las acciones realizadas."
-},
-{
-icono: "🗂️",
-titulo: "3. Secciones y funciones principales",
-puntos: [
-{
-icono: "👤",
-termino: "Perfil y cursos",
-texto: "El perfil contiene información del usuario y los cursos muestran las materias asignadas."
-},
-{
-icono: "📄",
-termino: "Contenidos y actividades",
-texto: "Permiten consultar recursos, conocer instrucciones y enviar trabajos."
-},
-{
-icono: "✅",
-termino: "Evaluaciones y calificaciones",
-texto: "Facilitan la presentación de pruebas y la consulta de resultados u observaciones."
-},
-{
-icono: "💬",
-termino: "Mensajes",
-texto: "Permiten la comunicación académica entre estudiantes y docentes."
-}
-],
-ampliacion: "Las secciones de una plataforma cumplen funciones diferentes, pero trabajan de manera integrada. El estudiante consulta un contenido, desarrolla una actividad, la entrega dentro del plazo y posteriormente revisa la calificación o la retroalimentación. También puede utilizar los mensajes para formular preguntas claras y respetuosas. Por ejemplo, antes de enviar un trabajo debe revisar el nombre del archivo, el formato solicitado y la fecha límite. En los estudios universitarios y en el ámbito laboral, esta capacidad para organizar archivos, instrucciones y tiempos es fundamental. La idea clave es que conocer las secciones evita errores y permite aprovechar mejor las herramientas disponibles."
-},
-{
-icono: "🛡️",
-titulo: "4. Uso responsable y pensamiento crítico",
-puntos: [
-{
-icono: "🔒",
-termino: "Seguridad",
-texto: "Se deben proteger las credenciales, cerrar la sesión en equipos compartidos y evitar enlaces sospechosos."
-},
-{
-icono: "🤝",
-termino: "Respeto",
-texto: "Los mensajes, comentarios y participaciones deben seguir las normas de netiqueta."
-},
-{
-icono: "✍️",
-termino: "Autoría",
-texto: "Los trabajos deben ser propios y las fuentes consultadas deben reconocerse correctamente."
-},
-{
-icono: "🤖",
-termino: "Uso de IA",
-texto: "La inteligencia artificial puede orientar y revisar, pero no debe reemplazar el análisis personal."
-}
-],
-ampliacion: "Usar una plataforma virtual no consiste únicamente en ingresar y entregar archivos. También requiere pensamiento crítico, honestidad académica y cuidado de los datos personales. Si se utiliza inteligencia artificial para apoyar una actividad, el estudiante debe revisar la respuesta, corregir posibles errores y expresar las ideas con comprensión propia. Copiar una respuesta sin analizarla impide aprender y puede producir información incorrecta. Además, los mensajes deben ser respetuosos, claros y relacionados con el propósito académico. La idea clave es que la tecnología mejora el aprendizaje cuando se utiliza con autonomía, criterio, ética y responsabilidad."
-}
-]
-},
-
-glosario: [
-{
-termino: "Plataforma educativa",
-definicion: "Entorno digital que reúne contenidos, actividades, evaluaciones y herramientas de comunicación para apoyar el aprendizaje."
-},
-{
-termino: "Entorno virtual de aprendizaje",
-definicion: "Espacio digital organizado en el que estudiantes y docentes desarrollan procesos educativos."
-},
-{
-termino: "Credenciales",
-definicion: "Datos personales de acceso, como el usuario y la contraseña."
-},
-{
-termino: "Contenido digital",
-definicion: "Recurso educativo presentado como texto, imagen, audio, video, documento o enlace."
-},
-{
-termino: "Retroalimentación",
-definicion: "Comentario u orientación que ayuda a reconocer aciertos y mejorar un trabajo."
-},
-{
-termino: "Identidad digital",
-definicion: "Información y acciones que representan a una persona en los entornos digitales."
-},
-{
-termino: "LMS",
-definicion: "Sistema de gestión del aprendizaje utilizado para organizar cursos, usuarios, contenidos y evaluaciones."
-}
-],
-
-sabiasQue: [
-"Moodle es una plataforma de gestión del aprendizaje distribuida como software libre y de código abierto.",
-"Una plataforma educativa puede registrar entregas, intentos de evaluación y participación de acuerdo con su configuración.",
-"Cerrar la sesión en un computador compartido ayuda a impedir que otra persona ingrese a la cuenta sin autorización."
-],
-
-modulos: {
-tarjetas: {
-titulo: "Relaciona la plataforma con situaciones cotidianas",
-items: [
-{
-icono: "🏫",
-frente: "Campus virtual",
-reverso: "Se parece a un colegio digital porque reúne cursos, contenidos y actividades."
-},
-{
-icono: "🪪",
-frente: "Usuario y contraseña",
-reverso: "Funcionan como una identificación y una llave personal de acceso."
-},
-{
-icono: "🗃️",
-frente: "Sección de contenidos",
-reverso: "Se parece a una biblioteca organizada por materias, temas o semanas."
-},
-{
-icono: "📥",
-frente: "Entrega de trabajos",
-reverso: "Funciona como un buzón digital que registra el archivo y la fecha de envío."
-},
-{
-icono: "📊",
-frente: "Calificaciones",
-reverso: "Se parecen a un informe de progreso acompañado de observaciones del docente."
-},
-{
-icono: "💬",
-frente: "Mensajes",
-reverso: "Funcionan como un canal formal para resolver dudas y compartir información académica."
-}
-]
-},
-
-explorador: {
-  titulo: "Explorador de una plataforma educativa",
-  items: [
-    {
-      icono: "👤",
-      nombre: "Perfil",
-      secciones: [
-        {
-          titulo: "Información",
-          items: [
-            "Nombre del usuario",
-            "Datos académicos",
-            "Configuración de la cuenta"
-          ]
-        },
-        {
-          titulo: "Cuidado",
-          items: [
-            "No publicar datos innecesarios",
-            "Usar una contraseña segura",
-            "Mantener la información actualizada"
-          ]
-        }
-      ]
-    },
-    {
-      icono: "📚",
-      nombre: "Cursos y contenidos",
-      secciones: [
-        {
-          titulo: "Elementos",
-          items: [
-            "Materias matriculadas",
-            "Unidades o semanas",
-            "Documentos, videos y enlaces"
-          ]
-        },
-        {
-          titulo: "Acciones",
-          items: [
-            "Leer instrucciones",
-            "Descargar materiales",
-            "Organizar fechas importantes"
-          ]
-        }
-      ]
-    },
-    {
-      icono: "📝",
-      nombre: "Actividades y evaluaciones",
-      secciones: [
-        {
-          titulo: "Elementos",
-          items: [
-            "Tareas",
-            "Cuestionarios",
-            "Fechas de apertura y cierre"
-          ]
-        },
-        {
-          titulo: "Acciones",
-          items: [
-            "Revisar requisitos",
-            "Adjuntar el archivo correcto",
-            "Confirmar que la entrega quedó registrada"
-          ]
-        }
-      ]
-    },
-    {
-      icono: "💬",
-      nombre: "Comunicación",
-      secciones: [
-        {
-          titulo: "Canales",
-          items: [
-            "Mensajes",
-            "Anuncios",
-            "Foros académicos"
-          ]
-        },
-        {
-          titulo: "Netiqueta",
-          items: [
-            "Saludar",
-            "Explicar la duda con claridad",
-            "Utilizar lenguaje respetuoso"
-          ]
-        }
-      ]
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataformas virtuales para el aprendizaje | Grado 11°</title>
+  <style>
+    /* Ajuste de escalado tipográfico para asegurar legibilidad sin desbordamientos */
+    html {
+      font-size: clamp(14px, 1.5vw, 18px);
+      overflow-x: hidden;
     }
-  ]
-},
-
-clasificador: {
-  titulo: "Clasifica cada acción dentro de una plataforma",
-  categorias: [
-    "Uso responsable",
-    "Uso inadecuado",
-    "Gestión académica"
-  ],
-  items: [
-    {
-      texto: "Cerrar la sesión después de usar un computador compartido.",
-      categoria: 0
-    },
-    {
-      texto: "Compartir la contraseña con varios compañeros.",
-      categoria: 1
-    },
-    {
-      texto: "Consultar la fecha límite antes de enviar una actividad.",
-      categoria: 2
-    },
-    {
-      texto: "Escribir un mensaje respetuoso para resolver una duda.",
-      categoria: 0
-    },
-    {
-      texto: "Copiar un trabajo de Internet sin reconocer la fuente.",
-      categoria: 1
-    },
-    {
-      texto: "Revisar la retroalimentación después de recibir una calificación.",
-      categoria: 2
-    },
-    {
-      texto: "Abrir enlaces desconocidos enviados por cuentas sospechosas.",
-      categoria: 1
-    },
-    {
-      texto: "Organizar los archivos con nombres claros antes de entregarlos.",
-      categoria: 2
-    },
-    {
-      texto: "Verificar una respuesta producida con inteligencia artificial.",
-      categoria: 0
+    body {
+      margin: 0;
+      padding: 0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, sans-serif;
     }
-  ]
-}
+    /* Plantilla de encabezado y pie de página institucionales */
+    .encabezado-clase, .pie-clase {
+      text-align: center;
+      padding: 1rem;
+      font-weight: 700;
+      background-color: #f8fafc;
+      color: #0f172a;
+      width: 100%;
+      box-sizing: border-box;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .pie-clase {
+      border-bottom: none;
+      border-top: 1px solid #e2e8f0;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
 
-},
+  <header class="encabezado-clase">
+    Profesor de Tecnología 2026: William Fdo Bernal
+  </header>
 
-reto: {
-titulo: "Clase presencial frente a clase apoyada en una plataforma virtual",
-descripcion: "Crea en Excel un cuadro comparativo que muestre las características, ventajas y responsabilidades presentes en las dos modalidades de aprendizaje.",
-pasos: [
-"Abre Microsoft Excel y crea un libro en blanco.",
-"Escribe los encabezados: Aspecto, Clase presencial y Clase apoyada en una plataforma virtual.",
-"Agrega las filas: Lugar de aprendizaje, Acceso a contenidos, Entrega de trabajos, Comunicación, Evaluaciones y Responsabilidad del estudiante.",
-"Conserva las respuestas entregadas por el profesor y completa todas las celdas vacías con ideas claras y breves.",
-"Aplica formato a la tabla: título en negrita, bordes, ajuste de texto y colores suaves que permitan leer la información.",
-"Utiliza el prompt propuesto para revisar la claridad de tus respuestas, sin copiar automáticamente todo lo producido por la IA.",
-"Guarda el archivo con el nombre Apellido_Nombre_Plataformas_11 y verifica que la tabla esté completa."
-],
-prompt: "Actúa como orientador educativo. Revisa este cuadro comparativo entre una clase presencial y una clase apoyada en una plataforma virtual. Señala si cada comparación es clara, equilibrada y apropiada para grado 11. No hagas el trabajo completo: identifica errores y propone mejoras breves. Mi cuadro es: [pega aquí el contenido de tu tabla].",
-herramientas: [
-{
-nombre: "Microsoft Excel en línea",
-url: "https://www.microsoft365.com/launch/excel"
-},
-{
-nombre: "Google Sheets",
-url: "
-https://sheets.google.com"
-},
-{
-nombre: "ChatGPT",
-url: "https://chatgpt.com"
-}
-],
-requisitos: [
-"Incluir los tres encabezados indicados.",
-"Completar los seis aspectos solicitados.",
-"Escribir comparaciones claras y coherentes.",
-"Aplicar bordes, ajuste de texto y formato legible.",
-"Revisar las sugerencias de la IA antes de aceptarlas.",
-"Guardar el archivo con el nombre solicitado."
-]
-},
+  <script>
+    const CLASE = {
+      grado: 11,
+      edad: 16,
+      periodo: 1,
+      semana: 2,
+      tema: "Plataformas virtuales para el aprendizaje",
+      temaAnterior: "Netiqueta y comportamiento responsable en Internet",
+      video: "",
+      estilo: "oceano",
+      emoji: "💻🌐",
+      objetivo: "Identificar las características, secciones y funciones de las plataformas virtuales utilizadas para aprender, investigar, comunicarse y presentar actividades académicas.",
+      competencia: "Utiliza plataformas educativas de manera autónoma, crítica, segura y responsable para gestionar su proceso de aprendizaje.",
+      preguntaGancho: "¿Una plataforma virtual puede mejorar el aprendizaje o solamente cambia el lugar donde estudiamos?",
+      agenda: [
+        {
+          min: 5,
+          titulo: "Conexión inicial",
+          texto: "Recordar las normas de netiqueta y relacionarlas con la comunicación dentro de las plataformas educativas."
+        },
+        {
+          min: 12,
+          titulo: "Explicación del tema",
+          texto: "Reconocer qué es una plataforma educativa, cuáles son sus características y para qué sirven sus secciones."
+        },
+        {
+          min: 18,
+          titulo: "Reto en Excel",
+          texto: "Completar un cuadro comparativo entre la clase presencial y la clase apoyada en una plataforma virtual."
+        },
+        {
+          min: 6,
+          titulo: "Socialización",
+          texto: "Comparar respuestas, justificar diferencias y revisar que la tabla esté completa."
+        },
+        {
+          min: 4,
+          titulo: "Cierre y evaluación",
+          texto: "Resolver preguntas breves para comprobar lo aprendido y registrar la tarea entregable."
+        }
+      ],
+      cuaderno: {
+        conexion: "En la clase anterior estudiamos la netiqueta y el comportamiento responsable en Internet. Estas normas también deben aplicarse en las plataformas educativas, especialmente al escribir mensajes, participar en foros, entregar trabajos y comunicarse con docentes y compañeros.",
+        bloques: [
+          {
+            icono: "🎓",
+            titulo: "1. Plataformas educativas",
+            puntos: [
+              {
+                icono: "💻",
+                termino: "Plataforma educativa",
+                texto: "Es un espacio digital diseñado para apoyar los procesos de enseñanza y aprendizaje."
+              },
+              {
+                icono: "🌐",
+                termino: "Acceso virtual",
+                texto: "Permite consultar contenidos y desarrollar actividades mediante un dispositivo conectado a Internet."
+              },
+              {
+                icono: "🏫",
+                termino: "Complemento académico",
+                texto: "Puede apoyar una clase presencial o permitir el desarrollo de actividades a distancia."
+              }
+            ],
+            ampliacion: "Una plataforma educativa reúne en un mismo entorno los recursos necesarios para desarrollar una asignatura. Allí se pueden encontrar explicaciones, documentos, videos, enlaces, actividades, evaluaciones y canales de comunicación. Por ejemplo, un estudiante puede asistir a una clase presencial y después ingresar a la plataforma institucional para descargar una guía, revisar una fecha de entrega o presentar una evaluación. En la universidad y en muchos empleos también se utilizan plataformas para realizar cursos, capacitaciones y proyectos. La idea clave es que una plataforma educativa organiza y facilita el aprendizaje, pero exige participación activa y responsabilidad del estudiante."
+          },
+          {
+            icono: "🧩",
+            titulo: "2. Características de un entorno virtual",
+            puntos: [
+              {
+                icono: "🔐",
+                termino: "Acceso personal",
+                texto: "Cada usuario ingresa mediante credenciales que protegen su información académica."
+              },
+              {
+                icono: "📚",
+                termino: "Organización",
+                texto: "Los contenidos se distribuyen por cursos, materias, unidades, temas o semanas."
+              },
+              {
+                icono: "⏰",
+                termino: "Disponibilidad",
+                texto: "Los materiales pueden consultarse desde diferentes lugares y horarios, según las condiciones de la plataforma."
+              },
+              {
+                icono: "📱",
+                termino: "Acceso multidispositivo",
+                texto: "Muchas plataformas pueden utilizarse desde computadores, tabletas y teléfonos celulares."
+              }
+            ],
+            ampliacion: "Un entorno virtual de aprendizaje debe ser organizado, accesible y fácil de utilizar. Cuando el estudiante ingresa, necesita reconocer rápidamente sus cursos, actividades pendientes y fechas importantes. El usuario y la contraseña identifican a la persona y permiten registrar su participación, por lo que no deben compartirse. Por ejemplo, si un estudiante presta su contraseña y otra persona envía un mensaje inapropiado desde su cuenta, la plataforma puede registrar la acción como realizada por el propietario. La idea clave es que el acceso personal permite estudiar y gestionar información, pero también implica cuidar la identidad digital y asumir responsabilidad por las acciones realizadas."
+          },
+          {
+            icono: "🗂️",
+            titulo: "3. Secciones y funciones principales",
+            puntos: [
+              {
+                icono: "👤",
+                termino: "Perfil y cursos",
+                texto: "El perfil contiene información del usuario y los cursos muestran las materias asignadas."
+              },
+              {
+                icono: "📄",
+                termino: "Contenidos y actividades",
+                texto: "Permiten consultar recursos, conocer instrucciones y enviar trabajos."
+              },
+              {
+                icono: "✅",
+                termino: "Evaluaciones y calificaciones",
+                texto: "Facilitan la presentación de pruebas y la consulta de resultados u observaciones."
+              },
+              {
+                icono: "💬",
+                termino: "Mensajes",
+                texto: "Permiten la comunicación académica entre estudiantes y docentes."
+              }
+            ],
+            ampliacion: "Las secciones de una plataforma cumplen funciones diferentes, pero trabajan de manera integrada. El estudiante consulta un contenido, desarrolla una actividad, la entrega dentro del plazo y posteriormente revisa la calificación o la retroalimentación. También puede utilizar los mensajes para formular preguntas claras y respetuosas. Por ejemplo, antes de enviar un trabajo debe revisar el nombre del archivo, el formato solicitado y la fecha límite. En los estudios universitarios y en el ámbito laboral, esta capacidad para organizar archivos, instrucciones y tiempos es fundamental. La idea clave es que conocer las secciones evita errores y permite aprovechar mejor las herramientas disponibles."
+          },
+          {
+            icono: "🛡️",
+            titulo: "4. Uso responsable y pensamiento crítico",
+            puntos: [
+              {
+                icono: "🔒",
+                termino: "Seguridad",
+                texto: "Se deben proteger las credenciales, cerrar la sesión en equipos compartidos y evitar enlaces sospechosos."
+              },
+              {
+                icono: "🤝",
+                termino: "Respeto",
+                texto: "Los mensajes, comentarios y participaciones deben seguir las normas de netiqueta."
+              },
+              {
+                icono: "✍️",
+                termino: "Autoría",
+                texto: "Los trabajos deben ser propios y las fuentes consultadas deben reconocerse correctamente."
+              },
+              {
+                icono: "🤖",
+                termino: "Uso de IA",
+                texto: "La inteligencia artificial puede orientar y revisar, pero no debe reemplazar el análisis personal."
+              }
+            ],
+            ampliacion: "Usar una plataforma virtual no consiste únicamente en ingresar y entregar archivos. También requiere pensamiento crítico, honestidad académica y cuidado de los datos personales. Si se utiliza inteligencia artificial para apoyar una actividad, el estudiante debe revisar la respuesta, corregir posibles errores y expresar las ideas con comprensión propia. Copiar una respuesta sin analizarla impide aprender y puede producir información incorrecta. Además, los mensajes deben ser respetuosos, claros y relacionados con el propósito académico. La idea clave es que la tecnología mejora el aprendizaje cuando se utiliza con autonomía, criterio, ética y responsabilidad."
+          }
+        ]
+      },
+      glosario: [
+        {
+          termino: "Plataforma educativa",
+          definicion: "Entorno digital que reúne contenidos, actividades, evaluaciones y herramientas de comunicación para apoyar el aprendizaje."
+        },
+        {
+          termino: "Entorno virtual de aprendizaje",
+          definicion: "Espacio digital organizado en el que estudiantes y docentes desarrollan procesos educativos."
+        },
+        {
+          termino: "Credenciales",
+          definicion: "Datos personales de acceso, como el usuario y la contraseña."
+        },
+        {
+          termino: "Contenido digital",
+          definicion: "Recurso educativo presentado como texto, imagen, audio, video, documento o enlace."
+        },
+        {
+          termino: "Retroalimentación",
+          definicion: "Comentario u orientación que ayuda a reconocer aciertos y mejorar un trabajo."
+        },
+        {
+          termino: "Identidad digital",
+          definicion: "Información y acciones que representan a una persona en los entornos digitales."
+        },
+        {
+          termino: "LMS",
+          definicion: "Sistema de gestión del aprendizaje utilizado para organizar cursos, usuarios, contenidos y evaluaciones."
+        }
+      ],
+      sabiasQue: [
+        "Moodle es una plataforma de gestión del aprendizaje distribuida como software libre y de código abierto.",
+        "Una plataforma educativa puede registrar entregas, intentos de evaluación y participación de acuerdo con su configuración.",
+        "Cerrar la sesión en un computador compartido ayuda a impedir que otra persona ingrese a la cuenta sin autorización."
+      ],
+      modulos: {
+        tarjetas: {
+          titulo: "Relaciona la plataforma con situaciones cotidianas",
+          items: [
+            {
+              icono: "🏫",
+              frente: "Campus virtual",
+              reverso: "Se parece a un colegio digital porque reúne cursos, contenidos y actividades."
+            },
+            {
+              icono: "🪪",
+              frente: "Usuario y contraseña",
+              reverso: "Funcionan como una identificación y una llave personal de acceso."
+            },
+            {
+              icono: "🗃️",
+              frente: "Sección de contenidos",
+              reverso: "Se parece a una biblioteca organizada por materias, temas o semanas."
+            },
+            {
+              icono: "📥",
+              frente: "Entrega de trabajos",
+              reverso: "Funciona como un buzón digital que registra el archivo y la fecha de envío."
+            },
+            {
+              icono: "📊",
+              frente: "Calificaciones",
+              reverso: "Se parecen a un informe de progreso acompañado de observaciones del docente."
+            },
+            {
+              icono: "💬",
+              frente: "Mensajes",
+              reverso: "Funcionan como un canal formal para resolver dudas y compartir información académica."
+            }
+          ]
+        },
+        explorador: {
+          titulo: "Explorador de una plataforma educativa",
+          items: [
+            {
+              icono: "👤",
+              nombre: "Perfil",
+              secciones: [
+                {
+                  titulo: "Información",
+                  items: [
+                    "Nombre del usuario",
+                    "Datos académicos",
+                    "Configuración de la cuenta"
+                  ]
+                },
+                {
+                  titulo: "Cuidado",
+                  items: [
+                    "No publicar datos innecesarios",
+                    "Usar una contraseña segura",
+                    "Mantener la información actualizada"
+                  ]
+                }
+              ]
+            },
+            {
+              icono: "📚",
+              nombre: "Cursos y contenidos",
+              secciones: [
+                {
+                  titulo: "Elementos",
+                  items: [
+                    "Materias matriculadas",
+                    "Unidades o semanas",
+                    "Documentos, videos y enlaces"
+                  ]
+                },
+                {
+                  titulo: "Acciones",
+                  items: [
+                    "Leer instrucciones",
+                    "Descargar materiales",
+                    "Organizar fechas importantes"
+                  ]
+                }
+              ]
+            },
+            {
+              icono: "📝",
+              nombre: "Actividades y evaluaciones",
+              secciones: [
+                {
+                  titulo: "Elementos",
+                  items: [
+                    "Tareas",
+                    "Cuestionarios",
+                    "Fechas de apertura y cierre"
+                  ]
+                },
+                {
+                  titulo: "Acciones",
+                  items: [
+                    "Revisar requisitos",
+                    "Adjuntar el archivo correcto",
+                    "Confirmar que la entrega quedó registrada"
+                  ]
+                }
+              ]
+            },
+            {
+              icono: "💬",
+              nombre: "Comunicación",
+              secciones: [
+                {
+                  titulo: "Canales",
+                  items: [
+                    "Mensajes",
+                    "Anuncios",
+                    "Foros académicos"
+                  ]
+                },
+                {
+                  titulo: "Netiqueta",
+                  items: [
+                    "Saludar",
+                    "Explicar la duda con claridad",
+                    "Utilizar lenguaje respetuoso"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        clasificador: {
+          titulo: "Clasifica cada acción dentro de una plataforma",
+          categorias: [
+            "Uso responsable",
+            "Uso inadecuado",
+            "Gestión académica"
+          ],
+          items: [
+            {
+              texto: "Cerrar la sesión después de usar un computador compartido.",
+              categoria: 0
+            },
+            {
+              texto: "Compartir la contraseña con varios compañeros.",
+              categoria: 1
+            },
+            {
+              texto: "Consultar la fecha límite antes de enviar una actividad.",
+              categoria: 2
+            },
+            {
+              texto: "Escribir un mensaje respetuoso para resolver una duda.",
+              categoria: 0
+            },
+            {
+              texto: "Copiar un trabajo de Internet sin reconocer la fuente.",
+              categoria: 1
+            },
+            {
+              texto: "Revisar la retroalimentación después de recibir una calificación.",
+              categoria: 2
+            },
+            {
+              texto: "Abrir enlaces desconocidos enviados por cuentas sospechosas.",
+              categoria: 1
+            },
+            {
+              texto: "Organizar los archivos con nombres claros antes de entregarlos.",
+              categoria: 2
+            },
+            {
+              texto: "Verificar una respuesta producida con inteligencia artificial.",
+              categoria: 0
+            }
+          ]
+        }
+      },
+      reto: {
+        titulo: "Clase presencial frente a clase apoyada en una plataforma virtual",
+        descripcion: "Crea en Excel un cuadro comparativo que muestre las características, ventajas y responsabilidades presentes en las dos modalidades de aprendizaje.",
+        pasos: [
+          "Abre Microsoft Excel y crea un libro en blanco.",
+          "Escribe los encabezados: Aspecto, Clase presencial y Clase apoyada en una plataforma virtual.",
+          "Agrega las filas: Lugar de aprendizaje, Acceso a contenidos, Entrega de trabajos, Comunicación, Evaluaciones y Responsabilidad del estudiante.",
+          "Conserva las respuestas entregadas por el profesor y completa todas las celdas vacías con ideas claras y breves.",
+          "Aplica formato a la tabla: título en negrita, bordes, ajuste de texto y colores suaves que permitan leer la información.",
+          "Utiliza el prompt propuesto para revisar la claridad de tus respuestas, sin copiar automáticamente todo lo producido por la IA.",
+          "Guarda el archivo con el nombre Apellido_Nombre_Plataformas_11 y verifica que la tabla esté completa."
+        ],
+        prompt: "Actúa como orientador educativo. Revisa este cuadro comparativo entre una clase presencial y una clase apoyada en una plataforma virtual. Señala si cada comparación es clara, equilibrada y apropiada para grado 11. No hagas el trabajo completo: identifica errores y propone mejoras breves. Mi cuadro es: [pega aquí el contenido de tu tabla].",
+        herramientas: [
+          {
+            nombre: "Microsoft Excel en línea",
+            url: "https://www.microsoft365.com/launch/excel"
+          },
+          {
+            nombre: "Google Sheets",
+            url: "https://sheets.google.com"
+          },
+          {
+            nombre: "ChatGPT",
+            url: "https://chatgpt.com"
+          }
+        ],
+        requisitos: [
+          "Incluir los tres encabezados indicados.",
+          "Completar los seis aspectos solicitados.",
+          "Escribir comparaciones claras y coherentes.",
+          "Aplicar bordes, ajuste de texto y formato legible.",
+          "Revisar las sugerencias de la IA antes de aceptarlas.",
+          "Guardar el archivo con el nombre solicitado."
+        ]
+      },
+      quiz: [
+        {
+          pregunta: "¿Cuál es la función principal de una plataforma educativa?",
+          opciones: [
+            "Reemplazar completamente al docente",
+            "Organizar y apoyar los procesos de enseñanza y aprendizaje",
+            "Permitir únicamente el envío de mensajes",
+            "Publicar contenido de entretenimiento"
+          ],
+          correcta: 1,
+          explicacion: "Una plataforma educativa integra contenidos, actividades, evaluaciones y comunicación para apoyar el aprendizaje."
+        },
+        {
+          pregunta: "¿Por qué el usuario y la contraseña son personales?",
+          opciones: [
+            "Porque identifican al estudiante y protegen su información",
+            "Porque permiten cambiar las calificaciones",
+            "Porque deben publicarse en el perfil",
+            "Porque solo funcionan una vez"
+          ],
+          correcta: 0,
+          explicacion: "Las credenciales identifican al usuario y permiten proteger su cuenta y su información académica."
+        },
+        {
+          pregunta: "¿En qué sección se consulta normalmente una guía de trabajo?",
+          opciones: [
+            "Perfil",
+            "Calificaciones",
+            "Contenidos o actividades",
+            "Configuración de contraseña"
+          ],
+          correcta: 2,
+          explicacion: "Las guías suelen publicarse en las secciones de contenidos o actividades del curso."
+        },
+        {
+          pregunta: "Un estudiante envió un archivo equivocado antes del cierre de la actividad. ¿Qué debería hacer primero?",
+          opciones: [
+            "Ignorar el error",
+            "Crear otra cuenta",
+            "Revisar si puede reemplazar la entrega y comunicarse con el docente",
+            "Compartir su contraseña con un compañero"
+          ],
+          correcta: 2,
+          explicacion: "Debe buscar una solución dentro de la plataforma y comunicar oportunamente la situación al docente."
+        },
+        {
+          pregunta: "¿Cuál de estas acciones demuestra netiqueta?",
+          opciones: [
+            "Escribir todo el mensaje en mayúsculas",
+            "Enviar mensajes sin saludo ni explicación",
+            "Expresar la duda con respeto y claridad",
+            "Publicar datos personales de un compañero"
+          ],
+          correcta: 2,
+          explicacion: "La netiqueta exige comunicación respetuosa, clara y adecuada al contexto académico."
+        },
+        {
+          pregunta: "¿Qué debe hacer un estudiante al utilizar IA para completar una actividad?",
+          opciones: [
+            "Copiar la respuesta sin leerla",
+            "Revisar, comprender y verificar la información",
+            "Presentarla siempre como trabajo completamente propio",
+            "Aceptar todas las respuestas como verdaderas"
+          ],
+          correcta: 1,
+          explicacion: "La IA debe utilizarse como apoyo y sus respuestas deben revisarse críticamente."
+        },
+        {
+          pregunta: "¿Cuál es una responsabilidad propia del aprendizaje virtual?",
+          opciones: [
+            "Esperar que la plataforma recuerde todas las tareas",
+            "Organizar el tiempo y revisar las fechas de entrega",
+            "Compartir credenciales para recibir ayuda",
+            "Entregar cualquier archivo sin verificarlo"
+          ],
+          correcta: 1,
+          explicacion: "El aprendizaje virtual requiere autonomía para organizar el tiempo y cumplir los compromisos."
+        },
+        {
+          pregunta: "¿Qué diferencia principal puede existir entre una clase presencial y una apoyada en una plataforma?",
+          opciones: [
+            "La clase presencial nunca utiliza tecnología",
+            "La plataforma permite acceder a recursos y actividades digitales desde distintos lugares",
+            "La plataforma elimina todas las responsabilidades",
+            "La clase presencial no permite comunicación"
+          ],
+          correcta: 1,
+          explicacion: "Las plataformas amplían el acceso a recursos y actividades, aunque no eliminan la necesidad de orientación y responsabilidad."
+        }
+      ],
+      investigacion: {
+        titulo: "Ventajas del aprendizaje virtual",
+        instruccion: "Investiga y escribe en tu cuaderno:",
+        preguntas: [
+          "¿Qué ventaja ofrece una plataforma virtual para el aprendizaje?"
+        ],
+        fuentes: [
+          "Sitio oficial de una plataforma educativa reconocida",
+          "Materiales publicados por una institución educativa",
+          "Apuntes y explicaciones desarrollados durante la clase"
+        ]
+      },
+      tarea: {
+        titulo: "Reflexión sobre las plataformas educativas",
+        instruccion: "Responde: ¿Qué sección de una plataforma educativa consideras más importante y por qué? ¿Qué norma debes cumplir para utilizarla responsablemente?",
+        renglones: 6,
+        indicacion: "Escríbela en una hoja suelta, con nombre completo, grado, fecha y título.",
+        criterios: [
+          "Responder completamente las dos preguntas.",
+          "Justificar la sección seleccionada.",
+          "Explicar una norma concreta de uso responsable.",
+          "Utilizar ideas propias, buena ortografía y letra legible."
+        ],
+        entrega: "Próxima clase"
+      },
+      hoja: {
+        preguntas: [
+          {
+            id: "r1",
+            texto: "Explica con tus palabras qué es una plataforma educativa.",
+            lineas: 3
+          },
+          {
+            id: "r2",
+            texto: "Menciona tres secciones de una plataforma y explica la función de cada una.",
+            lineas: 4
+          },
+          {
+            id: "r3",
+            texto: "¿Cuál fue la diferencia más importante que encontraste entre la clase presencial y la clase apoyada en una plataforma virtual?",
+            lineas: 3
+          },
+          {
+            id: "r4",
+            texto: "¿Cómo puede una plataforma educativa prepararte para la universidad o el mundo laboral?",
+            lineas: 4
+          },
+          {
+            id: "r5",
+            texto: "Describe una situación en la que el uso irresponsable de una cuenta educativa pueda causar un problema.",
+            lineas: 4
+          },
+          {
+            id: "r6",
+            texto: "¿Qué aprendí hoy y cómo puedo aplicarlo en mis actividades académicas?",
+            lineas: 3
+          }
+        ]
+      },
+      notasDocente: [
+        "Antes del reto, mostrar brevemente una plataforma conocida por los estudiantes y señalar sus secciones principales.",
+        "Recordar que el cuadro comparativo debe contener ideas propias y que la IA se utiliza para revisar, no para sustituir el análisis.",
+        "Verificar durante la actividad que los estudiantes apliquen ajuste de texto y completen todas las filas de Excel.",
+        "Cerrar la clase destacando la relación entre autonomía, netiqueta, seguridad y responsabilidad académica."
+      ]
+    };
+  </script>
+  <script src="../../motor-bernal-v5.js"></script>
+  
+  <footer class="pie-clase">
+    Profesor de Tecnología 2026: William Fdo Bernal
+  </footer>
 
-quiz: [
-{
-pregunta: "¿Cuál es la función principal de una plataforma educativa?",
-opciones: [
-"Reemplazar completamente al docente",
-"Organizar y apoyar los procesos de enseñanza y aprendizaje",
-"Permitir únicamente el envío de mensajes",
-"Publicar contenido de entretenimiento"
-],
-correcta: 1,
-explicacion: "Una plataforma educativa integra contenidos, actividades, evaluaciones y comunicación para apoyar el aprendizaje."
-},
-{
-pregunta: "¿Por qué el usuario y la contraseña son personales?",
-opciones: [
-"Porque identifican al estudiante y protegen su información",
-"Porque permiten cambiar las calificaciones",
-"Porque deben publicarse en el perfil",
-"Porque solo funcionan una vez"
-],
-correcta: 0,
-explicacion: "Las credenciales identifican al usuario y permiten proteger su cuenta y su información académica."
-},
-{
-pregunta: "¿En qué sección se consulta normalmente una guía de trabajo?",
-opciones: [
-"Perfil",
-"Calificaciones",
-"Contenidos o actividades",
-"Configuración de contraseña"
-],
-correcta: 2,
-explicacion: "Las guías suelen publicarse en las secciones de contenidos o actividades del curso."
-},
-{
-pregunta: "Un estudiante envió un archivo equivocado antes del cierre de la actividad. ¿Qué debería hacer primero?",
-opciones: [
-"Ignorar el error",
-"Crear otra cuenta",
-"Revisar si puede reemplazar la entrega y comunicarse con el docente",
-"Compartir su contraseña con un compañero"
-],
-correcta: 2,
-explicacion: "Debe buscar una solución dentro de la plataforma y comunicar oportunamente la situación al docente."
-},
-{
-pregunta: "¿Cuál de estas acciones demuestra netiqueta?",
-opciones: [
-"Escribir todo el mensaje en mayúsculas",
-"Enviar mensajes sin saludo ni explicación",
-"Expresar la duda con respeto y claridad",
-"Publicar datos personales de un compañero"
-],
-correcta: 2,
-explicacion: "La netiqueta exige comunicación respetuosa, clara y adecuada al contexto académico."
-},
-{
-pregunta: "¿Qué debe hacer un estudiante al utilizar IA para completar una actividad?",
-opciones: [
-"Copiar la respuesta sin leerla",
-"Revisar, comprender y verificar la información",
-"Presentarla siempre como trabajo completamente propio",
-"Aceptar todas las respuestas como verdaderas"
-],
-correcta: 1,
-explicacion: "La IA debe utilizarse como apoyo y sus respuestas deben revisarse críticamente."
-},
-{
-pregunta: "¿Cuál es una responsabilidad propia del aprendizaje virtual?",
-opciones: [
-"Esperar que la plataforma recuerde todas las tareas",
-"Organizar el tiempo y revisar las fechas de entrega",
-"Compartir credenciales para recibir ayuda",
-"Entregar cualquier archivo sin verificarlo"
-],
-correcta: 1,
-explicacion: "El aprendizaje virtual requiere autonomía para organizar el tiempo y cumplir los compromisos."
-},
-{
-pregunta: "¿Qué diferencia principal puede existir entre una clase presencial y una apoyada en una plataforma?",
-opciones: [
-"La clase presencial nunca utiliza tecnología",
-"La plataforma permite acceder a recursos y actividades digitales desde distintos lugares",
-"La plataforma elimina todas las responsabilidades",
-"La clase presencial no permite comunicación"
-],
-correcta: 1,
-explicacion: "Las plataformas amplían el acceso a recursos y actividades, aunque no eliminan la necesidad de orientación y responsabilidad."
-}
-],
-
-investigacion: {
-titulo: "Ventajas del aprendizaje virtual",
-instruccion: "Investiga y escribe en tu cuaderno:",
-preguntas: [
-"¿Qué ventaja ofrece una plataforma virtual para el aprendizaje?"
-],
-fuentes: [
-"Sitio oficial de una plataforma educativa reconocida",
-"Materiales publicados por una institución educativa",
-"Apuntes y explicaciones desarrollados durante la clase"
-]
-},
-
-tarea: {
-titulo: "Reflexión sobre las plataformas educativas",
-instruccion: "Responde: ¿Qué sección de una plataforma educativa consideras más importante y por qué? ¿Qué norma debes cumplir para utilizarla responsablemente?",
-renglones: 6,
-indicacion: "Escríbela en una hoja suelta, con nombre completo, grado, fecha y título.",
-criterios: [
-"Responder completamente las dos preguntas.",
-"Justificar la sección seleccionada.",
-"Explicar una norma concreta de uso responsable.",
-"Utilizar ideas propias, buena ortografía y letra legible."
-],
-entrega: "Próxima clase"
-},
-
-hoja: {
-preguntas: [
-{
-id: "r1",
-texto: "Explica con tus palabras qué es una plataforma educativa.",
-lineas: 3
-},
-{
-id: "r2",
-texto: "Menciona tres secciones de una plataforma y explica la función de cada una.",
-lineas: 4
-},
-{
-id: "r3",
-texto: "¿Cuál fue la diferencia más importante que encontraste entre la clase presencial y la clase apoyada en una plataforma virtual?",
-lineas: 3
-},
-{
-id: "r4",
-texto: "¿Cómo puede una plataforma educativa prepararte para la universidad o el mundo laboral?",
-lineas: 4
-},
-{
-id: "r5",
-texto: "Describe una situación en la que el uso irresponsable de una cuenta educativa pueda causar un problema.",
-lineas: 4
-},
-{
-id: "r6",
-texto: "¿Qué aprendí hoy y cómo puedo aplicarlo en mis actividades académicas?",
-lineas: 3
-}
-]
-},
-
-notasDocente: [
-"Antes del reto, mostrar brevemente una plataforma conocida por los estudiantes y señalar sus secciones principales.",
-"Recordar que el cuadro comparativo debe contener ideas propias y que la IA se utiliza para revisar, no para sustituir el análisis.",
-"Verificar durante la actividad que los estudiantes apliquen ajuste de texto y completen todas las filas de Excel.",
-"Cerrar la clase destacando la relación entre autonomía, netiqueta, seguridad y responsabilidad académica."
-]
-};
-</script>
-
-<script src="../../motor-bernal-v5.js"></script> </body> </html>
+</body>
+</html>
