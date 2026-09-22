@@ -1,1 +1,276 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plataformas virtuales para el aprendizaje | Grado 11°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 11,
+  edad: 16,
+  periodo: 1,
+  semana: 3,
+  area: "Tecnología e Informática",
+  colegio: "Colegio Santa Mariana de Jesús",
+  profesor: "Prof. William Fdo Bernal",
+  correoProfesor: "",
+  whatsappProfesor: "",
+  colorPrincipal: "#2563eb",
+  duracionMin: 45,
+  tema: "Plataformas virtuales para el aprendizaje",
+  emoji: "🎮📚",
+  temaAnterior: "Netiqueta y comportamiento responsable en Internet",
+  objetivo: "Comprender el funcionamiento de plataformas educativas interactivas como Educaplay, procesar un banco de actividades mediante IA e integrar funciones avanzadas de análisis de datos en Excel.",
+  competencia: "Aplica herramientas de Inteligencia Artificial para la producción instruccional y utiliza funciones lógicas/búsqueda en hojas de cálculo para evaluar recursos digitales educativos con actitud crítica y responsable.",
+  preguntaGancho: "¿Sabías que los mismos principios psicológicos de recompensa que te enganchan en un videojuego pueden usarse para diseñar evaluaciones académicas de alto impacto?",
+  agenda: [
+    { min: 5, titulo: "Introducción y Gancho", texto: "Analizar el concepto de Gamificación vs. Examen tradicional en papel." },
+    { min: 15, titulo: "Transcripción al Cuaderno", texto: "Registro de teoría fundamental sobre Educaplay, Gamificación y estructuración TSV." },
+    { min: 20, titulo: "Reto Práctico en PC", texto: "Generación del banco de datos con IA, importación a Excel, formato condicional y fórmulas de análisis." },
+    { min: 5, titulo: "Cierre y Evaluación Formativa", texto: "Verificación de fórmulas de análisis y reflexión sobre diseño instruccional." }
+  ],
+  video: { url: "", titulo: "Tutorial Educaplay y Excel", nota: "Video de apoyo sobre la integración de IA, datos TSV y hojas de cálculo.", mostrarSiVacio: false },
+  estilo: "hojacalculo",
+  cuaderno: {
+    conexion: "En la semana anterior analizamos la Netiqueta y el comportamiento ético en entornos virtuales. Hoy aplicamos esa responsabilidad digital en la creación y estructuración de contenidos educativos interactivos dentro de plataformas e-learning.",
+    bloques: [
+      {
+        icono: "🌐",
+        titulo: "1. ¿Qué es Educaplay y la Gamificación Educativa?",
+        puntos: [
+          { icono: "🎮", termino: "Educaplay", texto: "Plataforma web global para diseñar y compartir actividades didácticas multimedia e interactivas." },
+          { icono: "🏆", termino: "Gamificación", texto: "Técnica de aprendizaje que traslada la mecánica de los juegos (puntos, retos, listas de clasificación) al ámbito educativo." },
+          { icono: "🚀", termino: "Impacto pedagógico", texto: "Aumenta la motivación intrínseca, facilita la retención de información y permite la autoevaluación inmediata." }
+        ],
+        ampliacion: "La **gamificación educativa** no consiste únicamente en jugar dentro del salón de clase, sino en utilizar elementos de diseño de juegos (como feedback inmediato, niveles de dificultad, barras de progreso y recompensas) para transformar conceptos abstractos en experiencias memorables. A diferencia de una prueba escrita tradicional que genera ansiedad y entrega resultados días después, plataformas como Educaplay ofrecen retroalimentación instantánea, permitiendo que el error se convierta en una oportunidad de aprendizaje sin penalización destructiva."
+      },
+      {
+        icono: "🧩",
+        titulo: "2. Tipos de Recursos Interactivos Disponibles",
+        puntos: [
+          { icono: "🧩", termino: "Crucigramas", texto: "Pistas escritas o multimedia para descubrir términos entrelazados." },
+          { icono: "🔍", termino: "Sopas de letras", texto: "Localización de palabras clave dentro de una matriz alfabética." },
+          { icono: "📝", termino: "Cuestionarios (Quiz)", texto: "Evaluaciones de opción múltiple con tiempo limitado y puntuación." },
+          { icono: "🔗", termino: "Relación de columnas", texto: "Emparejamiento de conceptos, definiciones, imágenes o expresiones matemáticas." }
+        ],
+        ampliacion: "Cada tipo de recurso cumple una función cognitiva diferente: los **crucigramas** y **sopas de letras** refuerzan el léxico técnico y la memoria de reconocimiento; la **relación de columnas** evalúa la comprensión sintáctica y la asociación semántica; mientras que los **cuestionarios** miden niveles superiores como el análisis y la toma de decisiones. Al diseñar un recurso digital, el diseñador instruccional debe seleccionar la herramienta que mejor se adapte al objetivo pedagógico planteado."
+      },
+      {
+        icono: "🤖",
+        titulo: "3. Formato TSV e Integración de Datos con IA",
+        puntos: [
+          { icono: "📑", termino: "Formato TSV", texto: "Valores Separados por Tabulaciones (Tab-Separated Values), estándar ligero para estructurar tablas de datos." },
+          { icono: "🧠", termino: "Prompting instruccional", texto: "Estructuración de instrucciones precisas a un LLM para generar bancos de datos estandarizados." },
+          { icono: "📊", termino: "Análisis de Datos", texto: "Uso de funciones lógicas (=CONTAR.SI, =SUMAR.SI, =BUSCARV) para auditar inventarios de actividades." }
+        ],
+        ampliacion: "En los entornos profesionales de desarrollo e-learning, las plataformas no se alimentan creando actividad por actividad manualmente. Se utilizan **bancos de datos estructurados** en archivos plano como TSV o CSV. Un **prompt técnico bien construido** permite a la Inteligencia Artificial generar decenas de recursos clasificándolos por asignatura, dificultad y cantidad de ítems. Posteriormente, una hoja de cálculo como Microsoft Excel permite auditar, filtrar y validar dichos recursos mediante fórmulas analíticas antes de su importación masiva."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Gamificación", definicion: "Integración de dinámicas y mecánicas de juego en entornos no lúdicos para potenciar el compromiso y aprendizaje." },
+    { termino: "Educaplay", definicion: "Plataforma e-learning para la creación, gestión y evaluación de actividades educativas multimedia." },
+    { termino: "Formato TSV", definicion: "Tab-Separated Values; formato de texto plano que organiza datos tabulares separando columnas mediante caracteres de tabulación." },
+    { termino: "Prompt Instruccional", definicion: "Conjunto sistemático de instrucciones dadas a un modelo de IA para obtener una respuesta altamente estructurada y precisa." },
+    { termino: "Formato Condicional", definicion: "Herramienta de hoja de cálculo que aplica automáticamente atributos visuales (color, fuente) a celdas según reglas o valores." },
+    { termino: "BUSCARV / VLOOKUP", definicion: "Función de hoja de cálculo que busca un valor en la primera columna de una tabla y devuelve el contenido de la misma fila en otra columna." },
+    { termino: "CONTAR.SI", definicion: "Función estadística que cuenta el número de celdas dentro de un rango que cumplen con un criterio específico." },
+    { termino: "SUMAR.SI", definicion: "Función matemática que suma los valores de un rango que cumplen con una condición o criterio determinado." }
+  ],
+  sabiasQue: [
+    "El concepto de Gamificación fue acuñado por el desarrollador británico Nick Pelling en el año 2002, pero su uso masivo en educación explotó a partir de 2010.",
+    "El formato TSV fue desarrollado en la década de 1980 y sigue siendo el estándar preferido sobre CSV cuando los datos incluyen comas dentro del texto de los párrafos.",
+    "Estudios de neuroeducación demuestran que la retroalimentación inmediata en juegos educativos libera dopamina, incrementando la retención conceptual hasta en un 40%."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Mecánicas de Juego vs. Componentes Pedagógicos",
+      items: [
+        { icono: "🎯", frente: "Puntos y Recompensas", reverso: "Retroalimentación cuantitativa inmediata que refuerza el esfuerzo y la constancia del estudiante." },
+        { icono: "⏳", frente: "Temporizadores y Limites", reverso: "Generan presión controlada que simula entornos reales de toma de decisiones rápida." },
+        { icono: "🥇", frente: "Tablas de Clasificación", reverso: "Fomentan la competencia sana y la superación personal al permitir la re-ejecución del reto." },
+        { icono: "🔓", frente: "Niveles y Desbloqueos", reverso: "Estructuración progresiva del aprendizaje (de baja a alta complejidad cognitiva)." },
+        { icono: "❤️", frente: "Vidas o Intentos", reverso: "Permiten el aprendizaje basado en el ensayo y error sin consecuencias académicas punitivas." }
+      ]
+    },
+    explorador: {
+      titulo: "Dimensiones del Diseño Instruccional Digital",
+      items: [
+        {
+          icono: "🎯",
+          nombre: "Pedagógica",
+          secciones: [
+            { titulo: "Componentes Clave", items: ["Definición clara del propósito de aprendizaje.", "Adecuación del tema a la edad del público.", "Redacción de preguntas sin ambigüedades."] }
+          ]
+        },
+        {
+          icono: "💻",
+          nombre: "Tecnológica",
+          secciones: [
+            { titulo: "Componentes Clave", items: ["Elección de la plataforma (Educaplay).", "Estructuración de datos en formato TSV.", "Compatibilidad con dispositivos móviles y PC."] }
+          ]
+        },
+        {
+          icono: "🎨",
+          nombre: "Experiencia (UX/UI)",
+          secciones: [
+            { titulo: "Componentes Clave", items: ["Instrucciones breves y directas.", "Tiempo razonable por pregunta.", "Uso de imágenes y medios con licencia abierta."] }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasificación de Recursos Educativos según su Objetivo Cognitivo",
+      categorias: ["Léxico y Memoria", "Asociación y Lógica", "Evaluación y Análisis"],
+      items: [
+        { texto: "Sopa de letras sobre términos de Biología", categoria: 0 },
+        { texto: "Crucigrama sobre personajes históricos", categoria: 0 },
+        { texto: "Relación de columnas entre Fórmulas Químicas y Nombres", categoria: 1 },
+        { texto: "Emparejar banderas con sus respectivas capitales", categoria: 1 },
+        { texto: "Quiz de opción múltiple con casos de estudio éticos", categoria: 2 },
+        { texto: "Cuestionario diagnóstico sobre leyes de Newton", categoria: 2 }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Generación e Importación de Banco de Actividades Educativas",
+    descripcion: "Estructurarás un banco de 10 actividades interactivas para Educaplay utilizando Inteligencia Artificial, lo importarás a Excel mediante el formato TSV y aplicarás técnicas avanzadas de formato condicional y fórmulas analíticas.",
+    pasos: [
+      "Abre tu asistente de IA (ChatGPT, Gemini o Copilot) y copia exactamente el prompt proporcionado abajo.",
+      "Copia la tabla limpia resultante producida por la IA y pégala directamente en la celda A1 de Microsoft Excel.",
+      "Aplica formato visual a los encabezados (A1:F1): Relleno azul oscuro, texto en blanco, fuente en negrita y ajuste de ancho de columna.",
+      "Aplica Formato Condicional en la columna Dificultad (F2:F11): Verde para 'Baja', Amarillo para 'Media' y Rojo para 'Alta'.",
+      "En el bloque lateral (H1:I5), ingresa las fórmulas de análisis especificadas (=CONTAR.SI, =PROMEDIO, =SUMAR.SI, =BUSCARV).",
+      "Verifica que las fórmulas devuelvan resultados coherentes y no errores (#¡REF!, #N/A, #¡VALOR!).",
+      "Guarda el archivo Excel respetando estrictamente la nomenclatura requerida."
+    ],
+    prompt: "Actúa como un diseñador instruccional. Genera una tabla TSV con 6 columnas exactas: Codigo_Actividad, Titulo_Recurso, Tipo_Educaplay, Asignatura, Preguntas_o_Terminos, Dificultad. La columna Codigo_Actividad tiene códigos únicos desde EDU001 hasta EDU010. La columna Titulo_Recurso contiene títulos breves y creativos de temas académicos de secundaria. La columna Tipo_Educaplay utiliza únicamente las opciones: Crucigrama, Sopa de letras, Cuestionario, Relacion de columnas. La columna Asignatura contiene materias escolares (Matemáticas, Historia, Biología, Español, Química, etc.). La columna Preguntas_o_Terminos contiene números enteros entre 5 y 20 que representan la cantidad de elementos. La columna Dificultad contiene únicamente: Baja, Media o Alta. Entrega SOLO la tabla en formato TSV con exactamente 10 filas de datos más 1 fila de encabezados, sin explicaciones, sin markdown, sin código, sin comillas. Usa tabulaciones reales como separador.",
+    herramientas: [
+      { nombre: "Microsoft Excel / Excel Online", url: "https://www.office.com" },
+      { nombre: "Google Gemini", url: "https://gemini.google.com" },
+      { nombre: "ChatGPT", url: "https://chatgpt.com" }
+    ],
+    requisitos: [
+      "Tabla en Excel ubicada exactamente desde la celda A1 hasta F11 con datos separados correctamente por columnas.",
+      "Encabezados con relleno azul oscuro, texto blanco y negrita.",
+      "Formato condicional funcional con colores Verde, Amarillo y Rojo aplicado a F2:F11.",
+      "Fórmulas ejecutadas correctamente en I2 (=CONTAR.SI), I3 (=PROMEDIO), I4 (=SUMAR.SI) e I5 (=BUSCARV).",
+      "Nombre de archivo guardado con nomenclatura correcta: 11_educaplay_excel_200926_nombreestudiante.xlsx"
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Qué ventaja pedagógica principal ofrece la Gamificación en Educaplay frente a una evaluación tradicional en papel?",
+      opciones: [
+        "Elimina la necesidad de estudiar los conceptos antes de jugar.",
+        "Proporciona retroalimentación inmediata y convierte el error en un paso formativo sin penalización destructiva.",
+        "Garantiza que todos los estudiantes saquen la máxima calificación automáticamente.",
+        "Sustituye por completo la presencia y labor del docente en el aula."
+      ],
+      correcta: 1,
+      explicacion: "La gamificación ofrece feedback al instante, incrementando la motivación intrínseca y permitiendo aprender del error de forma interactiva."
+    },
+    {
+      pregunta: "¿Por qué es preferible utilizar el formato TSV sobre copiar datos no estructurados al construir bancos de datos en Excel?",
+      opciones: [
+        "Porque el formato TSV incluye colores y tipos de letra automáticamente.",
+        "Porque usa tabulaciones para separar los datos, asegurando que Excel ubique cada campo en su columna correspondiente de A a F.",
+        "Porque los archivos TSV no ocupan espacio de almacenamiento en el disco duro.",
+        "Porque evita que la Inteligencia Artificial cometa errores gramaticales."
+      ],
+      correcta: 1,
+      explicacion: "El carácter de tabulación real en un texto TSV es reconocido por Excel como un delimitador automático de columnas."
+    },
+    {
+      pregunta: "En Excel, ¿qué fórmula calcula correctamente el número total de recursos de tipo 'Cuestionario' en el rango C2:C11?",
+      opciones: [
+        "=SUMAR.SI(C2:C11; \"Cuestionario\")",
+        "=CONTAR(C2:C11; \"Cuestionario\")",
+        "=CONTAR.SI(C2:C11; \"Cuestionario\")",
+        "=BUSCARV(\"Cuestionario\"; C2:C11; 1; FALSO)"
+      ],
+      correcta: 2,
+      explicacion: "=CONTAR.SI cuenta únicamente las celdas dentro del rango especificado que coinciden de manera exacta con el texto buscado."
+    },
+    {
+      pregunta: "Si deseas buscar el título exacto del recurso asociado al código 'EDU005' dentro de la tabla A2:F11, ¿cuál es la sintaxis correcta?",
+      opciones: [
+        "=BUSCARV(\"EDU005\"; A2:F11; 2; FALSO)",
+        "=BUSCARV(A2:F11; \"EDU005\"; 1; VERDADERO)",
+        "=SI(\"EDU005\"; A2:F11; 2)",
+        "=CONTAR.SI(A2:F11; \"EDU005\")"
+      ],
+      correcta: 0,
+      explicacion: "=BUSCARV recibe el valor buscado ('EDU005'), la matriz (A2:F11), el índice de columna a retornar (2 para Titulo_Recurso) y FALSO para coincidencia exacta."
+    },
+    {
+      pregunta: "¿Qué consecuencia directa trae la redacción de instrucciones ambiguas o confusas en un recurso educativo digital?",
+      opciones: [
+        "Aumenta la creatividad y la imaginación del estudiante.",
+        "Provoca frustración, errores no conceptuales en la ejecución y abandono del recurso por parte del usuario.",
+        "Hace que la plataforma Educaplay funcione más lentamente.",
+        "Mejora la velocidad de respuesta de los estudiantes."
+      ],
+      correcta: 1,
+      explicacion: "Las instrucciones ambiguas distraen de la competencia académica, haciendo que el estudiante falle por no entender la regla del juego y no por falta de conocimiento."
+    },
+    {
+      pregunta: "¿Qué función cumple la fórmula =SUMAR.SI(C2:C11; \"Crucigrama\"; E2:E11) en el análisis de datos de tu reto?",
+      opciones: [
+        "Cuenta cuántos crucigramas hay en total dentro de la columna C.",
+        "Suma la cantidad de preguntas o términos (columna E) únicamente para aquellas filas cuyo tipo sea 'Crucigrama' (columna C).",
+        "Multiplica la cantidad de crucigramas por el promedio de elementos.",
+        "Cambia el color de los crucigramas a rojo si superan los 10 elementos."
+      ],
+      correcta: 1,
+      explicacion: "SUMAR.SI evalúa el criterio en la columna C y suma únicamente los valores numéricos correspondientes de la columna E."
+    }
+  ],
+  investigacion: {
+    titulo: "Análisis Didáctico e Instruccional",
+    instruccion: "Copia y responde brevemente en tu cuaderno las siguientes dos preguntas analíticas:",
+    preguntas: [
+      "¿Qué es la Gamificación Educativa? Explica con tus propias palabras cómo el uso de dinámicas de juego (puntos, retos, listas de clasificación) en plataformas como Educaplay ayuda a mejorar el aprendizaje en comparación con un examen tradicional en papel.",
+      "Atención y Claridad: ¿Por qué es fundamental que las instrucciones de una actividad digital sean cortas y directas al público joven, y qué consecuencias trae redactar instrucciones ambiguas o confusas?"
+    ],
+    fuentes: [
+      "Educaplay Blog: Principios de Gamificación y Diseño de Actividades.",
+      "Documentación Oficial Microsoft Excel: Funciones de Análisis Estadístico y Búsqueda."
+    ]
+  },
+  tarea: {
+    titulo: "Diseño de Guion Pedagógico para un Cuestionario Interactivo (Quiz)",
+    instruccion: "Diseña en una hoja suelta la estructura completa para un Cuestionario (Quiz) interactivo de 5 preguntas sobre cualquier tema académico de grado 11° (Ejemplo: Filosofía, Física, Química, Literatura o Ciencias Sociales).",
+    renglones: 12,
+    indicacion: "Escríbela en la hoja de la IZQUIERDA",
+    criterios: [
+      "Encabezado completo: Nombre del Estudiante, Grado, Asignatura y Título del Quiz.",
+      "Propósito pedagógico redactado de forma clara y directa en exactamente 2 renglones.",
+      "Tabla dibujada con regla que contenga 5 columnas exactas: N°, Pregunta / Enunciado, Opción Correcta, Opción Distractora 1, Opción Distractora 2, Feedback / Explicación corta.",
+      "Contenido académico verídico de nivel 11° con distractores creíbles y retroalimentación enriquecedora.",
+      "Excelente caligrafía, ortografía impecable y trazado pulcro."
+    ],
+    entrega: "Próxima clase"
+  },
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "¿Lograste que Excel separara automáticamente los datos generados por la IA en columnas independientes desde la celda A1 hasta F11? En caso de fallo inicial, ¿cómo lo solucionaste?", lineas: 2 },
+      { id: "r2", texto: "Explica cuál es la utilidad práctica de usar =SUMAR.SI frente a realizar la suma manualmente contando los elementos con la calculadora.", lineas: 3 },
+      { id: "r3", texto: "¿Qué resultado arrojó la fórmula =BUSCARV(\"EDU005\"; A2:F11; 2; FALSO) en tu ejercicio y qué representa dicho valor en el contexto del inventario?", lineas: 2 },
+      { id: "r4", texto: "Si tuvieras que publicar la actividad de la pregunta EDU005 en Educaplay, ¿qué ajuste le harías al título o a las instrucciones para garantizar que un estudiante de secundaria la resuelva sin confusión?", lineas: 3 },
+      { id: "r5", texto: "¿Qué aprendí hoy sobre la relación entre Inteligencia Artificial, análisis de datos en Excel y diseño de actividades educativas digitales?", lineas: 3 }
+    ]
+  },
+  notasDocente: [
+    "Monitorear durante la fase de pegado en Excel que los estudiantes no tengan configurado el separador de listas como coma o punto y coma de manera global si su versión de Excel requiere comas en lugar de puntos y comas en las fórmulas.",
+    "Asegurarse de que el prompt sea copiado intacto desde la Web App para evitar que la IA devuelva respuestas en markdown (```tsv) que rompan el pegado directo en Excel.",
+    "Verificar que el Formato Condicional en la columna Dificultad aplique los tres tonos exactos (Verde, Amarillo, Rojo) mediante 'Texto que contiene' o 'Igual a'.",
+    "Recordar recolectar las hojas sueltas correspondientes a la Tarea Entregable de la semana previa si aplica."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
