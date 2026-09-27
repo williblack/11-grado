@@ -15,259 +15,267 @@ const CLASE = {
   tema: "La informática y su importancia en la vida cotidiana",
   temaAnterior: "Primera clase del año lectivo",
   video: "",
-  estilo: "galaxia",
-  emoji: "💻🌐",
-  objetivo: "Analizar el impacto, ventajas, riesgos y dilemas éticos de la informática en la sociedad contemporánea, aplicando herramientas de Inteligencia Artificial para la sintetización visual de la información.",
-  competencia: "Apropiación y uso responsable de la tecnología, pensamiento crítico digital y ética en la sociedad de la información.",
-  preguntaGancho: "¿Qué tan dependiente es la infraestructura de la sociedad moderna respecto al procesamiento automático de la información y qué sucedería si colapsara por 24 horas?",
+  estilo: "hojacalculo",
+  emoji: "📐",
+  objetivo: "Identificar instrumentos básicos de medición, comprender los conceptos de exactitud, precisión y conversiones métricas, e integrarlos mediante la automatización de datos en Excel utilizando Inteligencia Artificial.",
+  competencia: "Pienso y desarrollo sistemas tecnológicos utilizando herramientas de software e inteligencia artificial para la recolección, procesamiento y análisis preciso de datos en la solución de problemas cotidianos e industriales.",
+  preguntaGancho: "¿Por qué un pequeño error de medio milímetro en la medición de una pieza de un smartphone o de un microprocesador puede inutilizar por completo un dispositivo de millones de pesos?",
   agenda: [
-    { min: 5, titulo: "Apertura y Pregunta Problematizadora", texto: "Reflexión inicial sobre la presencia invisible de la informática en la rutina diaria y presentación del objetivo del periodo." },
-    { min: 10, titulo: "Conceptualización Teórica (Cuaderno)", texto: "Sintetización del concepto de informática, procesamiento automático de datos y su arquitectura en la infraestructura social." },
-    { min: 10, titulo: "Exploración Módulos Interactivos", texto: "Análisis de casos sectoriales (salud, comercio, educación) y clasificación de ventajas frente a riesgos éticos." },
-    { min: 15, titulo: "Reto Práctico con IA en Sala", texto: "Generación asistida con IA del mapa mental sobre la influencia de la informática en un sector elegido y diseño en plataforma digital." },
-    { min: 5, titulo: "Cierre y Hoja de Trabajo", texto: "Diligenciamiento de preguntas de pensamiento crítico en la plataforma y asignación del compromiso entregable." }
+    { min: 5, titulo: "Introducción y Pregunta Gancho", texto: "Presentación del tema, contextualización sobre la importancia de la precisión en los sistemas informáticos e industriales, y conexión con la clase inicial." },
+    { min: 15, titulo: "Explicación Conceptual y Registro", texto: "Explicación guiada y copia en el cuaderno de los conceptos de magnitud, medición, exactitud, precisión, errores de paralaje y conversiones." },
+    { min: 15, titulo: "Reto Práctico con IA y Excel", texto: "Uso de un prompt de IA para generar tablas en formato TSV, importación directa a Microsoft Excel y automatización mediante fórmulas de conversión." },
+    { min: 10, titulo: "Evaluación y Cierre", texto: "Resolución del quiz interactivo de afianzamiento, asignación de preguntas de investigación en el cuaderno y entrega de la guía en hoja suelta." }
   ],
   cuaderno: {
-    conexion: "En la primera clase del año lectivo establecimos las pautas de trabajo y la metodología general del curso. Hoy iniciamos formalmente la comprensión sistemática de la informática como pilar transversal de la sociedad moderna.",
+    conexion: "En la primera clase del año lectivo establecimos los acuerdos pedagógicos y la introducción al área; hoy daremos nuestro primer paso práctico comprendiendo cómo la informática y la metrología se unen para capturar, medir y procesar datos con exactitud y precisión.",
     bloques: [
       {
-        icono: "🧠",
-        titulo: "1. Definición y Naturaleza de la Informática",
+        icono: "📏",
+        titulo: "1. Conceptos Fundamentales de Medición",
         puntos: [
-          { icono: "⚙️", termino: "Etimología y Concepto", texto: "Proveniente del francés «Informatique» (Information + Automatique). Es la ciencia que estudia el tratamiento automático y racional de la información mediante sistemas computarizados." },
-          { icono: "📊", termino: "Dato vs. Información", texto: "El dato es la unidad primaria sin contexto (ej. «38»); la información es el resultado del procesamiento estructurado de esos datos (ej. «Temperatura corporal de 38 °C: Fiebre»)." },
-          { icono: "🔄", termino: "Ciclo de Procesamiento", texto: "Involucra tres fases fundamentales: Entrada (Input), Procesamiento (CPU/Algoritmos) y Salida (Output) de resultados para la toma de decisiones." }
+          { icono: "🔹", termino: "Medir", texto: "Comparar una cantidad desconocida de una variable con una unidad estándar prefijada." },
+          { icono: "🔹", termino: "Magnitud", texto: "Toda propiedad física que se puede medir cuantitativamente (ej. longitud, masa, tiempo, temperatura)." },
+          { icono: "🔹", termino: "Unidad de medida", texto: "Referencia fija estandarizada que utilizamos para cuantificar una magnitud (ej. metro, gramo, segundo)." }
         ],
-        ampliacion: "La informática sobrepasa la simple manipulación de computadores físicos. Se trata de una **disciplina científica** orientada a resolver problemas complejos mediante la automatización. Cuando escaneas el código QR del transporte público o tu colegio registra la asistencia en una plataforma académica, miles de algoritmos transforman impulsos numéricos en **decisiones operativas en tiempo real**. Sin esta ciencia, la gestión de volúmenes masivos de datos en organizaciones contemporáneas sería inviable."
+        ampliacion: "Medir es la columna vertebral del método científico y del desarrollo informático. En la fabricación de circuitos integrados, pantallas de teléfonos móviles o estructuras físicas de servidores, los ingenieros deben medir con absoluta rigurosidad. Si no existiera un estándar de **unidad de medida**, los componentes fabricados en diferentes lugares del mundo no encajarían entre sí, impidiendo el funcionamiento de la tecnología moderna."
       },
       {
-        icono: "🏗️",
-        titulo: "2. La Informática como Infraestructura Crítica",
+        icono: "📊",
+        titulo: "2. Instrumentos y Magnitudes Físicas",
         puntos: [
-          { icono: "🏥", termino: "Sector Salud", texto: "Sistemas de historia clínica unificada, imágenes diagnósticas procesadas por software y telemedicina para zonas remotas." },
-          { icono: "🏦", termino: "Sector Financiero y Comercial", texto: "Transacciones electrónicas inmediatas, comercio electrónico transfronterizo y trazabilidad mediante plataformas bancarias." },
-          { icono: "⚡", termino: "Servicios Públicos y Logística", texto: "Control automatizado de redes eléctricas, potabilización de agua y gestión de cadenas de suministro globales." }
+          { icono: "📏", termino: "Longitud", texto: "Instrumentos: Regla graduada, cinta métrica, pie de rey. Unidad principal (SI): Metro (m), cm, mm." },
+          { icono: "⚖️", termino: "Masa", texto: "Instrumentos: Balanza digital, báscula. Unidad principal (SI): Kilogramo (kg), Gramo (g)." },
+          { icono: "⏱️", termino: "Tiempo", texto: "Instrumentos: Reloj, cronómetro digital. Unidad principal (SI): Segundo (s), Minuto (min)." },
+          { icono: "🌡️", termino: "Temperatura", texto: "Instrumentos: Termómetro digital o infrarrojo. Unidad principal (SI): Grado Celsius (°C)." }
         ],
-        ampliacion: "Hoy en día, la informática no es un accesorio, sino la **columna vertebral de la civilización moderna**. En ciudades como Buga o Cali, el suministro de energía eléctrica, el tráfico vehicular y la distribución de agua potable dependen de sistemas SCADA (control de supervisión y adquisición de datos). Una falla crítica en los servidores informáticos interrumpe las redes bancarias, la atención hospitalaria y las comunicaciones, demostrando que la **continuidad operativa de un país** es directamente proporcional a la solidez de sus sistemas informáticos."
+        ampliacion: "Cada tipo de magnitud requiere herramientas específicas para ser capturada con fidelidad. En los laboratorios de tecnología e informática no basta con una aproximación visual; se requieren **instrumentos calibrados** capaces de registrar pequeños cambios de masa, tiempo o temperatura, asegurando que los sistemas funcionen en rangos seguros y eficientes."
       },
       {
-        icono: "⚖️",
-        titulo: "3. Dilemas Éticos, Brecha Digital y Riesgos",
+        icono: "🎯",
+        titulo: "3. Exactitud, Precisión y Errores Frecuentes",
         puntos: [
-          { icono: "🔒", termino: "Ciberseguridad y Privacidad", texto: "Protección de datos personales frente al rastreo comercial no consentido, suplantación de identidad y ataques cibernéticos." },
-          { icono: "🌐", termino: "Brecha Digital", texto: "Desigualdad socioeconómica marcada por la falta de acceso a conectividad, equipos informáticos y alfabetización digital." },
-          { icono: "🤖", termino: "Automatización y Empleo", texto: "Reestructuración del mercado laboral por la sustitución de tareas operativas mediante algoritmos e Inteligencia Artificial." }
+          { icono: "🎯", termino: "Exactitud", texto: "Indica qué tan cerca está el valor medido del valor real u objetivo verdadero." },
+          { icono: "📌", termino: "Precisión", texto: "Indica qué tan cerca están entre sí los resultados de varias mediciones repetidas bajo las mismas condiciones." },
+          { icono: "⚠️", termino: "Error de paralaje", texto: "Ocurre al observar la escala del instrumento desde un ángulo inclinado y no de frente a la altura de los ojos." },
+          { icono: "⚠️", termino: "Mal uso del punto cero", texto: "Comenzar a medir desde el borde físico de la regla en lugar de la marca graduada del número cero." }
         ],
-        ampliacion: "El avance informático trae consigo importantes **desafíos éticos**. El acceso desigual a las tecnologías de la información perpetúa brechas de oportunidades entre zonas urbanas y rurales. Paralelamente, la acumulación de datos personales por grandes corporaciones tecnológicas plantea debates sobre la **autonomía individual y el sesgo algorítmico**. Como futuros profesionales de grado décimo, es indispensable desarrollar una postura crítica que promueva la **seguridad digital** y la responsabilidad ética en el uso de la tecnología."
+        ampliacion: "Para comprender la diferencia se utiliza la **analogía del tiro al blanco**: si todos los dardos caen agrupados exactamente en el centro, hay alta exactitud y alta precisión; si caen juntos pero alejados del centro, hay alta precisión pero baja exactitud (un error sistemático). En metrología e informática de datos, evitar errores como la **paralaje** es vital para garantizar la calidad de la información recopilada."
+      },
+      {
+        icono: "🔢",
+        titulo: "4. Conversión Básica: Centímetros (cm) a Milímetros (mm)",
+        puntos: [
+          { icono: "➡️", termino: "De cm a mm", texto: "Se multiplica la cantidad dada en centímetros por 10 (Ejemplo: 4.5 cm × 10 = 45 mm)." },
+          { icono: "⬅️", termino: "De mm a cm", texto: "Se divide la cantidad dada en milímetros entre 10 (Ejemplo: 82 mm ÷ 10 = 8.2 cm)." }
+        ],
+        ampliacion: "Dado que $1\\text{ cm} = 10\\text{ mm}$, convertir valores entre estas dos unidades en el sistema métrico equivale a realizar multiplicaciones o divisiones sencillas por potencias de diez. En el software de diseño vectorial, modelado 3D y hojas de cálculo como Excel, saber alternar entre cm y mm permite definir la **resolución y tolerancia** adecuada para cualquier proyecto tecnológico."
       }
     ]
   },
   glosario: [
-    { termino: "Tratamiento Automático", definicion: "Procesamiento de datos realizado por dispositivos electrónicos siguiendo instrucciones programadas sin intervención humana continua." },
-    { termino: "Infraestructura Crítica", definicion: "Sistemas informáticos y físicos cuya interrupción tendría un impacto grave en la salud, la economía o la seguridad de una sociedad." },
-    { termino: "Brecha Digital", definicion: "Distancia socioeconómica entre aquellas poblaciones que tienen acceso efectivo a las TIC y aquellas que carecen de él." },
-    { termino: "Algoritmo", definicion: "Conjunto finito y ordenado de instrucciones lógicas que permite solucionar un problema o procesar datos." }
+    { termino: "Magnitud", definicion: "Propiedad física de un objeto o sistema que puede ser medida y expresada mediante un número y una unidad." },
+    { termino: "Exactitud", definicion: "Grado de cercanía o aproximación entre el valor obtenido en una medición y el valor real o verdadero." },
+    { termino: "Precisión", definicion: "Grado de concordancia o repetibilidad entre varias mediciones independientes hechas en las mismas condiciones." },
+    { termino: "Error de paralaje", definicion: "Desviación angular en la lectura de una escala debido a la posición incorrecta de los ojos del observador." },
+    { termino: "TSV (Tab-Separated Values)", definicion: "Formato de texto plano en el que las columnas de datos están delimitadas por caracteres de tabulación, ideal para pegar directamente en Excel." }
   ],
   sabiasQue: [
-    "El término 'Informática' fue acuñado en 1957 por el ingeniero alemán Karl Steinbuch al publicar el documento 'Informatik: Automatische Informationsverarbeitung'.",
-    "Se estima que más del 90% del dinero existente en el mundo es puramente digital y solo existe en los servidores de las entidades financieras.",
-    "Un smartphone moderno de gama media posee más de 100,000 veces la capacidad de procesamiento de la computadora que guiós la misión Apolo 11 a la Luna en 1969."
+    "Un error de conversión entre el sistema imperial (pulgadas/libras) y el sistema métrico internacional (metros/kilogramos) provocó en 1999 la destrucción de la sonda espacial Mars Climate Orbiter de la NASA, con un costo superior a 125 millones de dólares.",
+    "El pie de rey o calibrador Vernier fue perfeccionado por el matemático francés Pierre Vernier en 1631 y permite medir fracciones de milímetro (hasta 0.02 mm) con altísima precisión en entornos industriales."
   ],
   modulos: {
     tarjetas: {
-      titulo: "Impacto Transversal de la Informática en la Sociedad",
+      titulo: "Analogías para Comprender la Medición",
       items: [
-        { icono: "🎓", frente: "Informática en la Educación", reverso: "Acceso a bibliotecas globales, simuladores científicos, plataformas de aprendizaje adaptativo y aulas virtuales sin barreras geográficas." },
-        { icono: "🩺", frente: "Informática en la Medicina", reverso: "Modelado molecular para fármacos, secuentación del ADN humano, robots quirúrgicos de alta precisión y monitoreo biométrico remoto." },
-        { icono: "🏬", frente: "Informática en el Comercio", reverso: "Sistemas ERP de inventarios, pagos mediante NFC o pasarelas digitales, algoritmos de recomendación y logística global automatizada." },
-        { icono: "📡", frente: "Informática en las Comunicaciones", reverso: "Redes de fibra óptica, transmisión masiva de datos en tiempo real, telefonía sobre IP y cifrado punto a punto para la privacidad." }
+        { icono: "🎯", frente: "Exactitud vs. Precisión", reverso: "Exactitud es dar justo en el centro del blanco. Precisión es acertar siempre en el mismo punto, aunque esté fuera del centro." },
+        { icono: "👁️", frente: "Error de Paralaje", reverso: "Es como mirar la aguja del velocímetro de un vehículo desde el asiento del copiloto: parecerá marcar una velocidad equivocada debido al ángulo." },
+        { icono: "📐", frente: "Punto Cero en la Regla", reverso: "Medir desde el borde de madera de una regla en vez del trazo del cero es como iniciar una carrera de atletismo dos metros antes de la línea de salida." },
+        { icono: "💻", frente: "Conversión de Unidades", reverso: "Pasar de cm a mm es equivalente a hacer un 'zoom in' en la pantalla para analizar detalles más pequeños con mayor resolución." }
       ]
     },
     explorador: {
-      titulo: "Dimensiones del Análisis Informático",
+      titulo: "Explorador de Instrumentos de Medición",
       items: [
         {
-          icono: "📊",
-          nombre: "Capa de Datos",
+          icono: "📏",
+          nombre: "Medición de Longitud",
           secciones: [
-            { titulo: "Captura y Recolección", items: ["Sensores IoT y periféricos", "Formularios e interacción web", "Registros de transacciones"] },
-            { titulo: "Almacenamiento y Gestión", items: ["Bases de datos relacionales", "Servidores en la Nube", "Estructuras Big Data"] }
+            { titulo: "Regla y Cinta Métrica", items: ["Resolución: 1 mm", "Uso cotidiano: Trabajos escolares, maquetas, trazados simples", "Precauciones: Evitar desgaste en los extremos graduados"] },
+            { titulo: "Pie de Rey (Calibrador)", items: ["Resolución: 0.02 mm a 0.05 mm", "Uso industrial: Diámetros internos, externos y profundidades de precisión", "Ventaja: Cero error de paralaje al usar escala Vernier o pantalla digital"] }
           ]
         },
         {
-          icono: "⚙️",
-          nombre: "Capa de Procesamiento",
+          icono: "⚖️",
+          nombre: "Medición de Masa",
           secciones: [
-            { titulo: "Lógica Algorítmica", items: ["Instrucciones condicionales", "Modelos matemáticos", "Redes neuronales e IA"] },
-            { titulo: "Infraestructura", items: ["Unidades Centrales de Procesamiento (CPU)", "Procesamiento Gráfico (GPU)", "Centros de Cómputo"] }
+            { titulo: "Balanza Digital", items: ["Principio: Sensores de celda de carga", "Uso: Laboratorio de química, farmacia, componentes de microelectrónica", "Técnica: Realizar el tarado a cero antes de depositar la masa"] }
           ]
         },
         {
-          icono: "🖥️",
-          nombre: "Capa de Aplicación",
+          icono: "⏱️",
+          nombre: "Medición de Tiempo",
           secciones: [
-            { titulo: "Interfaz de Usuario (UI)", items: ["Sistemas operativos visuales", "Aplicaciones móviles", "Dashboards interactivos"] },
-            { titulo: "Experiencia de Usuario (UX)", items: ["Accesibilidad para todos", "Optimización de tiempos", "Automatización de tareas"] }
+            { titulo: "Cronómetro Digital", items: ["Resolución: Centésimas de segundo (0.01 s)", "Uso: Pruebas de rendimiento, velocidad de algoritmos y experimentos físicos"] }
           ]
         }
       ]
     },
-    clasificador: {
-      titulo: "Clasificación: Beneficios Oportunos vs. Riesgos Éticos y Operativos",
-      categorias: ["Beneficios u Oportunidades", "Riesgos o Amenazas"],
-      items: [
-        { texto: "Optimización de tiempos en procesos industriales", categoria: 0 },
-        { texto: "Dependencia crítica por fallas en servidores centrales", categoria: 1 },
-        { texto: "Vulnerabilidad ante ataques de Ransomware y Phishing", categoria: 1 },
-        { texto: "Democratización del acceso al conocimiento global", categoria: 0 },
-        { texto: "Desplazamiento de mano de obra por automatización no planificada", categoria: 1 },
-        { texto: "Telemedicina en comunidades de difícil acceso geográfico", categoria: 0 },
-        { texto: "Sesgos algorítmicos en la selección de perfiles laborales", categoria: 1 },
-        { texto: "Análisis predictivo de datos para prevenir epidemias", categoria: 0 }
-      ]
+    grafica: {
+      titulo: "Registro de Tiempos de Medición y Análisis en Clase",
+      instruccion: "Registra en horas semanales el tiempo estimado que dedicas a medir, registrar y analizar datos en distintas asignaturas.",
+      unidad: "horas",
+      max: 8,
+      etiquetas: ["Física", "Informática", "Química", "Matemáticas"],
+      referencia: { nombre: "Sugerencia del profe", valores: [3, 4, 2, 3] }
     },
-    linea: {
-      titulo: "Hitos Clave en la Evolución del Procesamiento de Información",
-      hitos: [
-        { anio: "1946", titulo: "ENIAC", texto: "Primera computadora digital electrónica de propósito general, ocupaba 167 m² y utilizaba tubos al vacío." },
-        { anio: "1971", titulo: "El Microprocesador", texto: "Intel lanza el chip 4004, integrando la CPU completa en un solo circuito integrado y reduciendo drásticamente el tamaño." },
-        { anio: "1983", titulo: "Surgimiento de Internet", texto: "Adopción del protocolo TCP/IP, sentando las bases de la interconexión global de redes descentralizadas." },
-        { anio: "1991", titulo: "World Wide Web", texto: "Tim Berners-Lee libera el sistema de hipertexto global, permitiendo el acceso público a documentos interconectados." },
-        { anio: "2007", titulo: "Computación Móvil", texto: "Popularización masiva de los smartphones, masificando el acceso continuo a la informática personal." },
-        { anio: "2022", titulo: "Era de la IA Generativa", texto: "Despliegue masivo de modelos de lenguaje e inteligencia artificial integrada al software cotidiano." }
+    clasificador: {
+      titulo: "Clasificación de Instrumentos por Magnitud",
+      categorias: ["Longitud", "Masa", "Tiempo / Temp."],
+      items: [
+        { texto: "Pie de Rey (Calibrador)", categoria: 0 },
+        { texto: "Cinta Métrica", categoria: 0 },
+        { texto: "Balanza Analítica", categoria: 1 },
+        { texto: "Báscula Digital", categoria: 1 },
+        { texto: "Cronómetro Digital", categoria: 2 },
+        { texto: "Termómetro Infrarrojo", categoria: 2 },
+        { texto: "Regla Graduada", categoria: 0 },
+        { texto: "Reloj Atómico", categoria: 2 }
       ]
     }
   },
   reto: {
-    titulo: "RETO EN SALA: Mapa Mental Visual con Asistencia de IA",
-    descripcion: "Utilizarás un modelo de Inteligencia Artificial para estructurar la síntesis analítica sobre cómo la informática transforma un ámbito específico de la sociedad, construyendo posteriormente el mapa mental interactivo o gráfico en Canva.",
+    titulo: "RETO CON IA Y EXCEL: Creación y Automatización de Datos de Medición",
+    descripcion: "En este reto interactivo utilizarás la Inteligencia Artificial para generar una tabla de datos metrológicos estructurados en formato TSV, trasladarla limpiamente a Microsoft Excel y automatizar conversiones de centimetros a milímetros mediante fórmulas.",
     pasos: [
-      "Paso 1: Selecciona un ámbito de análisis: Educación, Salud, Comercio, Entretenimiento o Comunicación.",
-      "Paso 2: Copia el 'Prompt Maestro' provisto abajo e ingresa a la herramienta de Inteligencia Artificial indicada.",
-      "Paso 3: Reemplaza la etiqueta [ÁMBITO] por tu área seleccionada y ejecuta la consulta para obtener la estructura organizada.",
-      "Paso 4: Abre Canva (o la herramienta gráfica de tu preferencia) y selecciona la plantilla 'Mapa Mental'.",
-      "Paso 5: Diseña el mapa asegurando que el ámbito esté en el centro, rodeado por 2 herramientas, 2 ventajas y 2 riesgos claramente jerarquizados.",
-      "Paso 6: Exporta la imagen o copia el enlace de tu mapa mental finalizado para adjuntarlo a tu reporte de clase."
+      "Abre la herramienta de IA (Gemini, ChatGPT o Copilot) disponible en el aula de informática.",
+      "Copia y pega el prompt suministrado a continuación para obtener la tabla de objetos y mediciones en formato TSV.",
+      "Selecciona únicamente el texto de la tabla generada por la IA y presiona Ctrl + C para copiarlo.",
+      "Abre una hoja de cálculo en blanco en Microsoft Excel, ubícate en la celda A1 y presiona Ctrl + V.",
+      "Comprueba que Excel haya distribuido automáticamente los datos en 4 columnas (A, B, C, D) respetando filas y columnas.",
+      "Selecciona y borra manualmente los datos numéricos de la columna 'Medida Estimada en mm' (Columna D).",
+      "Escribe en la celda D2 la fórmula de conversión: =C2*10 y presiona Enter.",
+      "Haz doble clic en la esquina inferior derecha de la celda D2 (controlador de relleno) para desplegar la fórmula hasta la celda D6."
     ],
-    prompt: "Actúa como un experto en tecnología y diseño instruccional. Genera la estructura en texto claro para un mapa mental sobre la influencia de la informática en el ámbito de [ÁMBITO]. La estructura debe incluir obligatoriamente: 1) El nombre del Ámbito en el centro. 2) Exactamente 2 Herramientas o tecnologías clave usadas en ese sector con su definición breve. 3) Exactamente 2 Ventajas concretas para la sociedad. 4) Exactamente 2 Riesgos o desafíos éticos asociados. Muestra los nodos de forma jerárquica con viñetas claras.",
+    prompt: "Actúa como un asistente técnico de laboratorio. Genera una tabla en texto llano separada por tabulaciones (formato TSV) con 5 objetos comunes del salón de clases. La tabla debe tener exactamente 4 columnas: 'Objeto', 'Instrumento Recomendado', 'Medida Estimada en cm', 'Medida Estimada en mm'. No agregues texto explicativo, solo entrega los datos tabulados.",
     herramientas: [
-      { nombre: "ChatGPT", url: "https://chatgpt.com" },
-      { nombre: "Canva", url: "https://www.canva.com" },
-      { nombre: "Google Gemini", url: "https://gemini.google.com" }
+      { nombre: "Microsoft Excel", url: "https://www.office.com" },
+      { nombre: "Google Gemini IA", url: "https://gemini.google.com" }
     ],
     requisitos: [
-      "Nodo central que identifique con claridad el ámbito seleccionado.",
-      "Inclusión de 2 herramientas informáticas específicas del sector.",
-      "Inclusión de 2 ventajas sociales o económicas bien fundamentadas.",
-      "Inclusión de 2 riesgos o dilemas éticos vinculados al área.",
-      "Uso de conectores visuales e íconos o colores diferenciados en Canva."
+      "Generar la estructura en formato TSV mediante la instrucción entregada a la Inteligencia Artificial.",
+      "Realizar el pegado directo en la celda A1 de Excel verificando la separación de columnas.",
+      "Eliminar el contenido original de la columna D para garantizar el cálculo mediante fórmulas.",
+      "Ingresar la fórmula =C2*10 correctamente en la celda D2.",
+      "Propagar la fórmula en el rango D2:D6 y verificar que los milímetros sean exactamente 10 veces los centímetros."
     ]
   },
   quiz: [
     {
-      pregunta: "¿Cuál es la diferencia sustancial entre 'Dato' e 'Información' en el ámbito informático?",
+      pregunta: "¿Cuál es la diferencia fundamental entre exactitud y precisión?",
       opciones: [
-        "No existe ninguna diferencia; ambos conceptos se refieren exactamente a lo mismo.",
-        "Los datos son elementos primarios sin procesar; la información son datos procesados con significado útil.",
-        "La información se almacena en el disco duro y los datos solo existen en la memoria RAM.",
-        "Los datos son siempre numéricos y la información solo puede ser texto escrito."
+        "La exactitud indica repetibilidad entre mediciones y la precisión cercanía al valor verdadero.",
+        "La exactitud mide la cercanía al valor real; la precisión es la concordancia entre varias mediciones repetidas.",
+        "Ambos términos significan exactamente lo mismo en metrología e informática.",
+        "La exactitud solo se aplica a instrumentos digitales y la precisión a instrumentos analógicos."
       ],
       correcta: 1,
-      explicacion: "Los datos son unidades brutas que adquieren valor e información cuando son procesados, organizados y contextualizados por un algoritmo o sistema."
+      explicacion: "Exactitud es qué tan cerca está la medida del valor verdadero u objetivo, mientras que precisión se refiere a la repetibilidad entre varias mediciones."
     },
     {
-      pregunta: "Un hospital sufre un ataque de Ransomware que encripta la base de datos de pacientes. ¿Qué aspecto de la informática analiza este caso de estudio?",
+      pregunta: "Si deseas convertir una medida de milímetros (mm) a centímetros (cm), ¿cuál es la operación matemática correcta?",
       opciones: [
-        "La velocidad de procesamiento de los nuevos microprocesadores.",
-        "La vulnerabilidad y necesidad de ciberseguridad en la infraestructura crítica.",
-        "La ventaja de usar pantallas táctiles en el área de urgencias.",
-        "El ahorro de papel gracias a los formularios digitales."
+        "Multiplicar por 10",
+        "Dividir entre 10",
+        "Sumar 10",
+        "Multiplicar por 100"
       ],
       correcta: 1,
-      explicacion: "Al depender los servicios de salud de plataformas informáticas, un ataque cibernético pone en riesgo vidas humanas, evidenciando la vulnerabilidad de las infraestructuras críticas."
+      explicacion: "Puesto que 1 cm equivale a 10 mm, para convertir milímetros a centímetros debemos dividir la cantidad entre 10."
     },
     {
-      pregunta: "¿Qué se entiende por 'Tratamiento Automático' de la información?",
+      pregunta: "¿Por qué se produce el error de paralaje al tomar lecturas con una regla graduada?",
       opciones: [
-        "Escribir manualmente un documento extenso en un procesador de texto.",
-        "El procesamiento de datos mediante sistemas programados sin intervención humana constante.",
-        "Imprimir imágenes a color en impresoras de alta velocidad.",
-        "La reparación física de los componentes internos de una computadora."
+        "Por fallas de fabricación en el plástico de la regla.",
+        "Por observar la escala graduada desde un ángulo inclinado en lugar de hacerlo en línea recta perpendicular a los ojos.",
+        "Por variaciones térmicas drásticas en el aula de clases.",
+        "Por iniciar la medición en el valor cero de la graduación."
       ],
       correcta: 1,
-      explicacion: "El tratamiento automático implica que la máquina ejecuta instrucciones lógicas previas (software) para manipular y transformar datos de forma autónoma."
+      explicacion: "El error de paralaje es un error de observación causado cuando la línea de visión no es perpendicular a la escala graduada del instrumento."
     },
     {
-      pregunta: "¿A qué se refiere el término 'Brecha Digital' en el contexto socioeconómico?",
+      pregunta: "En el ejercicio práctico con Excel, ¿qué fórmula se debe ingresar en la celda D2 para calcular milímetros a partir de centímetros (C2)?",
       opciones: [
-        "Al espacio físico que se debe dejar entre dos computadores para evitar el sobrecalentamiento.",
-        "A la diferencia de velocidad entre las conexiones de fibra óptica y las conexiones satelitales.",
-        "A la desigualdad en el acceso, uso y apropiación de las tecnologías entre diferentes comunidades.",
-        "Al tiempo de carga que tarda una página web en abrirse en un navegador antiguo."
+        "=C2/10",
+        "=C2+10",
+        "=C2*10",
+        "=SUMA(C2:D2)"
       ],
       correcta: 2,
-      explicacion: "La brecha digital representa la disparidad entre poblaciones que cuentan con recursos y competencias tecnológicas y aquellas marginadas de dichos beneficios."
+      explicacion: "Para convertir centímetros a milímetros se multiplica por 10, lo cual en sintaxis de Excel se escribe =C2*10."
     },
     {
-      pregunta: "¿Cuál de las siguientes situaciones representa un riesgo ético derivado del uso masivo de la informática?",
+      pregunta: "¿Qué ventaja ofrece solicitar datos a la IA en formato TSV (Valores Separados por Tabulaciones)?",
       opciones: [
-        "El uso de software educativo para aprender idiomas de manera autónoma.",
-        "La recolección y venta no autorizada de datos de navegación privada para perfiles comerciales.",
-        "La automatización del cálculo de calificaciones mediante hojas de cálculo.",
-        "El diseño de modelos tridimensionales para simulaciones meteorológicas."
+        "Protege la información contra virus informáticos.",
+        "Permite que al copiar y pegar en Excel, el programa reconozca las tabulaciones y ubique cada dato en una celda y columna independiente.",
+        "Convierte automáticamente los datos en gráficos estadísticos en 3D.",
+        "Aumenta la velocidad del procesador durante el procesamiento de texto."
       ],
       correcta: 1,
-      explicacion: "El rastreo masivo no consentido y el comercio de datos personales vulneran la privacidad individual y plantean severos debates éticos y legales."
+      explicacion: "El formato TSV utiliza el carácter de tabulación como separador de columnas, lo que Excel interpreta de forma nativa al pegar datos."
     },
     {
-      pregunta: "¿Por qué se afirma que la informática es una ciencia 'transversal'?",
+      pregunta: "Si tres mediciones consecutivas de un objeto cuyo valor real es 5.0 cm arrojan 4.2 cm, 4.2 cm y 4.2 cm, ¿cómo se evalúan estos datos?",
       opciones: [
-        "Porque únicamente sirve para conectar cables y componentes de manera horizontal.",
-        "Porque se aplica y transforma prácticamente todas las áreas del conocimiento y la actividad humana.",
-        "Porque reemplaza por completo a las matemáticas, la física y la biología.",
-        "Porque solo se enseña en los grados superiores de la educación secundaria."
+        "Son exactos y precisos.",
+        "Son precisos pero no exactos.",
+        "Son exactos pero no precisos.",
+        "No son ni exactos ni precisos."
       ],
       correcta: 1,
-      explicacion: "Su carácter transversal implica que sirve como herramienta de procesamiento y desarrollo para la medicina, el arte, la economía, la educación y la ingeniería por igual."
+      explicacion: "Son precisos porque las lecturas son idénticas entre sí, pero no son exactas porque difieren considerablemente del valor real (5.0 cm)."
     }
   ],
   investigacion: {
-    titulo: "Actividad de Investigación en el Cuaderno",
-    instruccion: "Investiga analíticamente y redacta en tu cuaderno los siguientes puntos conceptuales:",
+    titulo: "Investigación Técnica (Para responder en el cuaderno)",
+    instruccion: "Investiga y responde en tu cuaderno las siguientes preguntas cortas de profundización:",
     preguntas: [
-      "Describe en detalle 3 VENTAJAS concretas que la informática digital aporta al desarrollo socioeconómico actual.",
-      "Describe en detalle 3 RIESGOS o amenazas significativas del uso intensivo de la informática en la vida diaria."
+      "¿Qué es un pie de rey (calibrador o Vernier)? Describe brevemente para qué sirve y qué ventaja tiene frente a una regla común en la industria.",
+      "¿Qué es la tolerancia en los procesos de fabricación industrial y por qué la precisión es indispensable en el ensamblaje de piezas electrónicas o mecánicas?"
     ],
     fuentes: [
-      "Capítulos sobre Ciudadanía y Ética Digital en portales educativos.",
-      "Documentos sobre el impacto de las TIC en la sociedad contemporánea."
+      "Manuales de metrología dimensional y control de calidad industrial.",
+      "Documentación técnica sobre diseño asistido por computador (CAD) y componentes electrónicos."
     ]
   },
   tarea: {
-    titulo: "Tarea Entregable (Hoja Suelta)",
-    instruccion: "Desarrolla en una hoja suelta el siguiente ejercicio de reflexión prospectiva:",
-    renglones: 5,
-    indicacion: "Redacta el texto en la hoja de la IZQUIERDA del fólder o carpeta de entrega.",
+    titulo: "Guía Entregable de Medición y Metrología (Hoja Suelta)",
+    html: true,
+    instruccion: "<h4>1. Identificación de Magnitudes e Instrumentos (30 puntos)</h4><p>Escribe la magnitud correspondiente y el instrumento adecuado para realizar cada medición:</p><ul><li><b>a) Registrar el tiempo que tarda una sustancia en hervir:</b><br>Magnitud: ___________________ | Instrumento: ___________________</li><li><b>b) Medir el grosor de un libro de texto:</b><br>Magnitud: ___________________ | Instrumento: ___________________</li><li><b>c) Determinar la masa de una manzana:</b><br>Magnitud: ___________________ | Instrumento: ___________________</li></ul><h4>2. Conversiones Directas (30 puntos)</h4><p>Aplica las operaciones de conversión para completar las equivalencias:</p><ul><li><b>a)</b> 12.8 cm = ____________ mm</li><li><b>b)</b> 350 mm = ____________ cm</li><li><b>c)</b> 0.6 cm = ____________ mm</li><li><b>d)</b> 7 mm = ____________ cm</li></ul><h4>3. Análisis de Caso: Lectura e Interpretación (40 puntos)</h4><p>Tres estudiantes miden el largo de un borrador cuyo valor real exacto es <b>5.0 cm (50 mm)</b>. Obtienen los siguientes datos en tres intentos consecutivos:</p><ul><li><b>Estudiante A:</b> 4.2 cm, 4.2 cm, 4.2 cm</li><li><b>Estudiante B:</b> 4.9 cm, 5.0 cm, 5.1 cm</li><li><b>Estudiante C:</b> 3.1 cm, 6.8 cm, 2.4 cm</li></ul><p>A partir de los resultados, responde justificando tus respuestas:</p><ul><li><b>a)</b> ¿Cuál estudiante tuvo resultados precisos pero no exactos? Justifica tu respuesta.<br>_________________________________________________________________________________________</li><li><b>b)</b> ¿Cuál estudiante demostró tener datos exactos y precisos? Justifica tu respuesta.<br>_________________________________________________________________________________________</li><li><b>c)</b> Menciona dos recomendaciones metodológicas para evitar incurrir en el error de paralaje al momento de tomar lecturas con una regla graduada.<br>_________________________________________________________________________________________</li></ul>",
+    renglones: 0,
+    indicacion: "Desarrollar de forma individual en una hoja suelta debidamente marcada con Nombre, Grado 10° y Fecha.",
     criterios: [
-      "Extensión exacta o aproximada de 5 renglones con excelente caligrafía y ortografía.",
-      "Argumentación coherente que evidencie la comprensión de la dependencia informática actual.",
-      "Entrega oportuna en el soporte físico indicado."
+      "Identificación correcta de magnitudes e instrumentos de medición.",
+      "Precisión matemática en el cálculo de conversiones entre cm y mm.",
+      "Justificación conceptual correcta sobre exactitud, precisión y error de paralaje.",
+      "Presentación ordenada, ortografía impecable y entrega oportuna."
     ],
-    entrega: "Próxima clase de Tecnología e Informática."
+    entrega: "Próxima clase de Tecnología e Informática"
   },
   hoja: {
     preguntas: [
-      { id: "r1", texto: "Explica con tus propias palabras la diferencia entre un dato aislado y una información procesada mediante un ejemplo distinto a los vistos en clase.", lineas: 3 },
-      { id: "r2", texto: "Si la infraestructura informática de la red bancaria nacional fallara por 48 horas, ¿cuáles serían las 2 consecuencias más graves para la vida cotidiana en tu municipio?", lineas: 3 },
-      { id: "r3", texto: "¿Qué rol jugó la Inteligencia Artificial durante la realización de tu reto práctico y de qué manera facilitó la estructuración del mapa mental?", lineas: 3 },
-      { id: "r4", texto: "Desde tu perspectiva como estudiante de grado décimo, ¿cuál es el principal desafío ético que enfrenta tu generación frente al uso masivo de las redes sociales e informática personal?", lineas: 4 },
-      { id: "r5", texto: "¿Qué aprendí hoy en la clase de informática sobre la importancia del procesamiento automático de datos en la sociedad moderna?", lineas: 3 }
+      { id: "r1", texto: "¿Por qué crees que es crucial para un profesional de tecnología o sistemas distinguir claramente entre exactitud y precisión?", lineas: 3 },
+      { id: "r2", texto: "Explica en tus palabras qué ventajas ofrece utilizar Inteligencia Artificial y formato TSV para organizar datos antes de llevarlos a Excel.", lineas: 3 },
+      { id: "r3", texto: "¿Qué utilidad práctica tiene automatizar fórmulas (=C2*10) en una hoja de cálculo en lugar de hacer las conversiones a mano?", lineas: 3 },
+      { id: "r4", texto: "¿De qué manera el error de paralaje o el mal uso del punto cero pueden arruinar el diseño de un producto industrial?", lineas: 3 },
+      { id: "r5", texto: "¿Qué aprendí hoy en clase que me sirva para mejorar mi rendimiento en proyectos de tecnología y ciencias en el colegio?", lineas: 3 }
     ]
   },
   notasDocente: [
-    "Monitorear que los estudiantes de grado 10° utilicen la IA como herramienta de estructuración analítica y no como un generador pasivo que reemplace el diseño gráfico en Canva.",
-    "Promover el debate ético al analizar la sección de riesgos para fomentar el pensamiento crítico sobre privacidad y seguridad digital.",
-    "Verificar que el tiempo dedicado a la herramienta interactiva respete los 15 minutos asignados en la agenda de la clase."
+    "Verificar previamente que las computadoras del aula tengan acceso a la herramienta de IA elegida o disponer del prompt impreso si falla la conectividad.",
+    "Supervisar que al pegar el texto TSV en Excel (Ctrl + V), el sistema cree 4 columnas independientes; de lo contrario, guiarlos en 'Texto en Columnas'.",
+    "Asegurar que los estudiantes entiendan la sintaxis del operador de multiplicación (*) en Excel para aplicar la fórmula =C2*10 correctamente."
   ]
 };
 </script>
