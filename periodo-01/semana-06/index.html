@@ -1,1 +1,263 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La metrología en la vida diaria y la industria | Grado 11°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 11,
+  edad: 15,
+  periodo: 1,
+  semana: 6,
+  tema: "La metrología en la vida diaria y la industria",
+  temaAnterior: "La informática y su importancia en la vida cotidiana",
+  video: "",
+  estilo: "hojacalculo",
+  emoji: "📏🔧",
+  objetivo: "Analizar la importancia de las mediciones confiables en la vida diaria y la industria, utilizando Excel y la IA para identificar medidas que cumplen una tolerancia.",
+  competencia: "Identifica magnitudes, unidades e instrumentos; interpreta medidas y tolerancias; utiliza herramientas digitales y verifica sus resultados para proponer soluciones a problemas cotidianos.",
+  preguntaGancho: "¿Cómo puede una diferencia de apenas 2 milímetros hacer que una pieza no funcione?",
+  agenda: [
+    { min: 4, titulo: "Activación", texto: "Relacionamos la informática con las mediciones y comentamos qué podría pasar si una puerta, un alimento o una pieza se mide incorrectamente." },
+    { min: 12, titulo: "Conceptos para el cuaderno", texto: "Copiamos los puntos de los cuatro bloques. Las ampliaciones se leen y comentan; no es necesario copiarlas." },
+    { min: 6, titulo: "Aplicaciones y decisiones", texto: "Exploramos un caso y clasificamos situaciones según su magnitud. Los demás ejemplos quedan disponibles como apoyo." },
+    { min: 15, titulo: "Reto con Excel e IA", texto: "Pegamos la tabla, calculamos diferencias, comprobamos tolerancias y contrastamos una explicación de la IA con los resultados." },
+    { min: 5, titulo: "Quiz de comprensión", texto: "Respondemos ocho preguntas sobre instrumentos, unidades, tolerancias y uso responsable de la IA." },
+    { min: 3, titulo: "Reflexión y cierre", texto: "Respondemos brevemente la hoja digital y completamos en el cuaderno la frase de cierre." }
+  ],
+  cuaderno: {
+    conexion: "En la clase anterior estudiamos cómo la informática ayuda a organizar información y resolver tareas. Hoy utilizaremos esa capacidad para analizar mediciones: los instrumentos producen datos y Excel permite compararlos. La IA puede ayudarnos a comprenderlos, pero debemos verificar sus explicaciones.",
+    bloques: [
+      {
+        icono: "📏",
+        titulo: "1. Medir para conocer y decidir",
+        puntos: [
+          { icono: "🔍", termino: "Metrología", texto: "Es la ciencia de las mediciones. Ayuda a obtener y comprender resultados confiables." },
+          { icono: "📐", termino: "Magnitud", texto: "Es una característica que puede medirse, como longitud, masa, tiempo, temperatura o presión." },
+          { icono: "🔢", termino: "Unidad", texto: "Es la referencia utilizada para expresar una medida: metro, kilogramo, segundo o grado Celsius." },
+          { icono: "🛠️", termino: "Instrumento", texto: "Es una herramienta de medición, como una cinta métrica, una balanza o un termómetro." }
+        ],
+        ampliacion: "Imagina que una familia en Buga necesita comprar una puerta. Decir que el espacio mide 200 no permite elegirla, porque falta la unidad. Indicar 200 cm aporta información útil, pero también deben medirse el ancho y otras dimensiones necesarias. En cada medición identificamos qué característica queremos conocer, elegimos un instrumento y registramos el resultado con su unidad. Después podemos organizar los datos en una tabla. **Una medida necesita un número y una unidad para comunicar su significado.** La informática facilita guardar y comparar esos resultados, aunque no corrige automáticamente una medición tomada de manera incorrecta."
+      },
+      {
+        icono: "🎯",
+        titulo: "2. Exactitud y tolerancia",
+        puntos: [
+          { icono: "✅", termino: "Exactitud", texto: "Expresa qué tan cerca está una medición del valor de referencia." },
+          { icono: "↔️", termino: "Tolerancia", texto: "Es la variación permitida respecto a una medida requerida." },
+          { icono: "🧮", termino: "Diferencia absoluta", texto: "Indica cuánto se aleja la medida obtenida de la esperada, sin considerar el signo." },
+          { icono: "⚙️", termino: "Criterio de aceptación", texto: "En nuestro ejercicio, la medida cumple cuando su diferencia es menor o igual que la tolerancia." }
+        ],
+        ampliacion: "Supongamos que una pieza de práctica debe medir 50 mm y admite una variación de 1 mm hacia arriba o hacia abajo. El intervalo aceptable va de 49 mm a 51 mm, incluyendo ambos límites. Si mide 48 mm, la diferencia absoluta respecto a 50 mm es 2 mm; por tanto, no cumple. Si mide 51 mm, la diferencia es 1 mm y sí cumple. **La tolerancia establece los límites aceptables; no significa que cualquier diferencia sea válida.** En situaciones reales, esos límites provienen de requisitos técnicos. Los valores de esta clase son ejemplos escolares."
+      },
+      {
+        icono: "🏗️",
+        titulo: "3. Aplicaciones en la vida diaria y la industria",
+        puntos: [
+          { icono: "🚪", termino: "Construcción", texto: "Se miden vigas, puertas, ventanas y espacios para comprobar dimensiones, encajes y requisitos de seguridad." },
+          { icono: "🌡️", termino: "Alimentos", texto: "Se controlan la masa y las temperaturas de cocción y refrigeración para cuidar la calidad y la conservación." },
+          { icono: "💊", termino: "Medicamentos", texto: "La cantidad administrada debe corresponder a la dosis indicada por el profesional de salud." },
+          { icono: "⏱️", termino: "Organización del tiempo", texto: "Medir la duración de las actividades permite distribuir tareas y cumplir horarios." },
+          { icono: "📦", termino: "Control de calidad", texto: "Consiste en comprobar si un producto cumple requisitos como masa, tamaño o funcionamiento." }
+        ],
+        ampliacion: "En una panadería se utilizan mediciones para pesar ingredientes, controlar procesos y revisar productos. Si la balanza registra mal la masa, una preparación puede cambiar y los paquetes pueden contener cantidades diferentes de las previstas. En construcción, medir incorrectamente una ventana puede causar problemas de instalación y costos adicionales. En la organización escolar, registrar el tiempo ayuda a distribuir las actividades. **Las consecuencias de una medición incorrecta dependen del contexto: pueden afectar la calidad, el costo, la salud o la seguridad.** Por eso debemos comprobar el instrumento, la unidad y la forma de tomar la medida antes de utilizar el resultado."
+      },
+      {
+        icono: "🚗",
+        titulo: "4. Metrología automotriz y análisis digital",
+        puntos: [
+          { icono: "🛞", termino: "Presión y temperatura", texto: "Se revisan con manómetros y sensores para detectar condiciones que requieren atención." },
+          { icono: "📍", termino: "Distancia y velocidad", texto: "Se expresan con unidades como metros, kilómetros y kilómetros por hora." },
+          { icono: "🔧", termino: "Dimensiones de piezas", texto: "El calibrador y el micrómetro permiten revisar dimensiones y compararlas con requisitos técnicos." },
+          { icono: "⚠️", termino: "Ajuste y revisión", texto: "Una pieza fuera de tolerancia puede causar dificultades de montaje, desgaste, fugas o fallas." },
+          { icono: "🤖", termino: "Excel e IA", texto: "Excel calcula y compara datos; la IA explica ideas. El estudiante verifica los resultados y toma decisiones justificadas." }
+        ],
+        ampliacion: "En un taller automotriz, una pieza que parece adecuada a simple vista puede tener una dimensión incompatible con el componente donde se instalará. Medirla permite compararla con los requisitos antes del montaje. También se revisan otras magnitudes, como presión y temperatura, usando instrumentos apropiados. En esta clase simularemos un control de dimensiones con Excel. Después pediremos a la IA una explicación y revisaremos si coincide con el cálculo. **Una respuesta convincente de la IA no reemplaza la medición ni la verificación técnica.** Estas habilidades son útiles en formación técnica, ingeniería, mantenimiento y procesos de control de calidad."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Metrología", definicion: "Ciencia de las mediciones y sus aplicaciones." },
+    { termino: "Magnitud", definicion: "Característica que puede expresarse mediante una medición." },
+    { termino: "Unidad", definicion: "Referencia con la que se expresa una magnitud." },
+    { termino: "Exactitud", definicion: "Cercanía de una medición a un valor de referencia." },
+    { termino: "Tolerancia", definicion: "Variación permitida respecto a un valor requerido." },
+    { termino: "Diferencia absoluta", definicion: "Distancia numérica entre dos valores, sin signo negativo." },
+    { termino: "Calibrador", definicion: "Instrumento que permite medir dimensiones exteriores, interiores y profundidades." },
+    { termino: "Manómetro", definicion: "Instrumento utilizado para medir presión." },
+    { termino: "Control de calidad", definicion: "Comprobación de que un producto o proceso cumple requisitos definidos." }
+  ],
+  sabiasQue: [
+    "Un milímetro equivale a la milésima parte de un metro: 1 m = 1000 mm.",
+    "La masa y el peso son magnitudes diferentes: la masa se expresa en kilogramos y el peso, como fuerza, en newtons.",
+    "La función ABS devuelve el valor absoluto de un número; por ejemplo, ABS(-2) da como resultado 2."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Comparaciones para comprender",
+      items: [
+        { icono: "📏", frente: "La unidad es como una referencia compartida.", reverso: "Así como todos necesitamos conocer las reglas de un juego, necesitamos unidades comunes para interpretar una medida." },
+        { icono: "🚪", frente: "La tolerancia es como el espacio permitido para encajar.", reverso: "Una pieza puede variar dentro de ciertos límites; fuera de ellos puede dejar de cumplir su función." },
+        { icono: "🎯", frente: "La exactitud se parece a acertar cerca de una meta.", reverso: "Una medición más cercana al valor de referencia tiene mayor exactitud." },
+        { icono: "📦", frente: "El control de calidad funciona como una revisión antes de entregar.", reverso: "Compara las características del producto con requisitos definidos y detecta lo que debe revisarse." },
+        { icono: "📊", frente: "Excel es una mesa de trabajo para los datos.", reverso: "Organiza valores, calcula diferencias y aplica reglas, pero necesita datos y fórmulas correctos." },
+        { icono: "🤖", frente: "La IA es un apoyo que también requiere revisión.", reverso: "Puede explicar una tolerancia, pero debemos contrastar sus afirmaciones con los datos y los conceptos estudiados." }
+      ]
+    },
+    explorador: {
+      titulo: "Casos: medir, analizar y prevenir",
+      items: [
+        {
+          icono: "🏗️",
+          nombre: "Construcción",
+          secciones: [
+            { titulo: "Situación", items: ["Una ventana llega a una vivienda, pero no cabe en el espacio disponible.", "Se registró el ancho sin comprobar la medida antes de realizar el pedido."] },
+            { titulo: "Analiza", items: ["¿Qué magnitud se midió y qué instrumento era adecuado?", "¿Qué consecuencias económicas o de instalación podrían aparecer?"] },
+            { titulo: "Prevención", items: ["Medir las dimensiones necesarias, registrar las unidades y verificar el resultado antes del pedido."] }
+          ]
+        },
+        {
+          icono: "🥣",
+          nombre: "Alimentos",
+          secciones: [
+            { titulo: "Situación", items: ["Un refrigerador muestra un dato de temperatura incorrecto y el personal no detecta que la refrigeración es insuficiente."] },
+            { titulo: "Analiza", items: ["¿Qué magnitud debe comprobarse?", "¿Por qué una apariencia normal del alimento no demuestra que estuvo bien conservado?"] },
+            { titulo: "Prevención", items: ["Revisar los instrumentos y seguir los procedimientos de control de temperatura establecidos para el alimento."] }
+          ]
+        },
+        {
+          icono: "🚗",
+          nombre: "Automotriz",
+          secciones: [
+            { titulo: "Situación", items: ["Una pieza de práctica debe medir 50 mm, con tolerancia de 1 mm, pero mide 48 mm."] },
+            { titulo: "Analiza", items: ["Calcula la diferencia absoluta.", "¿Se encuentra dentro del intervalo de 49 mm a 51 mm?"] },
+            { titulo: "Prevención", items: ["Separar la pieza para revisión y comprobar las especificaciones antes de utilizarla.", "Estos valores son didácticos y no corresponden a una reparación real."] }
+          ]
+        },
+        {
+          icono: "⏱️",
+          nombre: "Tiempo y calidad",
+          secciones: [
+            { titulo: "Situación", items: ["Una actividad prevista para 10 minutos dura 12 minutos. En este ejercicio se permite una diferencia de 1 minuto."] },
+            { titulo: "Analiza", items: ["¿La duración cumple el criterio de la actividad?", "¿Cómo afecta el resultado a la organización de las tareas siguientes?"] },
+            { titulo: "Prevención", items: ["Registrar tiempos reales y utilizarlos para mejorar la planificación."] }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasifica según la magnitud principal",
+      categorias: ["Longitud", "Masa", "Tiempo"],
+      items: [
+        { texto: "Altura de una puerta en centímetros.", categoria: 0 },
+        { texto: "Diámetro de una pieza en milímetros.", categoria: 0 },
+        { texto: "Ancho de una ventana en centímetros.", categoria: 0 },
+        { texto: "Distancia recorrida en kilómetros.", categoria: 0 },
+        { texto: "Cantidad de harina expresada en gramos.", categoria: 1 },
+        { texto: "Masa de un producto empacado en gramos.", categoria: 1 },
+        { texto: "Masa de una pieza metálica en kilogramos.", categoria: 1 },
+        { texto: "Duración de una actividad en minutos.", categoria: 2 },
+        { texto: "Duración de una revisión en segundos.", categoria: 2 }
+      ]
+    }
+  },
+  reto: {
+    titulo: "¿La pieza cumple con la medida?",
+    descripcion: "Utiliza Excel e IA para comparar medidas y tolerancias. Los datos son ejemplos escolares, no especificaciones reales de construcción, alimentos o reparación.",
+    pasos: [
+      "1. Abre una hoja de Excel. Copia únicamente la tabla del paso siguiente y pégala en A1. Las tabulaciones separan las columnas. Si queda en una sola columna, utiliza Datos, Texto en columnas y selecciona Tabulación.",
+      "2. Copia esta tabla desde Elemento hasta la última fila:\nElemento\tMagnitud\tInstrumento\tUnidad\tMedida esperada\tTolerancia\tMedida obtenida\tDiferencia\tCumple\nPuerta\tLongitud\tCinta métrica\tcm\t200\t1\t202\t\t\nVentana\tAncho\tCinta métrica\tcm\t100\t1\t100\t\t\nPieza automotriz\tDiámetro\tCalibrador\tmm\t50\t1\t48\t\t\nProducto empacado\tMasa\tBalanza\tg\t500\t5\t503\t\t\nActividad escolar\tTiempo\tCronómetro\tmin\t10\t1\t12\t\t",
+      "3. En H2 escribe =ABS(G2-E2) y copia la fórmula hasta H6. La diferencia se expresa en la unidad de cada fila; no sumes diferencias de unidades distintas.",
+      "4. En I2 escribe =SI(H2<=F2;\"Sí\";\"No\") y copia hasta I6. Si Excel utiliza comas como separadores, reemplaza los puntos y coma por comas. En Excel en inglés, la función SI se llama IF.",
+      "5. Utiliza el prompt para consultar a la IA. Comprueba que explique el intervalo permitido, calcule la diferencia y proponga una prevención coherente.",
+      "6. Responde en el cuaderno: ¿cuántos elementos cumplen?, ¿cuáles deben revisarse? y ¿la explicación de la IA coincide con tus cálculos? Justifica la última respuesta con números.",
+      "7. Guarda el archivo como Semana6_Metrologia_Nombre.xlsx. Completa en el cuaderno: «Medir correctamente es importante porque ____________. Un ejemplo es ____________»."
+    ],
+    prompt: "Soy estudiante de grado 11 y estoy aprendiendo metrología. Explica con palabras sencillas qué significa que una medida esté fuera de la tolerancia. Usa como ejemplo una pieza que debería medir 50 mm, tiene una tolerancia de 1 mm hacia arriba o hacia abajo y mide 48 mm. Indica el intervalo aceptable, calcula la diferencia absoluta, propone una consecuencia posible y una forma de prevenir el problema. Aclara que estos valores son un ejemplo escolar.",
+    herramientas: [
+      { nombre: "Microsoft Excel", url: "https://www.microsoft.com/es-co/microsoft-365/excel" },
+      { nombre: "ChatGPT", url: "https://chatgpt.com/" }
+    ],
+    requisitos: [
+      "La tabla conserva nueve columnas, un encabezado y cinco filas de datos.",
+      "Las cinco diferencias se calculan mediante fórmulas.",
+      "La columna Cumple compara la diferencia con la tolerancia de cada fila.",
+      "Las tres respuestas del cuaderno se apoyan en los resultados.",
+      "La explicación de la IA se verifica con el cálculo de la pieza.",
+      "El archivo se guarda con el nombre indicado y sin compartir datos personales en la consulta a la IA."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Cuál registro comunica una medida completa?",
+      opciones: ["La puerta mide 200.", "La puerta mide bastante.", "La puerta tiene una altura de 200 cm.", "La puerta mide cm."],
+      correcta: 2,
+      explicacion: "Una medida debe identificar la magnitud e incluir un valor numérico y una unidad."
+    },
+    {
+      pregunta: "¿Qué instrumento se utiliza para medir presión?",
+      opciones: ["Balanza.", "Manómetro.", "Cronómetro.", "Cinta métrica."],
+      correcta: 1,
+      explicacion: "El manómetro mide presión."
+    },
+    {
+      pregunta: "Una pieza debe medir 50 mm y admite una variación de 1 mm en ambos sentidos. ¿Cuál cumple?",
+      opciones: ["48 mm.", "52 mm.", "47 mm.", "51 mm."],
+      correcta: 3,
+      explicacion: "El intervalo permitido incluye las medidas desde 49 mm hasta 51 mm."
+    },
+    {
+      pregunta: "Una puerta debe medir 200 cm y mide 202 cm. La tolerancia es de 1 cm. ¿Qué conclusión corresponde?",
+      opciones: ["No cumple, porque la diferencia es 2 cm.", "Cumple, porque la diferencia es 1 cm.", "Cumple, porque una puerta más alta siempre sirve.", "No se puede calcular ninguna diferencia."],
+      correcta: 0,
+      explicacion: "La diferencia absoluta de 2 cm supera la tolerancia de 1 cm."
+    },
+    {
+      pregunta: "¿Para qué se utiliza ABS en el reto?",
+      opciones: ["Para convertir gramos en centímetros.", "Para obtener una diferencia sin signo negativo.", "Para cambiar la tolerancia del producto.", "Para identificar automáticamente el instrumento."],
+      correcta: 1,
+      explicacion: "ABS devuelve el valor absoluto de la resta entre la medida obtenida y la esperada."
+    },
+    {
+      pregunta: "Un producto debe tener 500 g, admite una diferencia de 5 g y registra 503 g. ¿Cumple?",
+      opciones: ["No, porque cualquier diferencia se rechaza.", "No, porque 503 es mayor que 500.", "Sí, porque la diferencia de 3 g no supera 5 g.", "Sí, porque todos los productos más pesados cumplen."],
+      correcta: 2,
+      explicacion: "La diferencia es 3 g, menor que la tolerancia de 5 g."
+    },
+    {
+      pregunta: "La IA afirma que una pieza de 48 mm cumple el requisito de 50 mm con tolerancia de 1 mm. ¿Qué debes hacer?",
+      opciones: ["Aceptar la respuesta porque está bien redactada.", "Cambiar la medida para que coincida con la IA.", "Eliminar la tolerancia de la tabla.", "Verificar el cálculo y señalar que 2 mm supera la tolerancia."],
+      correcta: 3,
+      explicacion: "La respuesta de la IA debe contrastarse con los datos y el criterio de aceptación."
+    },
+    {
+      pregunta: "¿Qué relación existe entre la informática y la metrología en esta clase?",
+      opciones: ["La informática organiza y analiza los datos obtenidos mediante mediciones.", "Excel sustituye cualquier instrumento de medición.", "La IA determina todas las tolerancias reales.", "Una tabla garantiza que las medidas fueron tomadas correctamente."],
+      correcta: 0,
+      explicacion: "Las herramientas informáticas ayudan a procesar mediciones, pero la calidad del resultado depende también de los datos."
+    }
+  ],
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "¿Por qué una medición debe incluir un número y una unidad? Da un ejemplo.", lineas: 2 },
+      { id: "r2", texto: "Elige un caso del explorador y escribe una consecuencia de medir incorrectamente.", lineas: 2 },
+      { id: "r3", texto: "¿Cuántos elementos de la tabla cumplen y cuáles deben revisarse?", lineas: 2 },
+      { id: "r4", texto: "Explica con números por qué la pieza de 48 mm no cumple.", lineas: 2 },
+      { id: "r5", texto: "¿La IA coincidió con tu cálculo? Menciona un dato que utilizaste para verificarla.", lineas: 2 },
+      { id: "r6", texto: "¿Qué aprendí hoy y en qué situación podría aplicarlo?", lineas: 2 }
+    ]
+  },
+  notasDocente: [
+    "Solicite copiar únicamente los puntos de los bloques; utilice las ampliaciones para explicación oral. Los módulos adicionales quedan como apoyo para respetar los 45 minutos.",
+    "Organice parejas con roles de digitación y verificación. Antes de copiar las fórmulas, confirme que las medidas estén en las columnas E, F y G.",
+    "Resultados esperados: diferencias 2, 0, 2, 3 y 2; cumplen la ventana y el producto empacado. Verifique que cada diferencia se interprete con su propia unidad.",
+    "Esta semana no hay investigación ni entrega en hoja suelta. La evidencia es el archivo de Excel y las respuestas de clase. Si no hay acceso a IA, presente una respuesta preparada para que el grupo la contraste."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
