@@ -1,1 +1,298 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Máquinas simples y su utilidad | Grado 11°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 11,
+  edad: 15,
+  periodo: 1,
+  semana: 7,
+  tema: "Máquinas simples y su utilidad",
+  temaAnterior: "La metrología en la vida diaria y la industria",
+  video: "",
+  estilo: "hojacalculo",
+  emoji: "⚙️ 🛠️",
+  objetivo: "Reconocer las seis máquinas simples, explicar cómo facilitan el trabajo y clasificar objetos cotidianos mediante una tabla en Excel, revisando críticamente la información proporcionada por una IA.",
+  competencia: "Relaciona fuerzas y movimientos con el funcionamiento de herramientas; organiza información en una hoja de cálculo y verifica explicaciones de IA mediante conceptos estudiados en clase.",
+  preguntaGancho: "¿Cómo puede una persona subir una caja pesada a un camión usando menos fuerza?",
+  agenda: [
+    { min: 5, titulo: "Observamos y conectamos", texto: "Recordamos qué medimos en metrología y proponemos herramientas que facilitan levantar, mover, cortar o sujetar objetos." },
+    { min: 15, titulo: "Comprendemos y escribimos", texto: "El docente explica las seis máquinas simples con ejemplos. Copiamos los conceptos de los cuatro bloques; las ampliaciones apoyan la explicación oral." },
+    { min: 8, titulo: "Exploramos y clasificamos", texto: "Consultamos las tarjetas y el explorador. Clasificamos objetos según su funcionamiento principal y justificamos dos respuestas." },
+    { min: 10, titulo: "Reto con IA y Excel", texto: "Consultamos una IA, revisamos su respuesta y completamos en Excel una tabla con siete objetos." },
+    { min: 7, titulo: "Verificamos lo aprendido", texto: "Resolvemos el quiz y respondemos brevemente las preguntas de la hoja digital. Compartimos una conclusión sobre fuerza, distancia y utilidad." }
+  ],
+  cuaderno: {
+    conexion: "En metrología aprendimos que medir permite comparar y comprobar. Ahora relacionaremos medidas de fuerza, distancia y longitud con el funcionamiento de las máquinas simples. Usaremos el newton para expresar fuerzas y el metro para expresar distancias.",
+    bloques: [
+      {
+        icono: "⚙️",
+        titulo: "1. Máquinas que facilitan el trabajo",
+        puntos: [
+          { icono: "🛠️", termino: "Máquina", texto: "Es un dispositivo que facilita una tarea al transmitir o transformar fuerzas y movimientos. Ejemplos: bicicleta, grúa y tijeras." },
+          { icono: "🔧", termino: "Máquina simple", texto: "Es un mecanismo básico que facilita una tarea al cambiar la intensidad o la dirección de una fuerza." },
+          { icono: "📋", termino: "Seis tipos", texto: "Las máquinas simples son palanca, polea, plano inclinado, rueda y eje, tornillo y cuña." },
+          { icono: "🔗", termino: "Combinación de mecanismos", texto: "Un objeto puede combinar varias máquinas simples. Las tijeras utilizan palancas y cuñas en sus filos." }
+        ],
+        ampliacion: "Imagina que necesitas mover una caja en una bodega de Buga. Puedes levantarla directamente o utilizar una rampa y un carro de carga. Estas herramientas cambian la manera de aplicar la fuerza y pueden facilitar la tarea. **Una máquina simple ayuda a realizar un trabajo, pero no crea energía.** Para reconocerla, observa qué partes se mueven, dónde aplicas la fuerza y qué ocurre con la carga. No basta con memorizar el nombre del objeto: debes explicar su funcionamiento. Esta observación es útil en mantenimiento, construcción, diseño de productos e ingeniería."
+      },
+      {
+        icono: "🏗️",
+        titulo: "2. Palanca, polea y plano inclinado",
+        puntos: [
+          { icono: "🔩", termino: "Palanca", texto: "Es una barra que gira alrededor de un punto de apoyo. Sus elementos son punto de apoyo, fuerza aplicada y carga. Un destapador permite levantar una tapa." },
+          { icono: "🧵", termino: "Polea", texto: "Es una rueda con una ranura por la que pasa una cuerda. Una polea fija cambia la dirección de la fuerza; una polea móvil o un sistema de poleas puede reducir el esfuerzo." },
+          { icono: "📐", termino: "Plano inclinado", texto: "Es una superficie inclinada que permite subir o bajar una carga. Una rampa permite subirla con menos fuerza, recorriendo una distancia mayor." }
+        ],
+        ampliacion: "Un destapador funciona como palanca: apoyas una parte en la tapa y aplicas fuerza en el mango para levantarla. En una bandera, una polea fija permite tirar de la cuerda hacia abajo para que la bandera suba; idealmente, no reduce la fuerza necesaria. Una rampa permite subir una caja de forma gradual. **Facilitar una tarea puede significar reducir la fuerza o cambiar su dirección.** Para comparar dos rampas que llegan a la misma altura, considera su longitud: una rampa más larga y menos inclinada suele requerir menos fuerza, aunque exige recorrer más distancia, si las demás condiciones son iguales."
+      },
+      {
+        icono: "🚪",
+        titulo: "3. Rueda y eje, tornillo y cuña",
+        puntos: [
+          { icono: "🎡", termino: "Rueda y eje", texto: "Son dos piezas unidas que giran juntas alrededor del mismo eje. Una manija de puerta permite aplicar fuerza a cierta distancia del eje para girar el mecanismo." },
+          { icono: "🌀", termino: "Tornillo", texto: "Es un plano inclinado enrollado alrededor de un cilindro. Al girar, avanza o retrocede. Se utiliza para sujetar piezas o transmitir fuerza." },
+          { icono: "🪓", termino: "Cuña", texto: "Tiene superficies inclinadas que terminan en un borde delgado. Al avanzar, ejerce fuerzas que cortan o separan materiales. Ejemplos: hacha y cuchillo." }
+        ],
+        ampliacion: "Al girar la manija de una puerta, aplicas fuerza a una distancia del eje y haces girar el mecanismo. Cuando ajustas un tornillo, el giro produce un avance pequeño que permite sujetar piezas. En un hacha, la cuña entra en la madera y empuja el material hacia los lados. **La forma de cada máquina explica cómo transmite la fuerza.** Estas ideas aparecen en trabajos de carpintería, mecánica y fabricación. Para identificar el mecanismo, observa si el objeto gira, avanza siguiendo una rosca o separa un material. Una herramienta completa puede combinar varios mecanismos; por eso debemos indicar qué parte estamos analizando."
+      },
+      {
+        icono: "💪",
+        titulo: "4. Ventaja mecánica y uso crítico de la IA",
+        puntos: [
+          { icono: "📊", termino: "Ventaja mecánica", texto: "Indica la relación entre la fuerza que la máquina ejerce sobre la carga y la fuerza aplicada: ventaja mecánica = fuerza sobre la carga ÷ fuerza aplicada." },
+          { icono: "🧮", termino: "Ejemplo", texto: "Si aplicamos 50 N y la máquina ejerce 200 N sobre la carga, la ventaja mecánica es 200 ÷ 50 = 4. La relación no tiene unidad." },
+          { icono: "↔️", termino: "Fuerza y distancia", texto: "Cuando una máquina reduce la fuerza necesaria, generalmente debemos aplicarla a lo largo de una distancia mayor. No todas las máquinas simples reducen el esfuerzo." },
+          { icono: "🔥", termino: "Fricción", texto: "El rozamiento entre superficies transforma parte de la energía en calor y hace que una máquina real tenga pérdidas." },
+          { icono: "🤖", termino: "Verificación de IA", texto: "La IA puede equivocarse. Compara sus respuestas con el cuaderno, corrige errores y explica con tus palabras. No compartas datos personales de compañeros." }
+        ],
+        ampliacion: "Supón que un mecanismo recibe una fuerza de 50 N y ejerce 200 N sobre una carga. Su ventaja mecánica es cuatro, porque la fuerza de salida es cuatro veces la de entrada. Esto no significa que produzca energía adicional: en condiciones ideales, la reducción de fuerza se compensa con una mayor distancia de aplicación. **Menos fuerza no significa menos trabajo total.** En mecanismos reales también existe fricción. Al consultar una IA, revisa especialmente afirmaciones como «todas las poleas reducen el esfuerzo». Una polea fija ideal cambia la dirección de la fuerza, pero su ventaja mecánica es uno."
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Fuerza", definicion: "Interacción capaz de cambiar el movimiento o deformar un objeto. Se mide en newtons, símbolo N." },
+    { termino: "Carga", definicion: "Objeto o resistencia sobre el que actúa una máquina." },
+    { termino: "Punto de apoyo", definicion: "Lugar alrededor del cual gira una palanca." },
+    { termino: "Eje", definicion: "Elemento o línea alrededor del cual gira una pieza." },
+    { termino: "Ventaja mecánica", definicion: "Relación entre la fuerza de salida y la fuerza de entrada de una máquina." },
+    { termino: "Fricción", definicion: "Fuerza que se opone al movimiento relativo o a su tendencia entre superficies en contacto." },
+    { termino: "Trabajo mecánico", definicion: "Transferencia de energía mediante una fuerza que produce un desplazamiento; si fuerza y desplazamiento tienen la misma dirección, se calcula multiplicándolos." },
+    { termino: "Verificación", definicion: "Revisión de una afirmación utilizando conceptos, observaciones o fuentes confiables." }
+  ],
+  sabiasQue: [
+    "Un tornillo puede entenderse como un plano inclinado enrollado alrededor de un cilindro.",
+    "Una polea fija ideal tiene ventaja mecánica igual a uno: cambia la dirección de la fuerza sin multiplicarla.",
+    "Las tijeras combinan palancas con cuñas en sus bordes de corte."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Seis mecanismos, seis ejemplos",
+      items: [
+        { icono: "🍾", frente: "Palanca: el destapador", reverso: "El mango permite aplicar fuerza a cierta distancia del apoyo y levantar la tapa. Como en un balancín, la barra gira alrededor de un apoyo." },
+        { icono: "🚩", frente: "Polea: la bandera", reverso: "La cuerda cambia de dirección al pasar por la rueda. Tirar hacia abajo hace subir la bandera; una polea fija ideal no multiplica la fuerza." },
+        { icono: "📐", frente: "Plano inclinado: la rampa", reverso: "Subir gradualmente es como distribuir una elevación en un camino más largo: se requiere menos fuerza, pero se recorre más distancia." },
+        { icono: "🚪", frente: "Rueda y eje: la manija", reverso: "La manija y el eje giran juntos. Aplicar la fuerza lejos del eje facilita producir el giro del mecanismo." },
+        { icono: "🔩", frente: "Tornillo: una rampa enrollada", reverso: "Cada vuelta produce un pequeño avance. La rosca transforma el giro en desplazamiento y permite sujetar piezas." },
+        { icono: "🪓", frente: "Cuña: el hacha", reverso: "Su borde entra en el material y sus caras inclinadas lo empujan hacia los lados, como una pequeña rampa que avanza para separar." }
+      ]
+    },
+    explorador: {
+      titulo: "Observa, explica y decide",
+      items: [
+        {
+          icono: "🔍",
+          nombre: "Identificar",
+          secciones: [
+            { titulo: "Preguntas para observar", items: ["¿Dónde se aplica la fuerza?", "¿Qué parte gira, se desplaza o separa el material?", "¿Cuál es la carga o resistencia?"] },
+            { titulo: "Ejemplo", items: ["En un destapador, identifica el mango, el punto de apoyo y la tapa.", "Explica por qué se clasifica como palanca."] }
+          ]
+        },
+        {
+          icono: "🏗️",
+          nombre: "Comparar",
+          secciones: [
+            { titulo: "Caso de una bodega", items: ["Dos rampas llegan a la misma altura; una es más larga.", "Si las demás condiciones son iguales, la rampa más larga requiere menos fuerza para subir la caja.", "La distancia recorrida será mayor."] },
+            { titulo: "Decisión", items: ["¿Qué rampa elegirías si hay suficiente espacio?", "Considera también estabilidad, superficie y capacidad de carga."] }
+          ]
+        },
+        {
+          icono: "🤖",
+          nombre: "Verificar la IA",
+          secciones: [
+            { titulo: "Afirmación para revisar", items: ["Una IA dice: «Toda polea reduce a la mitad la fuerza necesaria».", "La afirmación es incorrecta: el efecto depende de la configuración del sistema.", "Una polea fija ideal cambia la dirección y tiene ventaja mecánica igual a uno."] },
+            { titulo: "Uso responsable", items: ["Compara la respuesta con el cuaderno.", "Corrige las generalizaciones y redacta con tus palabras.", "No introduzcas información privada en la consulta."] }
+          ]
+        },
+        {
+          icono: "🎓",
+          nombre: "Aplicación laboral",
+          secciones: [
+            { titulo: "Profesiones y oficios", items: ["Carpintería: cuñas y tornillos para cortar y unir.", "Logística: rampas y sistemas de poleas para mover cargas.", "Ingeniería: medición de fuerzas y distancias para evaluar mecanismos."] },
+            { titulo: "Pensamiento crítico", items: ["Una herramienta se elige por su funcionamiento y por las condiciones de la tarea.", "Organizar información en Excel ayuda a comparar opciones y comunicar decisiones."] }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasifica el mecanismo principal",
+      categorias: [
+        "Palanca",
+        "Plano inclinado",
+        "Cuña"
+      ],
+      items: [
+        { texto: "Destapador de botellas: su barra levanta la tapa.", categoria: 0 },
+        { texto: "Balancín: gira alrededor de un apoyo central.", categoria: 0 },
+        { texto: "Barra de uña: permite levantar una pieza usando un apoyo.", categoria: 0 },
+        { texto: "Rampa de carga: permite subir una caja gradualmente.", categoria: 1 },
+        { texto: "Rampa de acceso: conecta dos niveles con una superficie inclinada.", categoria: 1 },
+        { texto: "Tabla inclinada: permite deslizar una carga hasta una plataforma.", categoria: 1 },
+        { texto: "Hacha: sus caras separan la madera.", categoria: 2 },
+        { texto: "Cuchillo: su filo corta el material.", categoria: 2 },
+        { texto: "Cincel: su borde penetra y separa material.", categoria: 2 }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Reto en sala: máquinas simples con IA y Excel",
+    descripcion: "En 10 minutos, organiza una tabla con siete objetos cotidianos. Usa una IA como apoyo y verifica sus explicaciones con el cuaderno antes de incorporarlas.",
+    pasos: [
+      "Abre una IA disponible y Excel. Copia el prompt del reto y consulta sobre los seis objetos indicados.",
+      "Revisa la respuesta con el cuaderno. Comprueba especialmente que una polea fija cambia la dirección de la fuerza y no reduce idealmente su magnitud.",
+      "Copia la tabla incluida al final del prompt y pégala en la celda A1 de Excel. Si queda en una sola columna, selecciona Datos → Texto en columnas → Delimitados → Tabulación.",
+      "Completa las columnas ¿Cómo funciona?, Utilidad y ¿Reduce el esfuerzo o cambia la dirección? con frases cortas revisadas.",
+      "Añade una séptima fila de datos con un objeto de tu casa e identifica su máquina simple. Si combina mecanismos, indica cuál estás analizando.",
+      "Coloca los encabezados en negrita, aplica bordes, activa Ajustar texto y modifica el ancho de las columnas para facilitar la lectura.",
+      "Guarda el archivo como Maquinas_simples_Nombre.xlsx y comprueba que tenga cinco columnas y siete objetos."
+    ],
+    prompt: "Explica con palabras sencillas qué máquina simple utiliza principalmente cada uno de estos objetos: destapador, polea de una bandera, rampa, manija de una puerta, tornillo para madera y hacha. Para cada objeto, indica su funcionamiento y utilidad. Aclara si reduce el esfuerzo o cambia la dirección de la fuerza. Distingue una polea fija de una móvil y evita afirmar que todas las máquinas simples reducen la fuerza. Después de leer tu explicación, completaré esta tabla en Excel con mis palabras. La tabla tiene tabulaciones entre columnas:\nObjeto\tMáquina simple\t¿Cómo funciona?\tUtilidad\t¿Reduce el esfuerzo o cambia la dirección?\nDestapador\tPalanca\t\t\t\nPolea de una bandera\tPolea fija\t\t\t\nRampa\tPlano inclinado\t\t\t\nManija de una puerta\tRueda y eje\t\t\t\nTornillo para madera\tTornillo\t\t\t\nHacha\tCuña\t\t\t",
+    herramientas: [
+      { nombre: "ChatGPT", url: "https://chatgpt.com/" },
+      { nombre: "Microsoft Excel", url: "https://www.microsoft.com/es-co/microsoft-365/excel" }
+    ],
+    requisitos: [
+      "La tabla conserva cinco columnas, una fila de encabezados y siete filas de objetos.",
+      "Cada objeto tiene su máquina simple, funcionamiento y utilidad.",
+      "La explicación de la polea fija distingue el cambio de dirección de la reducción de fuerza.",
+      "La información de la IA está revisada y redactada con palabras propias.",
+      "Los encabezados, bordes y ajuste de texto permiten leer la tabla.",
+      "El archivo está guardado como Maquinas_simples_Nombre.xlsx."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Qué caracteriza a una máquina simple?",
+      opciones: [
+        "Siempre utiliza electricidad.",
+        "Facilita una tarea al modificar la intensidad o la dirección de una fuerza.",
+        "Produce energía sin recibirla.",
+        "Siempre elimina la fricción."
+      ],
+      correcta: 1,
+      explicacion: "Una máquina simple facilita una tarea al modificar cómo se aplica o transmite una fuerza."
+    },
+    {
+      pregunta: "¿Qué elementos debes identificar al analizar un destapador como palanca?",
+      opciones: [
+        "Pantalla, teclado y batería.",
+        "Rosca, cilindro y tuerca.",
+        "Punto de apoyo, fuerza aplicada y carga.",
+        "Cuerda, ranura y polea móvil."
+      ],
+      correcta: 2,
+      explicacion: "Una palanca se analiza identificando el apoyo, la fuerza aplicada y la carga."
+    },
+    {
+      pregunta: "Una polea fija ideal permite subir una bandera al tirar hacia abajo; ¿cuál es su efecto principal?",
+      opciones: [
+        "Cambiar la dirección de la fuerza.",
+        "Reducir siempre la fuerza a la mitad.",
+        "Eliminar el peso de la bandera.",
+        "Multiplicar siempre por cuatro la fuerza."
+      ],
+      correcta: 0,
+      explicacion: "Una polea fija ideal cambia la dirección de la fuerza y tiene ventaja mecánica igual a uno."
+    },
+    {
+      pregunta: "Dos rampas llegan a la misma altura y tienen condiciones comparables; ¿qué ocurre al usar la más larga?",
+      opciones: [
+        "Se necesita más fuerza y se recorre menos distancia.",
+        "Se elimina todo el trabajo mecánico.",
+        "Se crea energía para subir la carga.",
+        "Se necesita menos fuerza y se recorre más distancia."
+      ],
+      correcta: 3,
+      explicacion: "Una rampa más larga reduce la fuerza necesaria a cambio de aumentar la distancia recorrida."
+    },
+    {
+      pregunta: "¿Cuál relación entre objeto y máquina simple es correcta?",
+      opciones: [
+        "Hacha: polea.",
+        "Manija de puerta: rueda y eje.",
+        "Rampa: cuña que avanza.",
+        "Tornillo para madera: palanca."
+      ],
+      correcta: 1,
+      explicacion: "La manija transmite el giro a un eje unido al mecanismo de la puerta."
+    },
+    {
+      pregunta: "Si una máquina recibe 50 N y ejerce 200 N sobre la carga, ¿cuál es su ventaja mecánica?",
+      opciones: [
+        "0,25.",
+        "150 N.",
+        "4.",
+        "250 N."
+      ],
+      correcta: 2,
+      explicacion: "La ventaja mecánica se calcula como 200 ÷ 50 = 4 y no tiene unidad."
+    },
+    {
+      pregunta: "Una IA afirma que las tijeras utilizan una sola máquina simple; ¿qué respuesta demuestra pensamiento crítico?",
+      opciones: [
+        "Aceptar la afirmación porque la escribió una IA.",
+        "Cambiar únicamente el color de la tabla.",
+        "Eliminar el ejemplo sin analizarlo.",
+        "Revisar sus partes y explicar que combinan palancas y cuñas."
+      ],
+      correcta: 3,
+      explicacion: "Verificar las partes y su funcionamiento permite reconocer que las tijeras combinan mecanismos."
+    },
+    {
+      pregunta: "Al girar un tornillo, este avanza dentro de una pieza; ¿cómo se explica?",
+      opciones: [
+        "Su rosca actúa como un plano inclinado enrollado.",
+        "Su cabeza funciona como una polea fija.",
+        "Su punta elimina toda la fricción.",
+        "Su eje produce energía adicional."
+      ],
+      correcta: 0,
+      explicacion: "La rosca transforma el giro en avance mediante un plano inclinado enrollado."
+    }
+  ],
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "Explica con tus palabras qué es una máquina simple y menciona un objeto que la utilice.", lineas: 2 },
+      { id: "r2", texto: "¿En qué se diferencia el efecto de una polea fija del efecto de una rampa?", lineas: 2 },
+      { id: "r3", texto: "Una máquina recibe 40 N y ejerce 120 N sobre la carga. Calcula su ventaja mecánica y explica el resultado.", lineas: 2 },
+      { id: "r4", texto: "¿Qué objeto de tu casa añadiste a Excel y qué parte explica su clasificación?", lineas: 2 },
+      { id: "r5", texto: "Escribe una afirmación de la IA que verificaste y explica cómo decidiste aceptarla o corregirla.", lineas: 2 },
+      { id: "r6", texto: "¿Qué aprendí hoy y cómo podría aplicarlo en una tarea cotidiana, un oficio o una carrera?", lineas: 2 }
+    ]
+  },
+  notasDocente: [
+    "Prepare una tabla de Excel abierta antes del reto y pruebe el pegado con tabulaciones; si faltan equipos, organice parejas con funciones de consulta y verificación.",
+    "Use las ampliaciones para explicar oralmente y reserve la copia del cuaderno para los puntos centrales, de modo que la agenda se mantenga en 45 minutos.",
+    "Muestre herramientas o imágenes para identificar sus partes; evite que los estudiantes manipulen filos o levanten cargas pesadas.",
+    "Si no hay acceso a IA, proporcione una respuesta de ejemplo para revisar; esta semana no se asigna investigación ni entrega en hoja suelta."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
