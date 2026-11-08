@@ -1,1 +1,161 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cursos Virtuales de Google y Herramientas Ofimáticas en la Nube | Grado 11°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 11,
+  edad: 16,
+  periodo: 2,
+  semana: 1,
+  tema: "Cursos Virtuales de Google y Herramientas Ofimáticas en la Nube",
+  temaAnterior: "Máquinas simples y su utilidad",
+  video: "",
+  estilo: "oceano",
+  emoji: "☁️📊",
+  objetivo: "Comprender la utilidad de los entornos de aprendizaje virtual y dominar herramientas ofimáticas colaborativas en la nube mediante el uso estratégico de Inteligencia Artificial.",
+  competencia: "Integra servicios en la nube (SaaS), plataformas de autoaprendizaje e IA generativa para optimizar procesos académicos y proyectar su perfil profesional universitario.",
+  preguntaGancho: "¿Sabías que la habilidad de colaborar en documentos en tiempo real y aprender de forma autónoma son de los requisitos más demandados hoy por las empresas globales?",
+  agenda: [
+    { min: 5, titulo: "Introducción", texto: "Presentación del ecosistema Google y SaaS." },
+    { min: 10, titulo: "Toma de Apuntes", texto: "Conceptos clave en el cuaderno sobre ofimática y certificaciones." },
+    { min: 25, titulo: "Reto en Sala (IA + Excel)", texto: "Generación de datos estructurados con IA y formateo avanzado en hoja de cálculo." },
+    { min: 5, titulo: "Cierre y Evaluación", texto: "Quiz interactivo y reflexión en la hoja de trabajo digital." }
+  ],
+  cuaderno: {
+    conexion: "Así como las máquinas simples estudiadas el periodo anterior multiplican la fuerza física humana, las herramientas en la nube y la Inteligencia Artificial actúan como 'máquinas cognitivas' que multiplican nuestra productividad intelectual y nuestra capacidad de trabajo en equipo remoto.",
+    bloques: [
+      {
+        icono: "🎓",
+        titulo: "1. Plataformas de Aprendizaje y Cursos Virtuales",
+        puntos: [
+          { icono: "🌐", termino: "Ecosistema Educativo de Google", texto: "Plataformas como Google Actívate y Skillshop democratizan el acceso al conocimiento tecnológico de vanguardia." },
+          { icono: "📜", termino: "Certificación Profesional", texto: "Permiten validar habilidades en áreas como Marketing Digital, IA y Análisis de Datos para fortalecer la hoja de vida." }
+        ],
+        ampliacion: "En el mundo laboral actual (basado en la economía del conocimiento), el aprendizaje continuo es vital. Para un estudiante a punto de graduarse, obtener una certificación oficial y gratuita de Google demuestra proactividad, disciplina y dominio de herramientas digitales frente a universidades y futuros empleadores. **El conocimiento actualizado ya no está limitado al aula, está a un clic de distancia.**"
+      },
+      {
+        icono: "☁️",
+        titulo: "2. Herramientas Ofimáticas en la Nube (SaaS)",
+        puntos: [
+          { icono: "🔄", termino: "Sincronización y Ubicuidad", texto: "Aplicaciones web (Google Docs, Sheets, Slides) que guardan cambios automáticamente en Drive, sin requerir memoria USB." },
+          { icono: "🤝", termino: "Trabajo Colaborativo", texto: "Múltiples usuarios pueden editar un mismo archivo simultáneamente desde cualquier lugar del mundo." }
+        ],
+        ampliacion: "La ofimática tradicional dependía de instalar costosos programas en un solo computador. Hoy, el modelo SaaS (Software as a Service) centraliza la información en servidores globales (la nube). Esto garantiza que siempre estés utilizando la versión más actualizada y elimina el riesgo de perder la información si tu equipo local sufre un daño. **La verdadera ventaja competitiva es saber integrar estas herramientas en equipos de trabajo interdisciplinarios.**"
+      }
+    ]
+  },
+  glosario: [
+    { termino: "SaaS (Software as a Service)", definicion: "Modelo de distribución de software alojado en la nube que no requiere instalación local." },
+    { termino: "Computación en la Nube", definicion: "Entrega de servicios informáticos (almacenamiento, bases de datos, software) a través de Internet." },
+    { termino: "Prompt Engineering", definicion: "Ingeniería de instrucciones; la habilidad de diseñar textos precisos para obtener respuestas óptimas de una Inteligencia Artificial." },
+    { termino: "Ubicuo", definicion: "La capacidad de estar presente en todas partes al mismo tiempo; en informática, acceder a tus archivos desde cualquier dispositivo." }
+  ],
+  sabiasQue: [
+    "Más del 80% de las startups tecnológicas operan íntegramente con ecosistemas de ofimática en la nube como Google Workspace.",
+    "La IA generativa puede reducir hasta en un 40% el tiempo invertido en la creación, limpieza y formateo inicial de bases de datos para hojas de cálculo.",
+    "Google posee infraestructuras masivas y cables submarinos propios que cruzan los océanos para garantizar que tus documentos de Drive se sincronicen en milisegundos en todo el mundo."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Equivalencias: Local vs. Ecosistema en la Nube",
+      items: [
+        { icono: "📄", frente: "Microsoft Word (Instalación Local)", reverso: "Google Docs: Editor colaborativo con historial de versiones automático y sugerencias de edición." },
+        { icono: "📊", frente: "Microsoft Excel (Instalación Local)", reverso: "Google Sheets: Hojas de cálculo con integración nativa de IA, APIs web y secuencias de comandos (App Script)." },
+        { icono: "🖥️", frente: "Microsoft PowerPoint (Instalación Local)", reverso: "Google Slides: Presentaciones interactivas que pueden publicarse directamente en la web sin descargar archivos." },
+        { icono: "💾", frente: "Disco Duro / Memoria USB (Hardware)", reverso: "Google Drive: Almacenamiento escalable con búsqueda avanzada semántica y sin riesgo de daño físico." }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasificación de Entornos Informáticos",
+      categorias: ["Instalación Tradicional / Local", "100% en la Nube (SaaS)"],
+      items: [
+        { texto: "Guardado manual en Memoria USB", categoria: 0 },
+        { texto: "Plataformas como Google Actívate", categoria: 1 },
+        { texto: "Edición colaborativa por múltiples usuarios", categoria: 1 },
+        { texto: "Pérdida de datos por un virus en el disco C:", categoria: 0 },
+        { texto: "Autoguardado y control de versiones", categoria: 1 },
+        { texto: "Software que requiere pagar licencias costosas por PC", categoria: 0 },
+        { texto: "Google Forms / Formularios de recolección de datos", categoria: 1 },
+        { texto: "Acceso a tu trabajo desde el celular o una tablet", categoria: 1 }
+      ]
+    },
+    explorador: {
+      titulo: "Ecosistema de Productividad Avanzada",
+      items: [
+        {
+          icono: "🎓",
+          nombre: "Google Actívate",
+          secciones: [
+            { titulo: "Cursos Destacados", items: ["Fundamentos de Marketing Digital", "Comercio Electrónico y Ventas", "Competencias digitales para profesionales"] },
+            { titulo: "Ventaja Competitiva", items: ["Certificación gratuita y oficial", "Desarrollo del autoaprendizaje", "Construcción de un perfil sólido en LinkedIn"] }
+          ]
+        },
+        {
+          icono: "🤖",
+          nombre: "Sinergia IA + Ofimática",
+          secciones: [
+            { titulo: "Casos de Uso Real", items: ["Generación rápida de estructuras de datos tabulares", "Redacción de borradores formales y correos", "Explicación de fórmulas complejas para hojas de cálculo"] },
+            { titulo: "Habilidades Requeridas", items: ["Ingeniería de Prompts (instrucciones claras)", "Pensamiento crítico (verificar datos de la IA)", "Dominio del portapapeles y formatos de pegado"] }
+          ]
+        }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Sinergia IA-Excel: Estructuración de Datos",
+    descripcion: "Como futuros profesionales, deben dominar la extracción de datos con Inteligencia Artificial y su correcta migración a software de cálculo manteniendo la integridad estructural (filas y columnas).",
+    pasos: [
+      "Abre una nueva pestaña e ingresa a una plataforma de IA generativa (ChatGPT, Google Gemini o Claude).",
+      "Copia exactamente el Prompt sugerido abajo y envíalo a la Inteligencia Artificial.",
+      "Revisa la tabla generada. Selecciónala visualmente desde la esquina superior izquierda (primer título) hasta la esquina inferior derecha (último dato), haz clic derecho y selecciona 'Copiar'.",
+      "Abre el programa Microsoft Excel. Haz clic izquierdo únicamente en la celda A1.",
+      "Presiona 'Pegar' (Ctrl+V) verificando que el texto respete estrictamente las columnas (A y B) y las filas.",
+      "Aplica un diseño profesional de formato: ajusta el ancho de las columnas, añade bordes visibles a toda la tabla, cambia el color de fondo de la fila de encabezados y aplica formato de texto en negrita al título.",
+      "Llama al profesor para mostrar en tu pantalla el resultado final estructurado."
+    ],
+    prompt: "Actúa como un experto en tecnología y crea una tabla con 6 ventajas de usar herramientas ofimáticas en la nube (como Google Workspace) frente a los programas tradicionales instalados en el PC. La tabla debe tener dos columnas: 'Ventaja' y 'Explicación corta (máximo 15 palabras)'. Genera la respuesta estrictamente en formato de tabla.",
+    herramientas: [
+      { nombre: "Google Gemini", url: "https://gemini.google.com/" },
+      { nombre: "Microsoft 365 (Excel)", url: "https://www.office.com/" }
+    ],
+    requisitos: [
+      "La consulta a la Inteligencia Artificial se realizó utilizando exactamente el prompt suministrado.",
+      "El resultado se pegó en Excel respetando la distribución tabular (celdas y filas independientes, no todo en una sola columna).",
+      "La fila superior de títulos (encabezados) tiene un color de fondo diferenciado y texto en negrita.",
+      "Las columnas tienen el ancho ajustado para que el texto sea completamente legible sin encimarse.",
+      "La tabla presenta bordes de celda claramente definidos y aspecto profesional."
+    ]
+  },
+  quiz: [
+    { pregunta: "Un equipo universitario distribuido en diferentes municipios necesita redactar su tesis de grado al mismo tiempo. ¿Qué modelo tecnológico deben utilizar?", opciones: ["Instalar Microsoft Word desde una memoria USB que roten semanalmente.", "Utilizar herramientas de ofimática en la nube (SaaS) como Google Docs.", "Crear el documento localmente y enviarlo por correo electrónico al final de cada día.", "Trabajar en hojas de cálculo sin conexión a Internet."], correcta: 1, explicacion: "La ofimática en la nube permite la edición sincrónica y el control de versiones en tiempo real, ideal para equipos distribuidos." },
+    { pregunta: "¿Cuál es el principal valor estratégico de completar cursos en plataformas como Google Actívate para un estudiante de 11° grado?", opciones: ["Son programas que reemplazan por completo un título universitario.", "Al descargarlos, ocupan todo el espacio libre en el disco duro local.", "Otorgan certificaciones oficiales que enriquecen el currículum vitae (hoja de vida) tempranamente.", "Tienen costos altísimos que otorgan estatus a quien los paga."], correcta: 2, explicacion: "Son cursos gratuitos respaldados por corporaciones globales que fortalecen tu perfil frente a procesos de selección o emprendimiento." },
+    { pregunta: "¿Qué significa técnicamente que la información sea 'ubicua' al usar el ecosistema de Google Workspace?", opciones: ["Que el sistema restringe el acceso al computador donde se creó el documento.", "Que los archivos caducan y se eliminan a las 48 horas.", "Que el software solo funciona bajo una red local cerrada.", "Que el usuario puede acceder a sus documentos y continuar su trabajo desde cualquier dispositivo con Internet."], correcta: 3, explicacion: "La ubicuidad de la nube desliga tu trabajo del hardware físico; tus datos viajan contigo a través de la red." },
+    { pregunta: "Al utilizar Inteligencia Artificial para generar contenido tabular que llevaremos a Excel, ¿qué cuidado fundamental debemos tener en el proceso?", opciones: ["Verificar que al pegar se conserve la estructura lógica de filas y columnas en la hoja de cálculo.", "Pegar absolutamente todo como texto plano continuo en la celda A1.", "Pasar los datos primero por Paint para asegurar que tengan formato.", "Tomar una captura de pantalla e insertarla como imagen flotante."], correcta: 0, explicacion: "Para realizar operaciones, análisis o aplicar formatos en Excel, los datos deben mantener una arquitectura de celdas independientes." },
+    { pregunta: "¿Qué plataforma de Google Cloud actúa como el equivalente directo y mejorado para el tradicional Microsoft PowerPoint?", opciones: ["Google Drive", "Google Sheets", "Google Slides", "Google Docs"], correcta: 2, explicacion: "Google Slides ofrece todas las herramientas de diseño de presentaciones con la ventaja del trabajo sincrónico en línea." },
+    { pregunta: "¿Qué es un 'Prompt' dentro del contexto de Ingeniería de Software y la actividad de hoy?", opciones: ["Un error fatal de conexión con los servidores de Google.", "La instrucción textual, estructurada y precisa que se le proporciona a la Inteligencia Artificial para obtener un resultado concreto.", "Una macro avanzada oculta en Excel.", "La clave de seguridad de doble factor en Gmail."], correcta: 1, explicacion: "El Prompting es la habilidad de redactar comandos óptimos (como pedir formatos específicos de tabla) para guiar el resultado de la IA generativa." }
+  ],
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "A puertas de graduarte del colegio, ¿de qué manera dominar las herramientas colaborativas en la nube te da una ventaja real en la universidad o en tu primer empleo?", lineas: 4 },
+      { id: "r2", texto: "Tras realizar el reto técnico, ¿por qué consideras crítico saber trasladar datos estructurados (tablas) desde la IA hacia software tradicional como Excel?", lineas: 4 },
+      { id: "r3", texto: "Navega mentalmente por las posibilidades de Google Actívate. Si tuvieras que certificarte hoy en un tema para proyectar tu carrera, ¿cuál elegirías y cómo lo aplicarías?", lineas: 4 },
+      { id: "r4", texto: "A pesar de sus grandes ventajas, menciona al menos un riesgo potencial o vulnerabilidad de tener el 100% de tu información personal o laboral alojada en la nube.", lineas: 3 },
+      { id: "r5", texto: "Define con tus propias palabras, y dando un ejemplo tecnológico distinto a los vistos, qué es el modelo 'SaaS' (Software como Servicio).", lineas: 3 }
+    ]
+  },
+  notasDocente: [
+    "Verificación de Conectividad: Compruebe previamente que plataformas como Google Gemini, ChatGPT o Claude no presenten bloqueos institucionales en la red de la sala.",
+    "Técnica de Portapapeles: Durante el reto, es común que algunos estudiantes peguen toda la tabla en una sola celda (A1). Intervenga para enseñarles la diferencia entre Pegado Especial, coincidir con formato de destino y seleccionar la tabla correctamente desde el navegador.",
+    "Alfabetización en IA: Aproveche el ejercicio práctico para enfatizar que la IA es un acelerador productivo, pero la estructuración estética (bordes, colores, legibilidad) requiere el juicio crítico humano.",
+    "Revisión en sitio: El criterio de evaluación del día será visualizar en cada estación de trabajo el Excel con los datos perfectamente organizados y formateados, sin necesidad de envío virtual."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
