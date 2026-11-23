@@ -1,1 +1,259 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Las Encuestas: Tipos y Preguntas | Grado 11°</title>
+</head>
+<body>
+<script>
+const CLASE = {
+  grado: 11,
+  edad: 16,
+  periodo: 2,
+  semana: 3,
+  tema: "Las Encuestas: Tipos y Preguntas",
+  temaAnterior: "Internet Seguro: Riesgos Digitales y Protección de Datos",
+  video: "",
+  estilo: "hojacalculo",
+  emoji: "📊",
+  objetivo: "Diseñar instrumentos de recolección de datos mediante encuestas estructuradas, diferenciando tipos de preguntas y procesando sus resultados de forma profesional en Excel con apoyo de inteligencia artificial.",
+  competencia: "Analiza, estructura y procesa información cuantitativa y cualitativa proveniente de instrumentos de encuesta mediante hojas de cálculo e inteligencia artificial, aplicando criterios éticos de privacidad y rigor metodológico.",
+  preguntaGancho: "¿Alguna vez te has preguntado cómo saben las aplicaciones o las empresas qué funciones agregar antes de lanzarlas al mercado sin preguntarle a todo el planeta?",
+  agenda: [
+    { min: 5, titulo: "Activación y conexión ética", texto: "Relación entre protección de datos personales y recolección ética de información mediante encuestas." },
+    { min: 15, titulo: "Fundamentación teórica en cuaderno", texto: "Consignación y análisis de conceptos clave: tipos de encuestas, estructura de preguntas y prevención de sesgos." },
+    { min: 20, titulo: "Reto práctico: Excel + IA", texto: "Generación de datos simulados con IA, estructuración de tablas dinámicas básicas y fórmulas de análisis." },
+    { min: 5, titulo: "Cierre y asignación de entregable", texto: "Verificación de archivos .xlsx en carpeta de proyectos y explicación de la tarea en hoja suelta." }
+  ],
+  cuaderno: {
+    conexion: "La semana pasada estudiamos los riesgos digitales y la importancia de proteger los datos personales en Internet. Al diseñar y aplicar una encuesta profesional, nos convertimos en responsables del tratamiento de la información de otras personas: debemos garantizar consentimiento informado, anonimato y uso ético de cada dato recolectado.",
+    bloques: [
+      {
+        icono: "📋",
+        titulo: "1. Concepto y finalidad de las encuestas",
+        puntos: [
+          { icono: "🎯", termino: "Definición técnica", texto: "Instrumento de investigación cuantitativa y cualitativa que aplica un cuestionario estandarizado a una muestra representativa de personas para medir opiniones, hábitos o necesidades." },
+          { icono: "📈", termino: "Finalidad estratégica", texto: "Transformar percepciones individuales en datos organizados y verificables que respalden la toma de decisiones en entornos académicos, empresariales y sociales." },
+          { icono: "🛡️", termino: "Ética y privacidad", texto: "Toda encuesta debe solicitar únicamente los datos estrictamente necesarios, informando al participante el propósito de la recolección." }
+        ],
+        ampliacion: "En el mundo universitario y corporativo, las decisiones no se toman por intuición, sino con evidencia. Por ejemplo, si una universidad en el Valle del Cauca desea abrir una nueva carrera tecnológica o si una empresa de Buga quiere evaluar el clima laboral de sus empleados, necesita medir la opinión real de su población objetivo. **Una encuesta bien diseñada convierte opiniones dispersas en indicadores medibles para tomar decisiones acertadas.** Sin embargo, si el cuestionario está mal planteado, los datos recolectados llevarán a conclusiones erróneas."
+      },
+      {
+        icono: "🗂️",
+        titulo: "2. Clasificación según medio y objetivo",
+        puntos: [
+          { icono: "💻", termino: "Encuestas digitales o en línea", texto: "Se distribuyen mediante formularios web (Google Forms, Microsoft Forms); permiten alcance masivo, bajo costo y tabulación automática." },
+          { icono: "🤝", termino: "Presenciales y telefónicas", texto: "Se realizan cara a cara o por llamada; garantizan mayor tasa de respuesta y permiten aclarar dudas en tiempo real, aunque requieren más tiempo." },
+          { icono: "🔍", termino: "Descriptivas vs. Analíticas", texto: "Las descriptivas retratan una situación actual (¿qué ocurre?), mientras las analíticas buscan causas y relaciones entre variables (¿por qué ocurre?)." }
+        ],
+        ampliacion: "Elegir el canal y el enfoque correcto determina el éxito de una investigación. Cuando respondes una breve calificación de estrellas tras pedir un domicilio o usar una aplicación de transporte, estás participando en una encuesta digital descriptiva de satisfacción inmediata. En cambio, cuando un departamento de recursos humanos investiga por qué aumentó la rotación de personal en el último semestre, diseña una encuesta analítica. **Seleccionar el medio adecuado evita exclusiones y asegura que la muestra represente fielmente a la población estudiada.**"
+      },
+      {
+        icono: "❓",
+        titulo: "3. Tipología de preguntas y prevención de sesgos",
+        puntos: [
+          { icono: "🔒", termino: "Cerradas (Dicotómicas)", texto: "Limitan la respuesta a dos alternativas excluyentes (Sí/No, Verdadero/Falso); facilitan el conteo estadístico inmediato." },
+          { icono: "🔘", termino: "Opción múltiple y escalas", texto: "Ofrecen varias categorías predefinidas o escalas de valoración (ej. 1 a 5), permitiendo medir grados de acuerdo o frecuencia." },
+          { icono: "✍️", termino: "Abiertas", texto: "Permiten al encuestado redactar libremente su postura; aportan profundidad cualitativa, pero exigen mayor tiempo de análisis." },
+          { icono: "⚖️", termino: "Neutralidad (Sin sesgo)", texto: "Las preguntas deben redactarse de forma objetiva, sin inducir o presionar al participante hacia una respuesta específica." }
+        ],
+        ampliacion: "El mayor enemigo de una encuesta profesional es el sesgo de redacción. Preguntar «¿Está usted de acuerdo con que el excelente servicio de cafetería mejore sus precios?» manipula al encuestado al calificar previamente el servicio como excelente. En su lugar, una pregunta neutra sería: «¿Cómo califica la relación entre calidad y precio del servicio de cafetería?». **Combinar preguntas cerradas para medir tendencias y preguntas abiertas para comprender motivos logra un equilibrio ideal entre rapidez estadística y profundidad de análisis.**"
+      }
+    ]
+  },
+  glosario: [
+    { termino: "Muestra", definicion: "Subconjunto representativo de una población seleccionado para participar en una encuesta y estimar el comportamiento del total." },
+    { termino: "Sesgo", definicion: "Error sistemático en la redacción de una pregunta o selección de participantes que distorsiona los resultados reales de la investigación." },
+    { termino: "Tabulación", definicion: "Proceso de organizar, contar y estructurar en tablas los datos recolectados en una encuesta para facilitar su análisis." },
+    { termino: "Formato TSV", definicion: "Archivo o texto de valores separados por tabulaciones (Tab-Separated Values), ideal para pegar datos limpios directamente en columnas de Excel." },
+    { termino: "Escala Likert", definicion: "Tipo de pregunta de opción múltiple que mide el nivel de acuerdo o desacuerdo de una persona frente a una afirmación (ej. de 1 a 5)." }
+  ],
+  sabiasQue: [
+    "El primer censo poblacional documentado con fines estadísticos y tributarios fue realizado por el Imperio Romano hace más de 2.000 años, sentando las bases de las encuestas demográficas modernas.",
+    "En la investigación de mercados actual, los modelos de Procesamiento de Lenguaje Natural (IA) pueden clasificar miles de respuestas de preguntas abiertas en segundos, detectando sentimientos positivos, neutros o negativos.",
+    "Una sola palabra cargada emocionalmente en una pregunta puede alterar los resultados de una encuesta hasta en un 20 %, fenómeno conocido en estadística como efecto de encuadre (framing effect)."
+  ],
+  modulos: {
+    tarjetas: {
+      titulo: "Conceptos clave de encuestas y datos",
+      items: [
+        { icono: "🔒", frente: "Pregunta Cerrada", reverso: "Como un interruptor de luz: solo tiene dos estados posibles (Sí o No). Rápida de contar, pero no explica detalles." },
+        { icono: "🎛️", frente: "Opción Múltiple", reverso: "Como un menú de restaurante: eliges entre platos ya preparados. Ordena los datos y evita respuestas ambiguas." },
+        { icono: "📝", frente: "Pregunta Abierta", reverso: "Como una hoja en blanco: expresas tus ideas sin límites. Rica en detalles, pero exige lectura cuidadosa." },
+        { icono: "⚖️", frente: "Pregunta Sesgada", reverso: "Como una balanza alterada: empuja al encuestado hacia una respuesta deseada e invalida la investigación." },
+        { icono: "📊", frente: "Tabla Estructurada (Ctrl+T)", reverso: "Convierte celdas sueltas en una base de datos inteligente con filtros, estilos y filas de totales automáticas." }
+      ]
+    },
+    explorador: {
+      titulo: "Arquitectura de una Encuesta Profesional",
+      items: [
+        {
+          icono: "🎯",
+          nombre: "1. Diseño y Objetivo",
+          secciones: [
+            { titulo: "Definición del problema", items: ["Establecer qué decisión se tomará con los datos.", "Delimitar la población objetivo (ej. estudiantes de grado 11° o empleados de una empresa)."] },
+            { titulo: "Consentimiento ético", items: ["Incluir un encabezado breve explicando el uso confidencial de los datos.", "Evitar solicitar nombres o documentos si no son indispensables."] }
+          ]
+        },
+        {
+          icono: "🧩",
+          nombre: "2. Selección de Preguntas",
+          secciones: [
+            { titulo: "Orden lógico (Embudo)", items: ["Iniciar con preguntas generales y sencillas (cerradas o de opción múltiple).", "Dejar las preguntas abiertas o más reflexivas para el tramo final."] },
+            { titulo: "Control de calidad", items: ["Evitar preguntas dobles (preguntar dos cosas en una misma oración).", "Incluir la opción «Otro / No aplica» cuando las categorías no cubran todos los casos."] }
+          ]
+        },
+        {
+          icono: "⚙️",
+          nombre: "3. Tabulación en Excel",
+          secciones: [
+            { titulo: "Estandarización de campos", items: ["Usar encabezados únicos sin espacios ni caracteres especiales (ej. Codigo_Pregunta).", "Mantener coherencia en las categorías para usar funciones como CONTAR.SI."] },
+            { titulo: "Análisis visual", items: ["Activar Fila de Totales para verificar el tamaño real de la muestra.", "Aplicar formato condicional para detectar valores atípicos o superiores al promedio."] }
+          ]
+        }
+      ]
+    },
+    clasificador: {
+      titulo: "Clasifica cada reactivo según su tipología",
+      categorias: ["Pregunta Cerrada", "Opción Múltiple", "Pregunta Abierta"],
+      items: [
+        { texto: "¿Cuenta usted con conexión a Internet estable en su vivienda? (Sí / No)", categoria: 0 },
+        { texto: "¿Cuál es el principal medio de transporte que utiliza para llegar al colegio? (A pie / Bicicleta / Moto / Bus / Carro)", categoria: 1 },
+        { texto: "¿Qué propuestas sugiere para mejorar la convivencia en el descanso escolar?", categoria: 2 },
+        { texto: "¿Ha participado anteriormente en semilleros de investigación? (Sí / No)", categoria: 0 },
+        { texto: "Califique su nivel de satisfacción con la plataforma académica: (1. Muy bajo / 2. Bajo / 3. Medio / 4. Alto / 5. Muy alto)", categoria: 1 },
+        { texto: "Describa brevemente qué habilidades tecnológicas considera clave para su futuro profesional.", categoria: 2 },
+        { texto: "¿Autoriza el tratamiento anónimo de sus respuestas para fines estadísticos? (Sí / No)", categoria: 0 },
+        { texto: "¿Cuántas horas semanales dedica al estudio autónomo fuera de clase? (Menos de 2h / Entre 2h y 5h / Más de 5h)", categoria: 1 },
+        { texto: "¿Por qué motivo eligió el área profesional que desea estudiar al graduarse?", categoria: 2 }
+      ]
+    }
+  },
+  reto: {
+    titulo: "Estructuración Profesional de Datos de Encuestas (Excel + IA)",
+    descripcion: "Genera un conjunto de datos simulados de una encuesta de clima laboral mediante IA en formato TSV, conviértelo en una tabla estructurada profesional en Excel y aplica fórmulas estadísticas y formato condicional.",
+    pasos: [
+      "Copia el prompt de abajo y pégalo en tu herramienta de IA para obtener una tabla en formato TSV con 1 fila de encabezados (Codigo_Pregunta, Tipo_Pregunta, Frecuencia) y exactamente 10 filas de datos.",
+      "Abre un libro nuevo en Microsoft Excel, haz clic en la celda A1 y pega el resultado. Verifica que los datos se distribuyan en 3 columnas (A, B y C) y lleguen exactamente hasta la fila 11.",
+      "Selecciona el rango A1:C11, presiona Ctrl + T, verifica que esté marcada la casilla «La tabla tiene encabezados» y acepta. Aplica un estilo de tabla sobrio y activa «Fila de totales» en la pestaña Diseño de tabla.",
+      "En la celda de la Fila de totales bajo la columna Frecuencia (C12), ingresa la fórmula =SUMA(C2:C11) para calcular el volumen total de respuestas registradas.",
+      "En la celda E2 (fuera de la tabla), escribe la fórmula =CONTAR.SI(B2:B11; \"Cerrada\") para cuantificar cuántas preguntas corresponden a esa categoría (verifica que uses punto y coma).",
+      "Reto avanzado: selecciona los valores numéricos de Frecuencia (C2:C11), ve a Inicio > Formato condicional > Reglas para valores superiores e inferiores > Por encima del promedio, y resáltalos en relleno verde.",
+      "Guarda el archivo en tu carpeta de proyectos de Tecnología con el nombre exacto 11_encuestas_231126_tunombre.xlsx (sin espacios, tildes ni letra ñ)."
+    ],
+    prompt: "Genera datos simulados de una encuesta de clima laboral. Encabezados exactos: Codigo_Pregunta, Tipo_Pregunta, Frecuencia. Entrega SOLO la tabla en formato TSV (separada por tabulaciones), con 1 fila de encabezados y exactamente 10 filas de datos (incluyendo valores como Cerrada, Multiple y Abierta en Tipo_Pregunta), sin explicaciones, sin markdown y sin comillas.",
+    herramientas: [
+      { nombre: "ChatGPT", url: "https://chat.openai.com" },
+      { nombre: "Google Gemini", url: "https://gemini.google.com" },
+      { nombre: "Microsoft Copilot", url: "https://copilot.microsoft.com" }
+    ],
+    requisitos: [
+      "Tabla estructurada (Ctrl + T) en el rango A1:C11 con encabezados exactos y Fila de totales activa.",
+      "Fórmula =SUMA(C2:C11) funcionando correctamente en la celda C12 sin errores de sintaxis.",
+      "Fórmula =CONTAR.SI(B2:B11; \"Cerrada\") aplicada en la celda E2 entregando un conteo numérico válido.",
+      "Formato condicional en color verde aplicado a los valores de Frecuencia que superan el promedio.",
+      "Archivo guardado en formato .xlsx siguiendo la nomenclatura 11_encuestas_231126_nombre.xlsx."
+    ]
+  },
+  quiz: [
+    {
+      pregunta: "¿Cuál es la diferencia fundamental entre una encuesta descriptiva y una encuesta analítica?",
+      opciones: [
+        "La descriptiva usa preguntas abiertas y la analítica solo preguntas cerradas.",
+        "La descriptiva retrata la realidad actual de un grupo, mientras la analítica busca explicar las causas o el porqué de un fenómeno.",
+        "La descriptiva se aplica únicamente en colegios y la analítica exclusivamente en empresas.",
+        "No existe diferencia metodológica; ambos términos son sinónimos en estadística."
+      ],
+      correcta: 1,
+      explicacion: "Las encuestas descriptivas miden el estado actual de una población, mientras que las analíticas investigan relaciones causa-efecto."
+    },
+    {
+      pregunta: "Un investigador redacta la siguiente pregunta: «¿Considera usted que el irresponsable uso del celular afecta el rendimiento académico?». ¿Qué error metodológico comete?",
+      opciones: [
+        "Utiliza una escala Likert demasiado extensa para los estudiantes.",
+        "Formula una pregunta abierta que no puede tabularse en Excel.",
+        "Introduce un sesgo de redacción al calificar previamente el uso como «irresponsable», induciendo la respuesta.",
+        "No incluye la opción «No sabe / No responde» al final del enunciado."
+      ],
+      correcta: 2,
+      explicacion: "Incluir adjetivos valorativos como «irresponsable» rompe la neutralidad y presiona al encuestado hacia una postura."
+    },
+    {
+      pregunta: "¿Por qué se solicita a la IA entregar los datos en formato TSV (valores separados por tabulaciones) al trabajar con Excel?",
+      opciones: [
+        "Porque Excel no permite copiar textos generados por inteligencia artificial.",
+        "Porque las tabulaciones permiten que Excel distribuya automáticamente cada campo en columnas separadas al pegar en A1.",
+        "Porque el formato TSV encripta los datos para proteger la privacidad de los encuestados.",
+        "Porque las fórmulas SUMA y CONTAR.SI solo funcionan si los datos provienen de un archivo TSV."
+      ],
+      correcta: 1,
+      explicacion: "El carácter de tabulación actúa como delimitador estándar de columnas en hojas de cálculo, evitando que todo quede en una sola celda."
+    },
+    {
+      pregunta: "Al escribir la fórmula =CONTAR.SI(B2:B11; \"Cerrada\") en Excel en español, aparece el error #¿NOMBRE?. ¿Cuál es la causa más probable?",
+      opciones: [
+        "El rango B2:B11 contiene texto en lugar de valores numéricos.",
+        "La tabla no tiene activada la Fila de totales en Diseño de tabla.",
+        "Se escribió el nombre de la función en inglés (COUNTIF) o faltaron las comillas en el criterio de texto.",
+        "El archivo fue guardado sin extensión .xlsx."
+      ],
+      correcta: 2,
+      explicacion: "El error #¿NOMBRE? indica que Excel no reconoce el texto de la fórmula, usualmente por usar el nombre de función en otro idioma o texto sin comillas."
+    },
+    {
+      pregunta: "Si deseas conocer las razones profundas por las cuales los estudiantes de grado 11° eligen una universidad específica, ¿qué tipo de pregunta es más pertinente incluir?",
+      opciones: [
+        "Una pregunta cerrada dicotómica de Sí o No.",
+        "Una pregunta abierta que permita argumentar los motivos personales y académicos.",
+        "Una pregunta de opción múltiple con solo dos alternativas.",
+        "Una tabla de frecuencias absolutas sin enunciado."
+      ],
+      correcta: 1,
+      explicacion: "Las preguntas abiertas permiten capturar motivaciones detalladas y argumentos que las opciones predefinidas podrían omitir."
+    },
+    {
+      pregunta: "¿Qué ventaja técnica ofrece convertir un rango de datos (A1:C11) en una Tabla Estructurada mediante Ctrl + T en Excel?",
+      opciones: [
+        "Traduce automáticamente las respuestas de una encuesta a otros idiomas.",
+        "Habilita filtros automáticos, bandas de color para lectura visual y la opción de agregar una Fila de totales dinámica.",
+        "Elimina automáticamente las preguntas sesgadas de una base de datos.",
+        "Convierte el archivo de Excel en un formulario web público."
+      ],
+      correcta: 1,
+      explicacion: "Las tablas estructuradas en Excel facilitan el filtrado, la legibilidad y el cálculo dinámico de totales sobre rangos definidos."
+    }
+  ],
+  tarea: {
+    titulo: "Análisis de Instrumentos de Encuesta",
+    html: true,
+    instruccion: "<h4>Instrucción general</h4><ul><li>Responde en tu <b>hoja suelta (hoja de examen) con lápiz</b>, basándote en los tipos y estructuras de preguntas de encuestas trabajados en clase.</li></ul><h4>Punto 1: Cuadro comparativo profesional</h4><ul><li>Dibuja un cuadro comparativo que señale <b>4 diferencias clave</b> entre las <b>preguntas abiertas</b> y las <b>preguntas cerradas</b> en un entorno de investigación profesional (considera criterios como tiempo de análisis, profundidad de datos, facilidad de tabulación y tipo de información obtenida).</li></ul><h4>Punto 2: Detección y corrección de sesgo</h4><ul><li>Escribe un <b>ejemplo propio</b> de una pregunta de encuesta mal formulada (sesgada o tendenciosa).</li><li>Reescríbela correctamente aplicando criterios de neutralidad y rigor técnico.</li><li>Explica brevemente <b>por qué el cambio mejora</b> la obtención y validez de los datos recolectados.</li></ul>",
+    renglones: 0,
+    indicacion: "Desarrolla esta actividad en una hoja suelta (hoja de examen) con lápiz, marcada con nombre completo, grado y fecha.",
+    criterios: [
+      "Claridad y rigor técnico en las 4 diferencias del cuadro comparativo.",
+      "Pertinencia y correcta reformulación del ejemplo de pregunta sesgada.",
+      "Explicación coherente del porqué la corrección mejora la obtención de datos.",
+      "Presentación ordenada en hoja suelta con nombre completo, grado y fecha."
+    ],
+    entrega: "Próxima clase (en hoja suelta)"
+  },
+  hoja: {
+    preguntas: [
+      { id: "r1", texto: "1. ¿Por qué consideras que el diseño de una encuesta debe respetar los principios de protección de datos vistos en la clase anterior?", lineas: 3 },
+      { id: "r2", texto: "2. Explica con tus propias palabras qué diferencia a una pregunta cerrada de una de opción múltiple y en qué caso usarías cada una.", lineas: 3 },
+      { id: "r3", texto: "3. Durante el reto en Excel + IA, ¿qué función cumplieron las fórmulas SUMA y CONTAR.SI para analizar la encuesta de clima laboral?", lineas: 3 },
+      { id: "r4", texto: "4. Si una empresa toma decisiones basándose en una encuesta con preguntas sesgadas, ¿qué consecuencias podría enfrentar?", lineas: 3 },
+      { id: "r5", texto: "5. ¿Qué aprendí hoy sobre la relación entre formular buenas preguntas y estructurar datos en una hoja de cálculo?", lineas: 3 }
+    ]
+  },
+  notasDocente: [
+    "Verifique que al pegar los datos TSV de la IA en Excel, los estudiantes utilicen la celda A1 y revisen que el separador decimal o de listas en su equipo sea punto y coma (;) para evitar errores en CONTAR.SI.",
+    "Enfatice la importancia de no alterar los encabezados exactos (Codigo_Pregunta, Tipo_Pregunta, Frecuencia), ya que en entornos laborales la estandarización de nombres de campo es clave para cruzar bases de datos.",
+    "Recuerde a los estudiantes que esta semana no hay tarea de investigación en el cuaderno; el entregable es exclusivamente en hoja suelta con lápiz para la próxima sesión."
+  ]
+};
+</script>
+<script src="../../motor-bernal-v5.js"></script>
+</body>
+</html>
